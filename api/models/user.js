@@ -5,7 +5,8 @@ var userSchema = mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email:    { type: String, unique: true, required: true },
   passwordHash: { type: String, required: true },
-  wines: [{ type: mongoose.Schema.ObjectId, ref: 'Refugee' }]
+  refugees: [{ type: mongoose.Schema.ObjectId, ref: 'Refugee' }],
+  charity: Boolean
 });
 
 userSchema.set('toJSON', {
