@@ -8,6 +8,7 @@ var refugeeSchema = mongoose.Schema({
   lat: String,
   lng: String,
   location: String,
+  language: String,
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
   
 });
