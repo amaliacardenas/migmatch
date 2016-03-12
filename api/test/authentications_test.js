@@ -38,3 +38,21 @@ describe('POST /login', function() {
   });
 });
 
+
+describe('POST /register', function() {
+  it('should generate a token on registration', function(done) {
+    api.post('/register')
+      .set('Accept', 'application/json')
+      .send({
+        username: "ilan",
+        email: "ilan@gmail.com",
+        password: "password",
+        passwordConfirmation: "password"
+      })
+      .end(function(err, res) {
+        expect(res.body.token).to.be.a('string');
+        done();
+      })
+  });
+});
+
