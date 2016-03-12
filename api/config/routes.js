@@ -1,6 +1,6 @@
 var router = require('express').Router();
 var jwt = require('jsonwebtoken');
-var candiesController = require('../controllers/users');
+var usersController = require('../controllers/users');
 var authenticationController = require('../controllers/authentication');
 var secret = require('../config/tokens').secret;
 
@@ -17,6 +17,8 @@ function secureRoute(req, res, next) {
 }
 
 // router.post('/login', authenticationController.login);
-// router.post('/register', authenticationController.register);
+router.post('/register', authenticationController.register);
 
 module.exports = router;
+
+
