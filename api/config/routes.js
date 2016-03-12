@@ -16,7 +16,7 @@ function secureRoute(req, res, next) {
   });
 }
 
-// router.post('/login', authenticationController.login);
+router.post('/login', authenticationController.login);
 router.post('/register', authenticationController.register);
 
 module.exports = router;
