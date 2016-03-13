@@ -1,4 +1,4 @@
-$(init);
+// $(init);
 
 function init(){
   // $('form').on('submit', submitForm);
@@ -16,6 +16,7 @@ function checkLoginState(){
   // check for a token
   // if there is one, call loggedInState
   // otherwise, call loggedOutState
+  //add if else loggedInStateHost
 
 // var token = getToken();
 //   if(token) {
@@ -43,7 +44,7 @@ function submitForm(){
   
 }
 
-// function getRefugees() {
+function getRefugees() {
 
 //   // get the user data from the API and call displayUsers
 //   event.preventDefault();
@@ -57,6 +58,8 @@ function submitForm(){
 
 // }
 
+
+
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
@@ -67,6 +70,16 @@ function displayRefugees(data) {
   //       }); 
 }
 
+function getCharities() {
+  //ajax request
+  //displayCharities
+}
+
+function displayCharities() {
+  //display charites refugees
+  //display news
+  //displays map
+}
 
 function authenticationSuccessful(data) {
   // set the token and call checkLoginState
@@ -157,4 +170,4 @@ function ajaxRequest(method, url, data, callback) {
   // .fail(function(err) {
   //   console.log(err);
   // });
-}
+// }
