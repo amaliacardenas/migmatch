@@ -4,6 +4,7 @@ var usersController = require('../controllers/users');
 var authenticationController = require('../controllers/authentication');
 var secret = require('../config/tokens').secret;
 var refugeesController = require('../controllers/refugees');
+var stripesController = require('../controllers/stripe');
 
 function secureRoute(req, res, next) {
   if(!req.headers.authorization) return res.status(401).json({ message: 'Unauthorized' });
@@ -31,6 +32,11 @@ router.route('/refugees/:id')
   .patch(refugeesController.updateOne)
   .delete(refugeesController.delete);
 
+
+router.route('/charities')
+    .get(usersController.index);
+
+router.post('/charge', stripesController.create);  
 
 
 

@@ -13,16 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^0.8.5",
-    "cors": "^2.7.1",
     "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.6",
     "jsonwebtoken": "^5.7.0",
-    "morgan": "^1.7.0"
-    },
-    "devDependencies": {
-      "chai": "^3.5.0",
-      "supertest": "^1.2.0"
-    }
-  
+    "mongoose": "^4.4.6",
+    "morgan": "^1.7.0",
+    "stripe": "^4.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "supertest": "^1.2.0"
+  }
 }
