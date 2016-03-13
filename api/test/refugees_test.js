@@ -8,17 +8,19 @@ var Refugee = require('../models/refugee');
 
 var refugeeId;
 
-// afterEach(function(done) {
-//   mongoose.connect('mongodb://localhost/refugee-app', function(){
-//     mongoose.connection.db.dropDatabase(function(){
-//       Refugee.create({ name: "Pez" }, function(err, refugee){
-//         console.log(refugee);
-//         refugeeId = refugeeId._id.toString();
-//         done(err);
-//       });
-//     }); 
-//   });
-// });
+
+
+
+afterEach(function(done) {
+  mongoose.connect('mongodb://localhost/refugee-app', function(){
+    mongoose.connection.db.dropDatabase(function(){
+      Refugee.create({ name: "Pez" }, function(err, refugee){
+        refugeeId = refugee._id.toString();
+        done(err);
+      });
+    }); 
+  });
+});
 
 
 describe('GET /refugees', function() {
@@ -62,3 +64,86 @@ describe('POST /refugees', function() {
   });
 
 });
+
+
+describe('GET /refugees/:id', function() {
+  it('should return a 200 response', function(done) {
+    api.get('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .expect(200, done);
+  });
+  it('should return an object with a specific id', function(done) {
+    api.get('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .end(function(err, res) {
+        expect(res.body).to.have.property('_id', refugeeId);
+        done();
+      });
+    });
+}); 
+
+
+describe('PUT /refugees/:id', function() {
+  it('should return 404 response', function(done) {
+    api.put('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .send({
+        name: "newpez"
+      })
+      .expect(200, done);
+  });
+  it('should return an object with an updated name', function(done) {
+    api.put('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .send({
+        name: "newpez"
+      })
+      .end(function(err, res) { 
+        expect(res.body.name).to.equal("newpez");
+        done();
+      });
+  }); 
+});
+
+describe('DELETE /refugees/:id', function() {
+  it('should return a 404 response', function(done) {
+    api.delete('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .expect(204, done);
+  });
+  it('should delete the appropriate record from the database', function(done) {
+    api.delete('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .end(function(err, res) {
+        if(err) done(err);
+        api.get('/refugees/' + refugeeId)
+          .set('Accept', 'application/json')
+          .expect(404, done);
+      });
+  }); 
+}); 
+
+
+describe('PATCH /refugees/:id', function() {
+  it('should return 200 response', function(done) {
+    api.patch('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .send({
+        name: "newpezONE"
+      })
+      .expect(200, done);
+  });
+
+  it('should return an object with an updated name', function(done) {
+    api.patch('/refugees/' + refugeeId)
+      .set('Accept', 'application/json')
+      .send({
+        name: "newpez"
+      })
+      .end(function(err, res) { 
+        expect(res.body.name).to.equal("newpez");
+        done();
+      });
+  }); 
+
+});  

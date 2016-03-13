@@ -25,6 +25,14 @@ router.route('/refugees')
   .get(refugeesController.index)
   .post(refugeesController.create);
 
+router.route('/refugees/:id')
+  .get(refugeesController.show)
+  .put(refugeesController.update)
+  .patch(refugeesController.updateOne)
+  .delete(refugeesController.delete);
+
+
+
 
 
 
