@@ -22,7 +22,8 @@ router.post('/register', authenticationController.register);
 
 
 router.route('/refugees')
-  .get(refugeesController.index);
+  .get(refugeesController.index)
+  .post(refugeesController.create);
 
 
 

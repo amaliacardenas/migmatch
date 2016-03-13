@@ -10,6 +10,13 @@ function refugeesIndex(req, res) {
 }
 
 //refugeesCreate
+function refugeesCreate(req, res) {
+  Refugee.create(req.body, function(err, refugee) {
+    if(err) return res.status(500).json({ message: err });
+    console.log(refugee);
+    return res.status(200).json(refugee);
+  });
+}
 
 //refugeesUpdate
 
@@ -18,5 +25,6 @@ function refugeesIndex(req, res) {
 
 
 module.exports ={
-  index: refugeesIndex
+  index: refugeesIndex,
+  create: refugeesCreate
 }

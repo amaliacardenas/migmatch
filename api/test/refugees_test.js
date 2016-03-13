@@ -37,3 +37,28 @@ describe('GET /refugees', function() {
       });
   });
 });
+
+
+
+describe('POST /refugees', function() {
+  it('should return a 200 response', function(done) {
+    api.post('/refugees')
+      .set('Accept', 'application/json')
+      .send({
+        name: "said"
+      })
+      .expect(200, done);
+  });
+  it('should add a new refugee and return the refugee object', function(done) {
+    api.post('/refugees')
+      .set('Accept', 'application/json')
+      .send({
+        name: "said"
+      })
+      .end(function(err, res) {
+        expect(res.body.name).to.equal("said");
+        done();
+      });
+  });
+
+});
