@@ -11,9 +11,6 @@ function init(){
   $('.refugee-link').on('click', getRefugees);
   $('#refugee').on('submit', submitRefugee);
 
-  
-  
- 
 
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
@@ -70,7 +67,7 @@ function submitRefugee() {
 
   // clear the form
   this.reset() 
-  return ajaxRequest(method, url, data, getRefugees);
+  return ajaxRequestRefugee(method, url, data, getRefugees);
 }
 
 
@@ -79,7 +76,7 @@ function getRefugees() {
   event.preventDefault();
   
   // console.log("getRefugees is working");
-  return ajaxRequest('GET', '/api/refugees', null, displayRefugees);  
+  return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
  }
 
 function displayRefugees(data) {
@@ -187,6 +184,21 @@ function ajaxRequest(method, url, data, callback) {
     method: method,
     url: url,
     data: data,
+    beforeSend: function(jqXHR, settings){
+      var token = getToken();
+      if(token) return jqXHR.setRequestHeader('Authorization', 'Bearer '+ token);
+    }
+  }).done(callback)
+  .fail(function(err) {
+    console.log(err);
+  });
+}
+
+function ajaxRequestRefugee(method, url, data, callback) {
+  return $.ajax({
+    method: method,
+    url: url,
+    data: data,
     contentType: false, // allow ajax to send file data
     processData: false, // allow ajax to send file data
     beforeSend: function(jqXHR, settings){
@@ -198,6 +210,7 @@ function ajaxRequest(method, url, data, callback) {
     console.log(err);
   });
 }
+
 
 
 
