@@ -1,0 +1,6 @@
+#property-map {
+  height: 500px;
+  margin: 20px 0;
+  border:2px solid white;
+  box-shadow: 4px 4px 2px rgba(165, 165, 165, 1);
+}
