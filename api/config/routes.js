@@ -23,12 +23,12 @@ router.post('/register', authenticationController.register);
 
 
 router.route('/refugees')
-  .get(secureRoute, refugeesController.index)
+  .get(refugeesController.index)
   .post(secureRoute, refugeesController.create);
 
 router.route('/refugees/:id')
   .get(refugeesController.show)
-  .put(refugeesController.update)
+  .put(secureRoute, refugeesController.update)
   .patch(refugeesController.updateOne)
   .delete(refugeesController.delete);
 

@@ -8,13 +8,15 @@ var Refugee = require('../models/refugee');
 
 var refugeeId;
 var token;
-var userId; 
+var user;
+
 
 beforeEach(function(done) {
   api.post('/register')
     .set('Accept', 'application/json')
     .send({ username: "apple", email: "r@gmail.com", password: "password", passwordConfirmation: "password" })
     .end(function(err, res){
+      user = res.body.user;
       token = res.body.token;
       done(err);
     });
@@ -32,23 +34,19 @@ afterEach(function(done) {
   });
 });
 
-
+//all refugees - need to make unsecure route
 describe('GET /refugees', function() {
-  it('should return a 401 response', function(done) {
-    api.get('/refugees')
-      .set('Accept', 'application/json')
-      .expect(401, done);
-  });
+  
   it('should return a 200 response when authenticated', function(done) {
     api.get('/refugees')
       .set('Accept', 'application/json')
-      .set('Authorization', 'Bearer ' + token)
+      
       .expect(200, done);
   });
   it('should return a 200 response', function(done) {
     api.get('/refugees')
       .set('Accept', 'application/json')
-      .set('Authorization', 'Bearer ' + token)
+      
       .expect(200, done);
   });
 
@@ -63,7 +61,7 @@ describe('GET /refugees', function() {
   });
 });
 
-
+//add refugee - secure route
 
 describe('POST /refugees', function() {
   it('should return a 401 response', function(done) {
@@ -90,22 +88,43 @@ describe('POST /refugees', function() {
       })
       .end(function(err, res) {
         expect(res.body.name).to.equal("said");
+        console.log(res.body);
         done();
       });
   });
+  it('should add the refugee id to the current user object', function(done) {
+    api.post('/refugees')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .send({
+        name: "said"
+      })
+      .end(function(err, res) {
+        api.get('/charities/' + user._id)
+          .set('Accept', 'application/json')
+          .end(function(err, res) {
+            expect(res.body.refugees).to.be.an('array');
+            console.log(res.body);
+          })
+      });
+
+  })
 
 });
 
-
+//show refugee
 describe('GET /refugees/:id', function() {
+ 
   it('should return a 200 response', function(done) {
     api.get('/refugees/' + refugeeId)
       .set('Accept', 'application/json')
+      
       .expect(200, done);
   });
   it('should return an object with a specific id', function(done) {
     api.get('/refugees/' + refugeeId)
       .set('Accept', 'application/json')
+      
       .end(function(err, res) {
         expect(res.body).to.have.property('_id', refugeeId);
         done();
@@ -113,11 +132,17 @@ describe('GET /refugees/:id', function() {
     });
 }); 
 
-
+//update refugees
 describe('PUT /refugees/:id', function() {
-  it('should return 404 response', function(done) {
+  it('should return a 404 not found', function(done) {
+    api.put('/refugees'+ refugeeId)
+      .set('Accept', 'application/json')
+      .expect(404, done);
+  });
+  it('should return 200 response', function(done) {
     api.put('/refugees/' + refugeeId)
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .send({
         name: "newpez"
       })
@@ -126,6 +151,7 @@ describe('PUT /refugees/:id', function() {
   it('should return an object with an updated name', function(done) {
     api.put('/refugees/' + refugeeId)
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .send({
         name: "newpez"
       })
