@@ -32,23 +32,23 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
-        <li><a href="#" class="register-link logged-out">Register</a></li>
-        <li><a href="#" class="login-link logged-out">Login</a></li>
+        <li><a href="#" name="registerCharity" class="register-link logged-out">Register</a></li>
+        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
         <!-- Logged in and logged out -->
-        <li><a href="#" class="home-link">App</a></li>
-        <li><a href="#" class="about-link">About</a></li>
+        <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
+        <li><a href="#" name= "about" class="about-link">About</a></li>
         <!-- Both logged in -->
         <li><a href="#" class="logout-link logged-in">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
         <!-- charity -->
-        <li><a href="#" class="profile-link logged-in charity">Profile</a></li> 
-        <li><a href="#" class="homePage-link logged-in charity">Home Page</a></li>
-        <li><a href="#" class="addRefugee-link logged-in charity">Add a refugee</a></li>
+        <li><a href="#" name= "" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name= "charityHome" class="homePage-link logged-in charity">Home Page</a></li>
+        <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <!-- host -->
-        <li><a href="#" class="profile-link logged-in host">Profile</a></li> 
-        <li><a href="#" class="homePage-link logged-in host">Home Page</a></li> 
-        <li><a href="#" class="refugee-link logged-in host">Refugees</a></li> 
+        <li><a href="#" name= "" class="profile-link logged-in host">Profile</a></li> 
+        <li><a href="#" name= "" class="homePage-link logged-in host">Home Page</a></li> 
+        <li><a href="#" name= "" class="refugee-link logged-in host">Refugees</a></li> 
       </ul> 
     </nav>
   </header>
@@ -144,33 +144,33 @@
     </section>
     <!-- HOME PAGE -->
       <!-- news -->
-      <section id="">
+      <section id="crossroads">
+      <h1>Crossroads</h1>
         <!-- div with the content provided by the news API -->
-      </section>
-      <!-- map -->
-      <section id="">
         <!-- div with googlemap and our data -->
-      </section>
-      <!-- connection -->
-      <section id="">
+        <h4>Map</h4>
+        <div id="refugee-map"></div>
+        <!-- connection -->
         <!-- picture refugee and host, amount £ donated (progressbar,...),   -->
       </section>
-    <!-- End of HOME PAGE-->
+  
 ​
     <!-- about -->
     <section id="about">
+    <h1>About</h1>
       <!-- Description of the project  -->
     </section>
 ​
     <!-- connectionShow -->
     <section id="connectionShow">
+    <h1> Connection Show</h1>
       <!-- user.refugees both stories, share story, tiles with other stories at the bottom, fb share, donate button, create your own story button -->
 
     </section>
     <!-- donationForm -->
     <section id="donationForm">
       <!-- form, depend on stripes, share on social media button  -->
-      <form action="" method="POST" id="payment-form">
+      <form action="/charge" method="POST" id="payment-form">
         <span class="payment-errors"></span>
 
         <div class="form-row">
@@ -202,6 +202,7 @@
 ​
     <!-- charityHome -->
     <section id="charityHome">
+    <h1>Charity home page that only charity can see</h1>
       <!-- tiles of the refugies profile split in 2 different sections connected or not, plus button for add a ref(also in navbar), your statistics  -->
     </section>
 
@@ -209,55 +210,60 @@
     <section id="addRefugee">
         <h3>Add a refugee profile</h3>
           <!-- profile(names, origin country, languages), story, add button(for charity)  -->
-          <form id="property" method="post" action="/" enctype="multipart/form-data">
+          <form id="refugee" method="post" action="/refugees" enctype="multipart/form-data">
 
        <div class="form-group">
          <label for="address1">Address</label>
-         <input name="property[address1]" type="text" class="form-control" id="address1" placeholder="address">
+         <input name="refugee[address1]" type="text" class="form-control" id="address1" placeholder="address">
        </div>
        <div class="form-group">
          <label for="city">City</label>
-         <input name="property[city]" type="text" class="form-control" id="city" placeholder="city">
+         <input name="refugee[city]" type="text" class="form-control" id="city" placeholder="city">
        </div>
        <div class="form-group">
          <label for="postcode">Postcode</label>
-         <input name="property[postcode]" type="text" class="form-control" id="postcode" placeholder="postcode">
+         <input name="refugee[postcode]" type="text" class="form-control" id="postcode" placeholder="postcode">
        </div>
        <div class="form-group">
          <label for="lat">Latitude AUTOMATIC</label>
-         <input name="property[lat]" type="text" class="form-control" id="lat" placeholder="lat">
+         <input name="refugee[lat]" type="text" class="form-control" id="lat" placeholder="lat">
        </div>
        <div class="form-group">
          <label for="lng">Longitude AUTOMATIC</label>
-         <input name="property[lng]" type="text" class="form-control" id="lng" placeholder="lng">
+         <input name="refugee[lng]" type="text" class="form-control" id="lng" placeholder="lng">
        </div>
-       <h4>Map</h4>
-       <div id="property-map"></div>
+       <button type="submit" class="btn btn-primary" role="button">Submit</button>
+       
        </form>
-
-        </section>
+    </section>
     <!-- refugeeShow -->
     <section id="refugeeShow">
+    <h1>Show refugee</h1>
       <!--profile(names, origin country, languages), story, status(connected), edit button  -->
     </section>
     <!-- refugeeEdit -->
     <section id="refugeeEdit">
+    <h1>Refugee</h1>
       <!-- same, with delete and update buttons -->
     </section>
     <!-- charityShow -->
     <section id="charityShow">
+      <h1>Chartity Show</h1>
       <!-- charity profile, logo, name, address, descritption, edit button -->
     </section>
     <!-- charityEdit -->
     <section id="charityEdit">
+    <h1>Chartity edit</h1>
       <!-- same with update button -->
     </section>
     <!-- refugeeAll -->
     <section id="refugeeAll">
+    <h1> all refugees</h1>
       <!-- list of all tiles of refugees -->
     </section>
     <!-- refugeeShow for the Host -->
     <section id="refugeeShowHost">
+
       <!--profile(names, origin country, languages), story, request button to connect -->
     </section>
     <!-- hostShow -->

@@ -1,13 +1,17 @@
 $(init);
 
 function init(){
+  var $sections = $('section').hide();
+  $('#crossroads').show();
   $('form').on('submit', submitForm);
   $('.register-link').on('click', showPage);
+  $('.login-link').on('click', showPage);
   $('.logout-link').on('click', logout);
- //create event handler for logout
+  $('.about-link').on('click', showPage);
+  $('.home-link').on('click', showPage);
  
 
- //create event handler for resgiter to show
+ 
  //create event handler for about section
  //create event handler for barnd name - home
  //create event handler for charity nav bar (charity homepage, add refugee, profile)
@@ -32,6 +36,11 @@ var token = getToken();
 
 }
 
+
+function showMap (){
+  //ajax request for all refugees
+  //for each objects get refugee.lng 
+}
 function submitForm(){
   // get the data from the forms and make an ajaxRequest
   // call authenticationSuccessful
@@ -78,6 +87,7 @@ function submitForm(){
 // function getCharities() {
 //   //ajax request
 //   //displayCharities
+
 // }
 
 // function displayCharities() {
@@ -108,12 +118,12 @@ function logout(){
   // remove the token
   // call loggedOutState
 
-  // removeToken();
-  // loggedOutState();
+  removeToken();
+  loggedOutState();
 }
 
 function removeToken() {
-  // localStorage.clear();
+  localStorage.clear();
 }
 
 function loggedInState(){
@@ -124,21 +134,20 @@ function loggedInState(){
     $('.logged-in').show();
     showPage();
     $('#charityHome').show();
-    getRefugees();
   console.log("logged in !")
 }
 
-// function loggedOutState(){
-//   //hide links with logged-in class
-//   //show links with logged-out class
-//   //show login page
-//   // $('.logged-out').show();
-//   //   $('.logged-in').hide();
-//   //   // showPage();
-//   //   $('#login').show();
-//   // console.log("logged out!")
+function loggedOutState(){
+  //hide links with logged-in class
+  //show links with logged-out class
+  //show login page
+  $('.logged-out').show();
+    $('.logged-in').hide();
+    showPage();
+    $('#crossroads').show();
+  console.log("logged out!")
     
-// }
+}
 
 // function displayErrors(){
   
