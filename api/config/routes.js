@@ -34,10 +34,11 @@ router.route('/refugees/:id')
 
 
 router.route('/charities')
-    .get(usersController.index);
+  .get(usersController.index);
 
 router.route('/charities/:id')
-    .put(usersController.update);
+  .get(usersController.show)
+  .put(usersController.update);
 
 router.post('/charge', stripesController.create);  
 
