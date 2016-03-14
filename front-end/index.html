@@ -33,16 +33,27 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
+        <li><a href="#" name= "registerCharity" class="register-link logged-out">Register</a></li>
+        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
+        <!-- Logged in and logged out -->
+        <li><a href="#" name= "" class="home-link">App</a></li>
         <li><a href="#" name="registerCharity" class="register-link logged-out">Register</a></li>
         <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
         <!-- Logged in and logged out -->
         <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
         <li><a href="#" name= "about" class="about-link">About</a></li>
         <!-- Both logged in -->
-        <li><a href="#" class="logout-link logged-in">Logout</a></li>
+        <li><a href="#" name= "" class="logout-link logged-in">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
         <!-- charity -->
+        <li><a href="#" name= "" class="profile-link logged-in charity">Profile</a></li> 
+
+        <li><a href="#" name= "" class="homePage-link logged-in charity">Home Page</a></li>
+
+        <li><a href="#" name= "charityHome" class="homePage-link logged-in charity">Home Page</a></li>
+
+        <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
         <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home</a></li>
         <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
@@ -234,7 +245,8 @@
          <input name="refugee[lng]" type="text" class="form-control" id="lng" placeholder="lng">
        </div>
        <button type="submit" class="btn btn-primary" role="button">Submit</button>
-       
+       <h4>Map</h4>
+       <div id="refugee-map"></div>
        </form>
     </section>
     <!-- refugeeShow -->

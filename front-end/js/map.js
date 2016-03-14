@@ -3,18 +3,28 @@ console.log("jquery")
 function init(){
   displayRefugee();
 }
+
 function displayRefugee() {
   //display charites refugees
   //display news
   //displays map
+
   var $refugeeForm = $('#refugee');
   var $map = $('#refugee-map');
   var $markers = [];
+
+
+  var $refugeeForm = $('#refugee');
+  var $map = $('#refugee-map');
+  var $markers = [];
+
   var map = new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
     zoom: 1,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
   });
+
+
   // get refugeeData using ajax
   $.get('http://localhost:3000/refugees').then(function(data){
     var refugees = data
@@ -28,9 +38,19 @@ function displayRefugee() {
       });
     });
   });
+
+
+
+  if($refugeeForm.length){
+
+    var gcoder = new google.maps.Geocoder();
+    var $fields = $refugeeForm.find('input');
+
+
   if($refugeeForm.length){
     var gcoder = new google.maps.Geocoder();
     var $fields = $refugeeForm.find('input');
+
     $fields.on('blur', function(){
       var formData = $refugeeForm.serializeArray();
       var address = formData.map(function(dataObj){
@@ -48,4 +68,10 @@ function displayRefugee() {
       });
     });
   };
+};
+
+
+  
+
+
 };
