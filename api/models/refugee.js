@@ -16,6 +16,21 @@ var refugeeSchema = mongoose.Schema({
   
 });
 
+refugeeSchema.pre('save', function(next){
+  if(!this.user) next();
+
+  this.model('User').findByIdAndUpdate(this.user, {$push: {refugees:this._id}}, function(err, user) {
+    console.log(err, user);
+    next(err);
+  });
+});
+
+
+refugeeSchema.pre('remove', function(next){
+  console.log("is it working");
+  console.log(this._id);
+  this.model('User').update({ refugees: this._id }, { $pull: {refugees:this._id }}, { multi:true }, next);
+});
 
 module.exports = mongoose.model("Refugee", refugeeSchema);
 

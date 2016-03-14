@@ -1,4 +1,6 @@
 var Refugee = require('../models/refugee');
+var jwt    = require('jsonwebtoken');
+var secret = require('../config/tokens').secret;
 
 
 //refugeesIndex
@@ -11,7 +13,9 @@ function refugeesIndex(req, res) {
 
 //refugeesCreate
 function refugeesCreate(req, res) {
-  Refugee.create(req.body, function(err, refugee) {
+  var refugee = req.body;
+  refugee.user = req.user;
+  Refugee.create(refugee, function(err, refugee) {
     if(err) return res.status(500).json({ message: err });
     console.log(refugee);
     return res.status(200).json(refugee);

@@ -7,8 +7,17 @@ var mongoose = require('mongoose');
 var Refugee = require('../models/refugee');
 
 var refugeeId;
+var token; 
 
-
+beforeEach(function(done) {
+  api.post('/register')
+    .set('Accept', 'application/json')
+    .send({ username: "apple", email: "r@gmail.com", password: "password", passwordConfirmation: "password" })
+    .end(function(err, res){
+      token = res.body.token;
+      done(err);
+    });
+})
 
 
 afterEach(function(done) {
@@ -24,15 +33,28 @@ afterEach(function(done) {
 
 
 describe('GET /refugees', function() {
+  it('should return a 401 response', function(done) {
+    api.get('/refugees')
+      .set('Accept', 'application/json')
+      .expect(401, done);
+  });
+  it('should return a 200 response when authenticated', function(done) {
+    api.get('/refugees')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200, done);
+  });
   it('should return a 200 response', function(done) {
     api.get('/refugees')
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .expect(200, done);
   });
 
   it('should return an array', function(done) {
     api.get('/refugees')
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .end(function(err, res) {
         expect(res.body).to.be.an('array');
         done();
@@ -43,6 +65,7 @@ describe('GET /refugees', function() {
 
 
 describe('POST /refugees', function() {
+
   it('should return a 200 response', function(done) {
     api.post('/refugees')
       .set('Accept', 'application/json')
