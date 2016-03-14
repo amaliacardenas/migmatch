@@ -24,17 +24,21 @@ router.post('/register', authenticationController.register);
 
 router.route('/refugees')
   .get(refugeesController.index)
-  .post(refugeesController.create);
+  .post(secureRoute, refugeesController.create);
 
 router.route('/refugees/:id')
   .get(refugeesController.show)
-  .put(refugeesController.update)
+  .put(secureRoute, refugeesController.update)
   .patch(refugeesController.updateOne)
   .delete(refugeesController.delete);
 
 
 router.route('/charities')
-    .get(usersController.index);
+  .get(usersController.index);
+
+router.route('/charities/:id')
+  .get(usersController.show)
+  .put(usersController.update);
 
 router.post('/charge', stripesController.create);  
 

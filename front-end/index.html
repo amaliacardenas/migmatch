@@ -22,6 +22,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/stripe.js"></script>
+  <script type="text/javascript" src="/js/guardian.js"></script>
   <script type="text/javascript" src="/js/map.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -32,10 +33,17 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
+<<<<<<< HEAD
         <li><a href="#" name= "registerCharity" class="register-link logged-out">Register</a></li>
         <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
         <!-- Logged in and logged out -->
         <li><a href="#" name= "" class="home-link">App</a></li>
+=======
+        <li><a href="#" name="registerCharity" class="register-link logged-out">Register</a></li>
+        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
+        <!-- Logged in and logged out -->
+        <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
+>>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
         <li><a href="#" name= "about" class="about-link">About</a></li>
         <!-- Both logged in -->
         <li><a href="#" name= "" class="logout-link logged-in">Logout</a></li>
@@ -43,7 +51,11 @@
       <ul class="nav navbar-nav navbar-left">
         <!-- charity -->
         <li><a href="#" name= "" class="profile-link logged-in charity">Profile</a></li> 
+<<<<<<< HEAD
         <li><a href="#" name= "" class="homePage-link logged-in charity">Home Page</a></li>
+=======
+        <li><a href="#" name= "charityHome" class="homePage-link logged-in charity">Home Page</a></li>
+>>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
         <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <!-- host -->
         <li><a href="#" name= "" class="profile-link logged-in host">Profile</a></li> 
@@ -144,33 +156,36 @@
     </section>
     <!-- HOME PAGE -->
       <!-- news -->
+      <section id="crossroads">
+      <h1>Crossroads</h1>
+      
+      <ul class="guardian-news"></ul>
       <section id="">
         <!-- div with the content provided by the news API -->
-      </section>
-      <!-- map -->
-      <section id="">
         <!-- div with googlemap and our data -->
-      </section>
-      <!-- connection -->
-      <section id="">
+        <h4>Map</h4>
+        <div id="refugee-map"></div>
+        <!-- connection -->
         <!-- picture refugee and host, amount £ donated (progressbar,...),   -->
       </section>
-    <!-- End of HOME PAGE-->
+  
 ​
     <!-- about -->
     <section id="about">
+    <h1>About</h1>
       <!-- Description of the project  -->
     </section>
 ​
     <!-- connectionShow -->
     <section id="connectionShow">
+    <h1> Connection Show</h1>
       <!-- user.refugees both stories, share story, tiles with other stories at the bottom, fb share, donate button, create your own story button -->
 
     </section>
     <!-- donationForm -->
     <section id="donationForm">
       <!-- form, depend on stripes, share on social media button  -->
-      <form action="" method="POST" id="payment-form">
+      <form action="/charge" method="POST" id="payment-form">
         <span class="payment-errors"></span>
 
         <div class="form-row">
@@ -202,6 +217,7 @@
 ​
     <!-- charityHome -->
     <section id="charityHome">
+    <h1>Charity home page that only charity can see</h1>
       <!-- tiles of the refugies profile split in 2 different sections connected or not, plus button for add a ref(also in navbar), your statistics  -->
     </section>
 
@@ -232,32 +248,42 @@
          <input name="refugee[lng]" type="text" class="form-control" id="lng" placeholder="lng">
        </div>
        <button type="submit" class="btn btn-primary" role="button">Submit</button>
+<<<<<<< HEAD
        <h4>Map</h4>
        <div id="refugee-map"></div>
+=======
+       
+>>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
        </form>
     </section>
     <!-- refugeeShow -->
     <section id="refugeeShow">
+    <h1>Show refugee</h1>
       <!--profile(names, origin country, languages), story, status(connected), edit button  -->
     </section>
     <!-- refugeeEdit -->
     <section id="refugeeEdit">
+    <h1>Refugee</h1>
       <!-- same, with delete and update buttons -->
     </section>
     <!-- charityShow -->
     <section id="charityShow">
+      <h1>Chartity Show</h1>
       <!-- charity profile, logo, name, address, descritption, edit button -->
     </section>
     <!-- charityEdit -->
     <section id="charityEdit">
+    <h1>Chartity edit</h1>
       <!-- same with update button -->
     </section>
     <!-- refugeeAll -->
     <section id="refugeeAll">
+    <h1> all refugees</h1>
       <!-- list of all tiles of refugees -->
     </section>
     <!-- refugeeShow for the Host -->
     <section id="refugeeShowHost">
+
       <!--profile(names, origin country, languages), story, request button to connect -->
     </section>
     <!-- hostShow -->
