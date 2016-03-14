@@ -11,6 +11,7 @@ function init(){
   $('.about-link').on('click', showPage);
   $('.home-link').on('click', showPage);
   $('.refugee-link').on('click', getRefugees);
+  $('.addRefugee-link').on('click', showPage);
  
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
