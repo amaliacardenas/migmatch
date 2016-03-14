@@ -111,10 +111,6 @@ function setToken(token) {
 function logout(){
   // remove the token
   // call loggedOutState
-<<<<<<< HEAD
-=======
-
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
   removeToken();
   loggedOutState();
 }
@@ -139,15 +135,12 @@ function loggedOutState(){
   //show links with logged-out class
   //show login page
   $('.logged-out').show();
-<<<<<<< HEAD
   $('.logged-in').hide();
   showPage();
   $('#login').show();
-=======
     $('.logged-in').hide();
     showPage();
     $('#crossroads').show();
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
   console.log("logged out!")
     
 }

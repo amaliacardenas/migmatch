@@ -3,37 +3,28 @@ console.log("jquery")
 function init(){
   displayRefugee();
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
 function displayRefugee() {
   //display charites refugees
   //display news
   //displays map
-<<<<<<< HEAD
-
 
   var $refugeeForm = $('#refugee');
   var $map = $('#refugee-map');
   var $markers = [];
 
 
-=======
   var $refugeeForm = $('#refugee');
   var $map = $('#refugee-map');
   var $markers = [];
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
+
   var map = new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
     zoom: 1,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
   });
-<<<<<<< HEAD
 
-=======
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
+
   // get refugeeData using ajax
   $.get('http://localhost:3000/refugees').then(function(data){
     var refugees = data
@@ -47,7 +38,7 @@ function displayRefugee() {
       });
     });
   });
-<<<<<<< HEAD
+
 
 
   if($refugeeForm.length){
@@ -55,11 +46,11 @@ function displayRefugee() {
     var gcoder = new google.maps.Geocoder();
     var $fields = $refugeeForm.find('input');
 
-=======
+
   if($refugeeForm.length){
     var gcoder = new google.maps.Geocoder();
     var $fields = $refugeeForm.find('input');
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
+
     $fields.on('blur', function(){
       var formData = $refugeeForm.serializeArray();
       var address = formData.map(function(dataObj){
@@ -77,14 +68,10 @@ function displayRefugee() {
       });
     });
   };
-<<<<<<< HEAD
 };
 
 
   
 
 
-
-=======
 };
->>>>>>> 743678d3024f694fed9813c1985752bfe01e6236
