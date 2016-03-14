@@ -4,14 +4,12 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('form').on('submit', submitForm);
-  $('.register-link').on('click', showPage);
-  $('.login-link').on('click', showPage);
+  $('#register, #login, #refugee').on('submit', submitForm);
+  $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
   $('.logout-link').on('click', logout);
-  $('.about-link').on('click', showPage);
-  $('.home-link').on('click', showPage);
   $('.refugee-link').on('click', getRefugees);
-  $('.addRefugee-link').on('click', showPage);
+  
+  
  
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)

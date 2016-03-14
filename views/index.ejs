@@ -38,6 +38,7 @@
         <!-- Logged in and logged out -->
         <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
         <li><a href="#" name="about" class="about-link">About</a></li>
+        <li><a href="#" name="donationForm" class="donate-link">donate</a></li>
         <!-- Both logged in -->
         <li><a href="#" name="" class="logout-link logged-in">Logout</a></li>
       </ul>
@@ -70,7 +71,7 @@
     <!-- Register as a host -->
     <section id="registerHost">
       <h2>Register</h2>
-      <form class="register" method="post" action="/register">
+      <form id="register" class="register" method="post" action="/register">
         <div class="form-group">
           <label for="register-username">username</label>
           <input type="text" username="username" id="register-username" class="form-control" placeholder="username">
@@ -118,7 +119,7 @@
     <!-- Login -->
     <section id="login">
       <h2>Login</h2>
-      <form class="login" method="post" action="/login">
+      <form id="login" class="login form" method="post" action="/login">
         <div class="form-group">
           <label for="login-email">Email address</label>
           <input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
@@ -164,6 +165,12 @@
 
         <div class="form-row">
           <label>
+            <span>Amount</span>
+            <input type="text" size="20" name="amount"/>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
             <span>Card Number</span>
             <input type="text" size="20" data-stripe="number"/>
           </label>
@@ -197,7 +204,7 @@
     <section id="addRefugee">
         <h3>Add a refugee profile</h3>
           <!-- profile(names, origin country, languages), story, add button(for charity)  -->
-          <form id="refugee" method="post" action="/refugees" enctype="multipart/form-data">
+          <form id="refugee" method="post" action="/refugees" enctype="multipart/form-data" class="form">
 
        <div class="form-group">
          <label for="address1">Address</label>
