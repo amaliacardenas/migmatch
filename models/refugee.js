@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var refugeeSchema = mongoose.Schema({
   name: String,
   avatar: String,
-  images: String,
   story: String,
   lat: String,
   lng: String,

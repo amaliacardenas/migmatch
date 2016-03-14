@@ -1,6 +1,8 @@
 var Refugee = require('../models/refugee');
 var jwt    = require('jsonwebtoken');
 var secret = require('../config/tokens').secret;
+var s3Config = require('../config/s3');
+
 
 
 //refugeesIndex
@@ -13,11 +15,17 @@ function refugeesIndex(req, res) {
 
 //refugeesCreate
 function refugeesCreate(req, res) {
+  // add filename to user object before create
   var refugee = req.body;
+  if(req.file.key){
+    refugee.avatar = s3Config.endpoint + s3Config.bucket + '/' + req.file.key;
+  } else {
+    refugee.avatar = "default image url"
+  }
+  
   refugee.user = req.user._id;
   Refugee.create(refugee, function(err, refugee) {
     if(err) return res.status(500).json({ message: err });
-    console.log(refugee);
     return res.status(200).json(refugee);
   });
 }

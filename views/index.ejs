@@ -70,7 +70,7 @@
     <!-- Register as a host -->
     <section id="registerHost">
       <h2>Register</h2>
-      <form class="register" method="post" action="/register">
+      <form class="register" method="post" action="/api/register">
         <div class="form-group">
           <label for="register-username">username</label>
           <input type="text" username="username" id="register-username" class="form-control" placeholder="username">
@@ -118,7 +118,7 @@
     <!-- Login -->
     <section id="login">
       <h2>Login</h2>
-      <form class="login" method="post" action="/login">
+      <form class="login" method="post" action="/api/login">
         <div class="form-group">
           <label for="login-email">Email address</label>
           <input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
@@ -197,7 +197,7 @@
     <section id="addRefugee">
         <h3>Add a refugee profile</h3>
           <!-- profile(names, origin country, languages), story, add button(for charity)  -->
-          <form id="refugee" method="post" action="/refugees" enctype="multipart/form-data">
+          <form id="refugee" method="post" action="/api/refugees" enctype="multipart/form-data">
 
 <!--        <div class="form-group">
          <label for="address1">Address</label>
@@ -206,6 +206,10 @@
        <div class="form-group">
          <label for="name">name</label>
          <input name="name" type="text" class="form-control" id="name" placeholder="name">
+       </div>
+       <div class="form-group">
+         <label for="avatar">Avatar</label>
+         <input type="file" name="avatar">
        </div>
        <div class="form-group">
          <label for="city">City</label>

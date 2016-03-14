@@ -4,7 +4,7 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('form').on('submit', submitForm);
+  $('#login, #registerCharity').on('submit', submitForm);
   $('.register-link').on('click', showPage);
   $('.login-link').on('click', showPage);
   $('.logout-link').on('click', logout);
@@ -12,7 +12,7 @@ function init(){
   $('.home-link').on('click', showPage);
   $('.refugee-link').on('click', getRefugees);
   $('.addRefugee-link').on('click', showPage);
- 
+  $('#refugee').on('submit', submitRefugee);
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
  //create event handler for host nav bar (host homepage, all refugees, profile)
@@ -33,7 +33,6 @@ var token = getToken();
   else {
     loggedOutState();
   }
-
 }
 
 
@@ -45,11 +44,13 @@ function submitForm(){
   // get the data from the forms and make an ajaxRequest
   // call authenticationSuccessful
   event.preventDefault();
+
+
   var form = this;
   console.log(form);
   // Get method from form
   var method = $(this).attr('method');
-  var url = "/api" + $(this).attr('action');
+  var url = $(this).attr('action');
   // NOT JSON
   var data = $(this).serialize();
   console.log("dat:" + data);
@@ -58,20 +59,26 @@ function submitForm(){
   
 }
 
+function submitRefugee() {
+  event.preventDefault() 
+
+  var method = $(this).attr("method");
+  var url    = $(this).attr("action");
+  var data   = new FormData(this); 
+
+  // clear the form
+  this.reset() 
+  return ajaxRequest(method, url, data, getRefugees);
+}
+
+
 function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
   
-  console.log("getRefugees is working");
-  return ajaxRequest('GET', '/api/refugees', null, function(data){
-    displayRefugees(data);
-    console.log(data);
-    console.log("data" + data[0]._id);
-  });    
-
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/refugees', null, displayRefugees);  
  }
-
-
 
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
@@ -79,7 +86,7 @@ function displayRefugees(data) {
     $('#show').empty();
   console.log("its working");
       data.forEach(function(data) {
-          $('#show').append("<li class='list-group-item'>"+data.name + "</li>")
+          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "</li>")
         }); 
 }
 
@@ -178,6 +185,8 @@ function ajaxRequest(method, url, data, callback) {
     method: method,
     url: url,
     data: data,
+    contentType: false, // allow ajax to send file data
+    processData: false, // allow ajax to send file data
     beforeSend: function(jqXHR, settings){
       var token = getToken();
       if(token) return jqXHR.setRequestHeader('Authorization', 'Bearer '+ token);
@@ -187,3 +196,6 @@ function ajaxRequest(method, url, data, callback) {
     console.log(err);
   });
 }
+
+
+
