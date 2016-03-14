@@ -88,7 +88,7 @@ function displayRefugees(data) {
     $('#show').empty();
   console.log("its working");
       data.forEach(function(data) {
-          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "</li>")
+          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "<button id="+ data._id + "> show" + "</button>" + "</li>")
         }); 
 }
 
