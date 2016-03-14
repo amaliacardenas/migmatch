@@ -3,20 +3,19 @@ $(init);
 function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
+  getRefugees();
   $('form').on('submit', submitForm);
   $('.register-link').on('click', showPage);
   $('.login-link').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.about-link').on('click', showPage);
   $('.home-link').on('click', showPage);
+  $('.refugee-link').on('click', getRefugees);
  
 
- 
- //create event handler for about section
- //create event handler for barnd name - home
- //create event handler for charity nav bar (charity homepage, add refugee, profile)
+//create event handler for charity nav bar (charity homepage, add refugee, profile)
  //create event handler for host nav bar (host homepage, all refugees, profile)
-// checkLoginState();
+checkLoginState();
 
 }
 function checkLoginState(){
@@ -59,6 +58,7 @@ function submitForm(){
 }
 
 function getRefugees() {
+<<<<<<< HEAD
 // get the user data from the API and call displayUsers
   event.preventDefault();
 
@@ -67,16 +67,34 @@ function getRefugees() {
     console.log(data);
   });    
 }
+=======
 
-// function displayRefugees(data) {
-//     // take the user data and display all the users as <li>s in the <ul>, eg:
-//     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-//   //   $('.bottles').empty();
-//   // console.log("its working");
-//   //     data.forEach(function(data) {
-//   //         $('.bottles').append("<li class='list-group-item'>"+data.name + "</li>")
-//   //       }); 
-// }
+  // get the user data from the API and call displayUsers
+  event.preventDefault();
+  
+  console.log("getRefugees is working");
+  return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
+    displayRefugees(data);
+    console.log(data);
+    console.log("data" + data[0]._id);
+  });    
+
+
+ }
+
+
+
+function displayRefugees(data) {
+    // take the user data and display all the users as <li>s in the <ul>, eg:
+    // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
+>>>>>>> front-end-ajax
+
+    $('#show').empty();
+  console.log("its working");
+      data.forEach(function(data) {
+          $('#show').append("<li class='list-group-item'>"+data.name + "</li>")
+        }); 
+}
 
 // function getCharities() {
 //   //ajax request

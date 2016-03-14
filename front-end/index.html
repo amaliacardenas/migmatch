@@ -54,14 +54,17 @@
         <li><a href="#" name= "charityHome" class="homePage-link logged-in charity">Home Page</a></li>
 
         <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
+        <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home</a></li>
+        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <!-- host -->
-        <li><a href="#" name= "" class="profile-link logged-in host">Profile</a></li> 
-        <li><a href="#" name= "" class="homePage-link logged-in host">Home Page</a></li> 
-        <li><a href="#" name= "" class="refugee-link logged-in host">Refugees</a></li> 
+        <li><a href="#" name="" class="profile-link logged-in host">Profile</a></li> 
+        <li><a href="#" name="" class="homePage-link logged-in host">Home Page</a></li> 
+        <li><a href="#" name="refugeeAll" class="refugee-link logged-in host">Refugees</a></li> 
       </ul> 
     </nav>
   </header>
-​
+
   <main class="container">
   <!-- Register -->
   <!-- Register as a charity -->
@@ -157,22 +160,21 @@
       <h1>Crossroads</h1>
       
       <ul class="guardian-news"></ul>
-      <section id="">
+      
         <!-- div with the content provided by the news API -->
         <!-- div with googlemap and our data -->
         <h4>Map</h4>
         <div id="refugee-map"></div>
         <!-- connection -->
         <!-- picture refugee and host, amount £ donated (progressbar,...),   -->
+        <ul id="show"></ul>
       </section>
-  
-​
-    <!-- about -->
-    <section id="about">
+
+  <!-- about -->
+  <section id="about">
     <h1>About</h1>
       <!-- Description of the project  -->
     </section>
-​
     <!-- connectionShow -->
     <section id="connectionShow">
     <h1> Connection Show</h1>
@@ -211,14 +213,12 @@
         <button type="submit">Submit Payment</button>
       </form>
     </section>
-​
     <!-- charityHome -->
     <section id="charityHome">
     <h1>Charity home page that only charity can see</h1>
       <!-- tiles of the refugies profile split in 2 different sections connected or not, plus button for add a ref(also in navbar), your statistics  -->
     </section>
-
-    <!-- addRefugee -->
+    <!-- add refugee -->
     <section id="addRefugee">
         <h3>Add a refugee profile</h3>
           <!-- profile(names, origin country, languages), story, add button(for charity)  -->
@@ -253,6 +253,8 @@
     <section id="refugeeShow">
     <h1>Show refugee</h1>
       <!--profile(names, origin country, languages), story, status(connected), edit button  -->
+
+      
     </section>
     <!-- refugeeEdit -->
     <section id="refugeeEdit">
@@ -272,6 +274,7 @@
     <!-- refugeeAll -->
     <section id="refugeeAll">
     <h1> all refugees</h1>
+
       <!-- list of all tiles of refugees -->
     </section>
     <!-- refugeeShow for the Host -->
