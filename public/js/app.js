@@ -49,7 +49,7 @@ function submitForm(){
   console.log(form);
   // Get method from form
   var method = $(this).attr('method');
-  var url = "http://localhost:3000" + $(this).attr('action');
+  var url = "/api" + $(this).attr('action');
   // NOT JSON
   var data = $(this).serialize();
   console.log("dat:" + data);
@@ -63,7 +63,7 @@ function getRefugees() {
   event.preventDefault();
   
   console.log("getRefugees is working");
-  return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
+  return ajaxRequest('GET', '/api/refugees', null, function(data){
     displayRefugees(data);
     console.log(data);
     console.log("data" + data[0]._id);
