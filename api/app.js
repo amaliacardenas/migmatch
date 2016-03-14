@@ -8,6 +8,7 @@ var bodyParser    = require('body-parser');
 var router        = require('./config/routes');
 var jwt           = require('jsonwebtoken');
 var secret        = require('./config/tokens').secret;
+var stripe = require('stripe')('sk_test_0yjcpg1SRMCkmpmfSlvL22fx');
 
 mongoose.connect('mongodb://localhost/refugee-app');
 
