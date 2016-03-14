@@ -70,7 +70,7 @@ function submitRefugee() {
 
   // clear the form
   this.reset() 
-  return ajaxRequest(method, url, data, getRefugees);
+  return ajaxRequestRefugee(method, url, data, getRefugees);
 }
 
 
@@ -180,6 +180,23 @@ function showPage(){
 //ajax request function
 
 function ajaxRequest(method, url, data, callback) {
+ 
+  console.log(data);
+
+  return $.ajax({
+    method: method,
+    url: url,
+    data: data,
+    beforeSend: function(jqXHR, settings){
+      var token = getToken();
+      if(token) return jqXHR.setRequestHeader('Authorization', 'Bearer '+ token);
+    }
+  }).done(callback)
+  .fail(function(err) {
+    console.log(err);
+  });
+}
+function ajaxRequestRefugee(method, url, data, callback) {
  
   console.log(data);
 
