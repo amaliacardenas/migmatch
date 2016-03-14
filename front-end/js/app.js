@@ -9,6 +9,7 @@ function init(){
   $('.logout-link').on('click', logout);
   $('.about-link').on('click', showPage);
   $('.home-link').on('click', showPage);
+  $('.addRefugee-link').on('click', getRefugees);
  
 
  
@@ -58,31 +59,31 @@ function submitForm(){
   
 }
 
-// function getRefugees() {
+function getRefugees() {
 
-// //   // get the user data from the API and call displayUsers
-// //   event.preventDefault();
+  // get the user data from the API and call displayUsers
+  event.preventDefault();
 
-// //   return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
-// //     displayRefugees(data);
+  return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
+    displayRefugees(data);
 
-// //     console.log(data);
-// //   });    
-
-
-// // }
+    console.log(data);
+  });    
 
 
+ }
 
-// function displayRefugees(data) {
-//     // take the user data and display all the users as <li>s in the <ul>, eg:
-//     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-//   //   $('.bottles').empty();
-//   // console.log("its working");
-//   //     data.forEach(function(data) {
-//   //         $('.bottles').append("<li class='list-group-item'>"+data.name + "</li>")
-//   //       }); 
-// }
+
+
+function displayRefugees(data) {
+    // take the user data and display all the users as <li>s in the <ul>, eg:
+    // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
+    $('.show').empty();
+  console.log("its working");
+      data.forEach(function(data) {
+          $('.show').append("<li class='list-group-item'>"+data.name + "</li>")
+        }); 
+}
 
 // function getCharities() {
 //   //ajax request
