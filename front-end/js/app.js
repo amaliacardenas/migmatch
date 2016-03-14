@@ -59,17 +59,6 @@ function submitForm(){
 }
 
 function getRefugees() {
-<<<<<<< HEAD
-// get the user data from the API and call displayUsers
-  event.preventDefault();
-
-  return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
-    displayRefugees(data);
-    console.log(data);
-  });    
-}
-=======
-
   // get the user data from the API and call displayUsers
   event.preventDefault();
   
@@ -80,7 +69,6 @@ function getRefugees() {
     console.log("data" + data[0]._id);
   });    
 
-
  }
 
 
@@ -88,8 +76,6 @@ function getRefugees() {
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
->>>>>>> front-end-ajax
-
     $('#show').empty();
   console.log("its working");
       data.forEach(function(data) {
