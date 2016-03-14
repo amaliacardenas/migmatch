@@ -36,6 +36,9 @@ router.route('/refugees/:id')
 router.route('/charities')
     .get(usersController.index);
 
+router.route('/charities/:id')
+    .put(usersController.update);
+
 router.post('/charge', stripesController.create);  
 
 

@@ -6,6 +6,16 @@ var api = supertest('http://localhost:3000');
 var mongoose = require('mongoose');
 var User = require('../models/user');
 
+afterEach(function(done) {
+  mongoose.connect('mongodb://localhost/refugee-app', function(){
+    
+      User.create({ username: "lara", email: "y@gmail.com", password: "password", passwordConfirmation: "password" }, function(err, user){
+        userId = user._id.toString();
+        done(err);
+    
+    }); 
+  });
+});
 
 //get all charities
 describe('GET /charities', function() {
@@ -35,6 +45,17 @@ describe('GET /charities', function() {
 
 
 //update charity
+
+describe('PUT /charities/:id', function() {
+  it('should return 200 response', function(done) {
+    api.put('/charities/' + userId)
+      .set('Accept', 'application/json')
+      .send({
+        username: "alpha"
+      })
+      .expect(200, done);
+  });
+});  
 
 
 //show charity

@@ -131,7 +131,7 @@ describe('PATCH /refugees/:id', function() {
       .send({
         name: "newpezONE"
       })
-      .expect(201, done);
+      .expect(200, done);
   });
 
   it('should return an object with an updated name', function(done) {

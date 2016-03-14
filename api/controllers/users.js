@@ -12,17 +12,18 @@ function usersIndex(req, res) {
 }
 
 
-
-//usersIndex
-
-
-//usersCreate
-
-
 //usersUpdate
 
+function usersUpdate(req, res) {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, user) {
+    if(err) return res.status(500).json({ message: err });
+    return res.status(200).json(user);
+  });
+}
+
 module.exports = {
-  index: usersIndex
+  index: usersIndex,
+  update: usersUpdate
 }
 
 

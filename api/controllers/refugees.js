@@ -37,10 +37,10 @@ function refugeesUpdate(req, res) {
 
 //refugeeUpdate PATCH
 function refugeesUpdateOne(req, res) {
-  Refugee.findByIdAndUpdate(req.params.id, { $set: req.body}, { new: true }, function(err, refugee) {
+  Refugee.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }, function(err, refugee) {
     console.log(refugee);
     if(err) return res.status(500).json({message: err});
-    return res.status(201).json(refugee);
+    return res.status(200).json(refugee);
   });
 }
 
