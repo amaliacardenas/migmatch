@@ -20,7 +20,10 @@
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
-    "stripe": "^4.4.0"
+    "stripe": "^4.4.0",
+    "multer": "^1.1.0",
+    "multer-s3": "^1.4.1",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -7,7 +7,7 @@ var refugeeSchema = mongoose.Schema({
   story: String,
   lat: String,
   lng: String,
-  location: String,
+  city: String,
   language: String,
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
   //potential_hosts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],

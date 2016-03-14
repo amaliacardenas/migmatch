@@ -32,7 +32,7 @@ function displayRefugee() {
     refugees.forEach(function(refugee){
       var marker = new google.maps.Marker({
         // parseFloat convert a string into a number
-        position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+        position: { lat: parseFloat(lat), lng: parseFloat(lng) },
         map: map,
         animation: google.maps.Animation.DROP,
       });
@@ -62,8 +62,8 @@ function displayRefugee() {
         if (status === "OK"){
           var location = results[0].geometry.location;
           console.log(location.lat(),location.lat(), $fields);
-          $fields.filter('[name="refugee[lat]"]').val(location.lat());
-          $fields.filter('[name="refugee[lng]"]').val(location.lng());
+          $fields.filter('[name="lat"]').val(location.lat());
+          $fields.filter('[name="lng"]').val(location.lng());
         };
       });
     });
