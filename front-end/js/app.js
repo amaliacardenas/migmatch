@@ -49,21 +49,15 @@ function submitForm(){
   
 }
 
-// function getRefugees() {
+function getRefugees() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
 
-// //   // get the user data from the API and call displayUsers
-// //   event.preventDefault();
-
-// //   return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
-// //     displayRefugees(data);
-
-// //     console.log(data);
-// //   });    
-
-
-// // }
-
-
+  return ajaxRequest('GET', 'http://localhost:3000/refugees', null, function(data){
+    displayRefugees(data);
+    console.log(data);
+  });    
+}
 
 // function displayRefugees(data) {
 //     // take the user data and display all the users as <li>s in the <ul>, eg:
@@ -107,13 +101,12 @@ function setToken(token) {
 function logout(){
   // remove the token
   // call loggedOutState
-
-  // removeToken();
-  // loggedOutState();
+  removeToken();
+  loggedOutState();
 }
 
 function removeToken() {
-  // localStorage.clear();
+  localStorage.clear();
 }
 
 function loggedInState(){
@@ -128,17 +121,17 @@ function loggedInState(){
   console.log("logged in !")
 }
 
-// function loggedOutState(){
-//   //hide links with logged-in class
-//   //show links with logged-out class
-//   //show login page
-//   // $('.logged-out').show();
-//   //   $('.logged-in').hide();
-//   //   // showPage();
-//   //   $('#login').show();
-//   // console.log("logged out!")
+function loggedOutState(){
+  //hide links with logged-in class
+  //show links with logged-out class
+  //show login page
+  $('.logged-out').show();
+  $('.logged-in').hide();
+  showPage();
+  $('#login').show();
+  console.log("logged out!")
     
-// }
+}
 
 // function displayErrors(){
   

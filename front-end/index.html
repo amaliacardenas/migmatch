@@ -32,23 +32,23 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
-        <li><a href="#" class="register-link logged-out">Register</a></li>
-        <li><a href="#" class="login-link logged-out">Login</a></li>
+        <li><a href="#" name= "registerCharity" class="register-link logged-out">Register</a></li>
+        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
         <!-- Logged in and logged out -->
-        <li><a href="#" class="home-link">App</a></li>
-        <li><a href="#" class="about-link">About</a></li>
+        <li><a href="#" name= "" class="home-link">App</a></li>
+        <li><a href="#" name= "about" class="about-link">About</a></li>
         <!-- Both logged in -->
-        <li><a href="#" class="logout-link logged-in">Logout</a></li>
+        <li><a href="#" name= "" class="logout-link logged-in">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
         <!-- charity -->
-        <li><a href="#" class="profile-link logged-in charity">Profile</a></li> 
-        <li><a href="#" class="homePage-link logged-in charity">Home Page</a></li>
-        <li><a href="#" class="addRefugee-link logged-in charity">Add a refugee</a></li>
+        <li><a href="#" name= "" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name= "" class="homePage-link logged-in charity">Home Page</a></li>
+        <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <!-- host -->
-        <li><a href="#" class="profile-link logged-in host">Profile</a></li> 
-        <li><a href="#" class="homePage-link logged-in host">Home Page</a></li> 
-        <li><a href="#" class="refugee-link logged-in host">Refugees</a></li> 
+        <li><a href="#" name= "" class="profile-link logged-in host">Profile</a></li> 
+        <li><a href="#" name= "" class="homePage-link logged-in host">Home Page</a></li> 
+        <li><a href="#" name= "" class="refugee-link logged-in host">Refugees</a></li> 
       </ul> 
     </nav>
   </header>
@@ -209,33 +209,33 @@
     <section id="addRefugee">
         <h3>Add a refugee profile</h3>
           <!-- profile(names, origin country, languages), story, add button(for charity)  -->
-          <form id="property" method="post" action="/" enctype="multipart/form-data">
+          <form id="refugee" method="post" action="/refugees" enctype="multipart/form-data">
 
        <div class="form-group">
          <label for="address1">Address</label>
-         <input name="property[address1]" type="text" class="form-control" id="address1" placeholder="address">
+         <input name="refugee[address1]" type="text" class="form-control" id="address1" placeholder="address">
        </div>
        <div class="form-group">
          <label for="city">City</label>
-         <input name="property[city]" type="text" class="form-control" id="city" placeholder="city">
+         <input name="refugee[city]" type="text" class="form-control" id="city" placeholder="city">
        </div>
        <div class="form-group">
          <label for="postcode">Postcode</label>
-         <input name="property[postcode]" type="text" class="form-control" id="postcode" placeholder="postcode">
+         <input name="refugee[postcode]" type="text" class="form-control" id="postcode" placeholder="postcode">
        </div>
        <div class="form-group">
          <label for="lat">Latitude AUTOMATIC</label>
-         <input name="property[lat]" type="text" class="form-control" id="lat" placeholder="lat">
+         <input name="refugee[lat]" type="text" class="form-control" id="lat" placeholder="lat">
        </div>
        <div class="form-group">
          <label for="lng">Longitude AUTOMATIC</label>
-         <input name="property[lng]" type="text" class="form-control" id="lng" placeholder="lng">
+         <input name="refugee[lng]" type="text" class="form-control" id="lng" placeholder="lng">
        </div>
+       <button type="submit" class="btn btn-primary" role="button">Submit</button>
        <h4>Map</h4>
-       <div id="property-map"></div>
+       <div id="refugee-map"></div>
        </form>
-
-        </section>
+    </section>
     <!-- refugeeShow -->
     <section id="refugeeShow">
       <!--profile(names, origin country, languages), story, status(connected), edit button  -->
