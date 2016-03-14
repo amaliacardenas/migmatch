@@ -28,9 +28,9 @@ router.route('/refugees')
 
 router.route('/refugees/:id')
   .get(refugeesController.show)
-  .put(secureRoute, refugeesController.update)
-  .patch(secureRoute, refugeesController.updateOne)
-  .delete(secureRoute, refugeesController.delete);
+  .put(refugeesController.update)
+  .patch(refugeesController.updateOne)
+  .delete(refugeesController.delete);
 
 
 router.route('/charities')
@@ -38,7 +38,7 @@ router.route('/charities')
 
 router.route('/charities/:id')
   .get(usersController.show)
-  .put(secureRoute, usersController.update);
+  .put(usersController.update);
 
 router.post('/charge', stripesController.create);  
 

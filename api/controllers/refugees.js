@@ -14,7 +14,7 @@ function refugeesIndex(req, res) {
 //refugeesCreate
 function refugeesCreate(req, res) {
   var refugee = req.body;
-  refugee.user = req.user;
+  refugee.user = req.user._id;
   Refugee.create(refugee, function(err, refugee) {
     if(err) return res.status(500).json({ message: err });
     console.log(refugee);

@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var Refugee = require('../models/refugee');
 
 var refugeeId;
-var token; 
+var token;
+var userId; 
 
 beforeEach(function(done) {
   api.post('/register')
@@ -65,10 +66,16 @@ describe('GET /refugees', function() {
 
 
 describe('POST /refugees', function() {
+  it('should return a 401 response', function(done) {
+    api.post('/refugees')
+      .set('Accept', 'application/json')
+      .expect(401, done);
+  });
 
   it('should return a 200 response', function(done) {
     api.post('/refugees')
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .send({
         name: "said"
       })
@@ -77,6 +84,7 @@ describe('POST /refugees', function() {
   it('should add a new refugee and return the refugee object', function(done) {
     api.post('/refugees')
       .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
       .send({
         name: "said"
       })
