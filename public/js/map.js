@@ -26,7 +26,7 @@ function displayRefugee() {
 
 
   // get refugeeData using ajax
-  $.get('http://localhost:3000/refugees').then(function(data){
+  $.get('/api/refugees').then(function(data){
     var refugees = data
     console.log(data)
     refugees.forEach(function(refugee){

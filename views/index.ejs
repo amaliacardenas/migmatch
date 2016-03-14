@@ -33,27 +33,23 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
-        <li><a href="#" name= "registerCharity" class="register-link logged-out">Register</a></li>
-        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
-        <!-- Logged in and logged out -->
-        <li><a href="#" name= "" class="home-link">App</a></li>
         <li><a href="#" name="registerCharity" class="register-link logged-out">Register</a></li>
-        <li><a href="#" name= "login" class="login-link logged-out">Login</a></li>
+        <li><a href="#" name="login" class="login-link logged-out">Login</a></li>
         <!-- Logged in and logged out -->
         <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
-        <li><a href="#" name= "about" class="about-link">About</a></li>
+        <li><a href="#" name="about" class="about-link">About</a></li>
         <!-- Both logged in -->
-        <li><a href="#" name= "" class="logout-link logged-in">Logout</a></li>
+        <li><a href="#" name="" class="logout-link logged-in">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
         <!-- charity -->
-        <li><a href="#" name= "" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
 
-        <li><a href="#" name= "" class="homePage-link logged-in charity">Home Page</a></li>
+        <li><a href="#" name="" class="homePage-link logged-in charity">Home Page</a></li>
 
-        <li><a href="#" name= "charityHome" class="homePage-link logged-in charity">Home Page</a></li>
+        <li><a href="#" name="charityHome" class="homePage-link logged-in charity">Home Page</a></li>
 
-        <li><a href="#" name= "addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
+        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
         <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
         <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home</a></li>
         <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
@@ -69,27 +65,7 @@
   <!-- Register -->
   <!-- Register as a charity -->
     <section id="registerCharity">
-      <h2>Register</h2>
-      <form class="register" method="post" action="/register">
-        <div class="form-group">
-          <label for="register-username">username</label>
-          <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
-        </div>
-        <div class="form-group">
-          <label for="register-email">Email address</label>
-          <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="register-password">Password</label>
-          <input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
-        </div>
-        <div class="form-group">
-          <label for="register-passwordconfirmation">PasswordConfirm</label>
-          <input type="password" name="passwordConfirmation" id="register-password" class="form-control" placeholder="Password">
-        </div>
-        <!-- add bank account informations -->
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      <% include partials/registerCharity %>
     </section>
     <!-- Register as a host -->
     <section id="registerHost">
