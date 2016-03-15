@@ -6,7 +6,7 @@ function stripesCreate (req, res) {
 
   var charge = stripe.charges.create({
     card: stripeToken,
-    currency: 'gbp',
+    currency: 'usd',
     amount: amount
     //refugee
   },
@@ -17,7 +17,6 @@ function stripesCreate (req, res) {
       // create the donation
       // on callback
       // if err res.status(500)
-      // else
         res.send(204);
     }
   });

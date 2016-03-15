@@ -4,12 +4,12 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-
   $('#register, #login').on('submit', submitForm);
   $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.refugee-link').on('click', getRefugees);
   $('#refugee').on('submit', submitRefugee);
+  
 
   
   
@@ -85,12 +85,39 @@ function getRefugees() {
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-    $('#show').empty();
+  var $show = $('#show');
+  $show.empty();
   console.log("its working");
-      data.forEach(function(data) {
-          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "<button id="+ data._id + "> show" + "</button>" + "</li>")
-        }); 
+  data.forEach(function(data) {
+    $button = $("<button class='button' id="+ data._id + "> show" + "</button>");
+    $button.on('click', getOneRefugee);
+    $li = $("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "</li>");
+    $li.append($button);
+    $show.append($li);
+  });
 }
+
+function getOneRefugee() {
+  console.log("I've been clicked!");
+  var id = $(this).attr('id').toString();
+  return ajaxRequest('GET', '/api/refugees/'+ id, null, displayOneRefugee);
+  console.log(id);
+}
+
+function displayOneRefugee(data) {
+  console.log(data);
+  $('section').hide();
+  
+  $('#refugeeShow').show()
+
+    console.log(data.name);
+    $('.refugee').append("<li>" + data.name + "</li>");
+    var input = $( "#refugeeId" );
+    input.val( input.val() + data._id );
+
+
+}
+
 
 // function getCharities() {
 //   //ajax request

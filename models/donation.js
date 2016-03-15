@@ -1,7 +1,8 @@
 
-
-//refugee
-//amount
+var donationSchema = mongoose.Schema({
+  refugee: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  amount: Number
+});
 
 
 
@@ -18,3 +19,6 @@ donationSchema.pre('save', function(next) {
     });
   });
 });
+
+
+module.exports = mongoose.model("Donation", donationSchema);
