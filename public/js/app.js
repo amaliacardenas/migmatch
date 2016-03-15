@@ -293,4 +293,3 @@ function ajaxRequestRefugee(method, url, data, callback) {
     displayErrors(err);
   });
 }
-
