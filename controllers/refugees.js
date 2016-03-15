@@ -42,8 +42,10 @@ function refugeesShow(req, res) {
 
 //refugeesUpdate
 function refugeesUpdate(req, res) {
+  console.log("REFUGEES UPDATE",req.body);
   Refugee.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, refugee) {
     if(err) return res.status(500).json({ message: err });
+    console.log("REFUGEE AFTER UPDATE", refugee);
     return res.status(200).json(refugee);
   });
 }

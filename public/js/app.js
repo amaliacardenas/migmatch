@@ -10,6 +10,14 @@ function init(){
   $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
   checkLoginState();
+
+  scroller();
+
+}
+
+function scroller() {
+  var elem = $('#news-scroller');
+  elem.animate({ scrollTop: $('.guardian-news').height() || "1100px" }, 12000);
 }
 function checkLoginState(){
   // check for a token
@@ -89,7 +97,7 @@ function displayOneRefugee(data) {
   $('section').hide();
   
   $('#refugeeShow').show()
-  $('.refugee').append("<li>" + data.name + "<button class='deleteid="+data._id +">Delete</button>"+ "<button name='refugeeEditclass='edit' id="+data._id +">Edit</button>"+"</li>");
+  $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
