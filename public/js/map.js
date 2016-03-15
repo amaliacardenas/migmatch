@@ -33,13 +33,16 @@ function displayRefugee() {
     var refugees = data
 
     refugees.forEach(function(refugee, idx){
+      console.log(refugee)
       setTimeout(function(){
         var marker = new google.maps.Marker({
+
           // parseFloat convert a string into a number
-          position: { lat: parseFloat(lat), lng: parseFloat(lng) },
+          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
           map: map,
           animation: google.maps.Animation.DROP,
         });
+        console.log(marker)
         var infoWindow = new google.maps.InfoWindow({
           position: { lat: parseFloat(lat), lng: parseFloat(lng) }
        
