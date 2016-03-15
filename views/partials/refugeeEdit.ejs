@@ -1,2 +1,28 @@
-<h1>Refugee Edit</h1>
-  <!-- same, with delete and update buttons -->
+
+<h3>Edit a refugee profile</h3>
+  <!-- profile(names, origin country, languages), story, add button(for charity)  -->
+  <form id="refugee" method="post" action="/api/refugees" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">name</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="name">
+    </div>
+    <div class="form-group">
+      <label for="avatar">Avatar</label>
+      <input type="file" name="avatar">
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input name="city" type="text" class="form-control" id="city" placeholder="city">
+    </div>
+    <div class="form-group">
+      <label for="lat">Latitude AUTOMATIC</label>
+      <input name="lat" type="text" class="form-control" id="lat" placeholder="lat">
+    </div>
+    <div class="form-group">
+      <label for="lng">Longitude AUTOMATIC</label>
+      <input name="lng" type="text" class="form-control" id="lng" placeholder="lng">
+    </div>
+    <button type="submit" class="btn btn-primary" role="button">Submit</button>
+    <h4>Map</h4>
+    <div id="refugee-map"></div>
+  </form>

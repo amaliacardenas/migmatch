@@ -12,13 +12,22 @@ function init(){
   $('#refugee').on('submit', submitRefugee);
   
 
-
+      // $(".guardian-news").simplyScroll({
+      //   orientation: 'vertical',
+      //   auto: true,
+      //   manualMode: 'loop',
+      //   frameRate: 20,
+      //   speed: 5,
+      //   startOnLoad: true
+      // });
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
  //create event handler for host nav bar (host homepage, all refugees, profile)
 checkLoginState();
 
 }
+
+
 function checkLoginState(){
   // check for a token
   // if there is one, call loggedInState
@@ -69,8 +78,8 @@ function submitRefugee() {
 
   // clear the form
   this.reset() 
+
   return ajaxRequestRefugee(method, url, data, getCharity);
-  
 }
 
 
@@ -91,7 +100,14 @@ function displayRefugees(data) {
   data.forEach(function(data) {
     $button = $("<button class='button' id="+ data._id + "> show" + "</button>");
     $button.on('click', getOneRefugee);
-    $li = $("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "</li>");
+    $li = $("<li class='list-group-item'>"+ "<div class='col-sm-6 col-md-4'>"+
+        "<div class='thumbnail'>" +
+          "<img src="+ data.avatar + "class='refugee-avatar' >" +
+          "<div class='caption'>" +
+            "<h3>"+ data.name +"</h3>" +
+            "<p>Text</p>" +
+            "<h4>"+ data.location +"</h4>" +
+            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div></li>");
     $li.append($button);
     $show.append($li);
   });
@@ -126,7 +142,6 @@ function displayOneRefugee(data) {
 
 }
 
-
 function getCharity() {
 // get the user data from the API and call displayUsers
   event.preventDefault();
@@ -135,13 +150,13 @@ function getCharity() {
   console.log(userId);
   // console.log("getRefugees is working");
   return ajaxRequest('GET', '/api/charities/'+ userId, null, displayCharity);  
-
- }
+}
 
 function displayCharity(data) {
 //   //display charites refugees
 //   //display news
 //   //displays map
+
   console.log(data);
   $('section').hide();
 
@@ -152,6 +167,34 @@ function displayCharity(data) {
     $('#showRefugees').append("<li class='list-group-item'>"+ refugee.name + "</li>");
   });
 }
+
+
+function displayOneRefugee(data) {
+  console.log(data);
+  $('section').hide();
+  
+  $('#refugeeShow').show()
+
+    $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button class='edit' id="+data._id +">Edit</button>"+"</li>");
+    var input = $("#refugeeId");
+    input.val( input.val() + data._id );
+    $('.delete').on('click', deleteOneRefugee)
+    $('.edit').on('click', editOneRefugee)
+}
+
+function deleteOneRefugee() {
+  console.log("I've been clicked!");
+  var id = $(this).attr('id').toString();
+  return ajaxRequest('DELETE', '/api/refugees/'+ id, null, displayOneRefugee);
+  console.log(id);
+}
+
+function editOneRefugee() {
+  var id = $(this).attr('id').toString();
+  $('section').hide();
+  $('#refugeeEdit').show();
+}
+
 
 function authenticationSuccessful(data) {
   // set the token and call checkLoginState
@@ -277,7 +320,4 @@ function ajaxRequestRefugee(method, url, data, callback) {
     console.log(err);
   });
 }
-
-
-
 
