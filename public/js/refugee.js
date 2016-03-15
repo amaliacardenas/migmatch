@@ -63,7 +63,7 @@ function displayOneRefugee(data) {
     populate($('#refugeeEditForm'), data)
     $('#refugeeEdit').show()
     var id = $(this).attr('id').toString();
-    $('#refugeeEditForm').get(0).setAttribute('action', '/aprefugees/' + id); 
+    $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
   }); 
 }
 
