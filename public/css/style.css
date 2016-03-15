@@ -11,15 +11,12 @@
 
 
 #news-scroller {
-    width: 250px;
-    height: 600px;
-    overflow: scroll;
-    -webkit-animation-name: move;
-       -webkit-animation-duration: 4s;
-       -webkit-animation-iteration-count: infinite;
-       -webkit-animation-direction: right;
-       -webkit-animation-timing-function: linear;
+  width: 250px;
+  height: 600px;
+  overflow: scroll;
 }
+
+
 
 
 
@@ -39,6 +36,29 @@ body {
   border:2px solid white;
   box-shadow: 4px 4px 2px rgba(165, 165, 165, 1);
 }
+
+
+
+/*******REFUGEE TILES ON MAIN PAGE ********************************************
+***********************************************************/
+
+
+.thumbnail { 
+  position: relative; 
+  padding: 10px; 
+  border-radius: 5px 5px 4px 4px; 
+  border: 0px solid; 
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06); 
+  background: #fff; 
+  height: 310px; 
+  margin-top: 70px;
+  margin: 8px;
+  }
+
+
+.second-header { background-color: black; font-size: 1.5em; text-align: center; color: #fafafa; height: 300px; margin-top: -100px; }
+
+.tutorial-description { padding: 10px; }
 
 /*******ABOUT PAGE********************************************
 ***********************************************************/

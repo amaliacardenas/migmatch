@@ -11,7 +11,14 @@ function init(){
   $('.refugee-link').on('click', getRefugees);
   $('#refugee').on('submit', submitRefugee);
 
-
+      // $(".guardian-news").simplyScroll({
+      //   orientation: 'vertical',
+      //   auto: true,
+      //   manualMode: 'loop',
+      //   frameRate: 20,
+      //   speed: 5,
+      //   startOnLoad: true
+      // });
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
  //create event handler for host nav bar (host homepage, all refugees, profile)
@@ -85,9 +92,21 @@ function displayRefugees(data) {
         $('#show').empty();
       console.log("its working");
           data.forEach(function(data) {
-              $('#show').append("<li class='list-group-item'>"+ data.name + " - " + '<img src="'+data.avatar +'">' + "</li>")
+              $('#show').append('<div class="col-sm-6 col-md-4">' +
+        '<div class="thumbnail">' +
+          '<img src="' + data.avatar +' " >'+
+          '<div class="caption">' +
+            '<h3>'+ data.name +'</h3>' +
+            '<p>...</p>' +
+            '<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>' +
+          '</div>' +
+        '</div>' +
+      '</div>')
             }); 
     }
+
+
+      
 
 // function getCharities() {
 //   //ajax request

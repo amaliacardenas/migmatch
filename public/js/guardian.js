@@ -2,6 +2,7 @@ $(function() {
   console.log("its working")
   displayIndex();
   loadMoreButton();
+
 })
 
 function displayIndex() {
