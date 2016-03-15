@@ -17,6 +17,7 @@ function refugeesIndex(req, res) {
 function refugeesCreate(req, res) {
   // add filename to user object before create
   var refugee = req.body;
+  console.log("USER", req.user);
   if(req.file){
     refugee.avatar = s3Config.endpoint + s3Config.bucket + '/' + req.file.key;
   } else {
