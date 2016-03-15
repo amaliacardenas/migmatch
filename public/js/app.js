@@ -110,6 +110,25 @@ function displayOneRefugee(data) {
   
   $('#refugeeShow').show()
 
+    console.log(data.name);
+    $('.refugee').append("<li>" + data.name + "</li>");
+    var input = $( "#refugeeId" );
+    input.val( input.val() + data._id );
+
+
+}
+
+
+// function getCharities() {
+//   //ajax request
+//   //displayCharities
+
+function displayOneRefugee(data) {
+  console.log(data);
+  $('section').hide();
+  
+  $('#refugeeShow').show()
+
     $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button class='edit' id="+data._id +">Edit</button>"+"</li>");
     var input = $("#refugeeId");
     input.val( input.val() + data._id );

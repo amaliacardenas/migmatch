@@ -8,6 +8,7 @@ var refugeeSchema = mongoose.Schema({
   lng: String,
   city: String,
   language: String,
+  amountRaised: { type: Number, default: 0 },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
   //potential_hosts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   //when charity chooses host, 
