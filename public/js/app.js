@@ -11,9 +11,6 @@ function init(){
   $('#refugee').on('submit', submitRefugee);
   
 
-  
-  
- 
 
 
 //create event handler for charity nav bar (charity homepage, add refugee, profile)
@@ -79,7 +76,7 @@ function getRefugees() {
   event.preventDefault();
   
   // console.log("getRefugees is working");
-  return ajaxRequest('GET', '/api/refugees', null, displayRefugees);  
+  return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
  }
 
 function displayRefugees(data) {
@@ -223,10 +220,9 @@ function ajaxRequest(method, url, data, callback) {
     console.log(err);
   });
 }
-function ajaxRequestRefugee(method, url, data, callback) {
- 
-  console.log(data);
 
+
+function ajaxRequestRefugee(method, url, data, callback) {
   return $.ajax({
     method: method,
     url: url,
@@ -242,6 +238,7 @@ function ajaxRequestRefugee(method, url, data, callback) {
     console.log(err);
   });
 }
+
 
 
 

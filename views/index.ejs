@@ -26,6 +26,7 @@
   <script type="text/javascript" src="/js/map.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -33,27 +34,26 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
-        <li><a href="#" name="registerCharity" class="register-link logged-out">Register</a></li>
-        <li><a href="#" name="login" class="login-link logged-out">Login</a></li>
+        <li><a href="#" name="registerCharity" class="register-link logged-out">register</a></li>
+        <li><a href="#" name="login" class="login-link logged-out">login</a></li>
         <!-- Logged in and logged out -->
-        <li><a href="#" name="crossroads" class="home-link">crossroads</a></li>
-        <li><a href="#" name="about" class="about-link">About</a></li>
+      
+        <li><a href="#" name="about" class="about-link">about</a></li>
         <li><a href="#" name="donationForm" class="donate-link">donate</a></li>
         <!-- Both logged in -->
-        <li><a href="#" name="" class="logout-link logged-in">Logout</a></li>
+        <li><a href="#" name="" class="logout-link logged-in">logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
+      <div class="navbar-header">
+         <a href="#" name="crossroads" class="home-link"><img id="logoHead" alt="Brand" src="/images/thumbnail-logo.png"></a>
+      </div>
         <!-- charity -->
-        <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home page</a></li>
 
-        <li><a href="#" name="" class="homePage-link logged-in charity">Home Page</a></li>
-
-        <li><a href="#" name="charityHome" class="homePage-link logged-in charity">Home Page</a></li>
-
-        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
-        <li><a href="#" name="" class="profile-link logged-in charity">Profile</a></li> 
+        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">add a refugee</a></li>
+        <li><a href="#" name="" class="profile-link logged-in charity">profile</a></li> 
         <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home</a></li>
-        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">Add a refugee</a></li>
+        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">add a refugee</a></li>
         <!-- host -->
         <!-- <li><a href="#" name="" class="profile-link logged-in host">Profile</a></li> 
         <li><a href="#" name="" class="homePage-link logged-in host">Home Page</a></li> 

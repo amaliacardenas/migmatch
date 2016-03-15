@@ -12,7 +12,13 @@
 
 /*******GOOGLE MAP********************************************
 ***********************************************************/
+body {
+  background-color: #ebf1f0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
 
+}
 #refugee-map {
   height: 500px;
   margin: 20px 0;
@@ -22,3 +28,34 @@
 
 /*******ABOUT PAGE********************************************
 ***********************************************************/
+
+.center-block{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar {
+   -webkit-box-shadow: 0 8px 6px -6px #999;
+   -moz-box-shadow: 0 8px 6px -6px #999;
+   box-shadow: 0 8px 6px -8px #999;
+   padding-right: 7px;
+   padding-left: 7px;
+   /* the rest of your styling */
+}
+
+#logoHead {
+  height: 49px;
+  width: 50px;
+
+}
+
+
+
+
+
+
+
+
+
+

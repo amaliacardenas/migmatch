@@ -20,26 +20,44 @@ function displayRefugee() {
 
   var map = new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
-    zoom: 1,
+    zoom: 10,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
   });
+
+  var currentInfoWindow;
 
 
   // get refugeeData using ajax
   $.get('/api/refugees').then(function(data){
+
     var refugees = data
-    console.log(data)
-    refugees.forEach(function(refugee){
-      var marker = new google.maps.Marker({
-        // parseFloat convert a string into a number
-        position: { lat: parseFloat(lat), lng: parseFloat(lng) },
-        map: map,
-        animation: google.maps.Animation.DROP,
-      });
+
+    refugees.forEach(function(refugee, idx){
+      console.log(refugee)
+      setTimeout(function(){
+        var marker = new google.maps.Marker({
+
+          // parseFloat convert a string into a number
+          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+          map: map,
+          animation: google.maps.Animation.BOUNCE,
+        });
+        console.log(marker)
+        var infoWindow = new google.maps.InfoWindow({
+          position: { lat: parseFloat(lat), lng: parseFloat(lng) },
+          content: "<p>"+ refugee.name+"</p>"
+       
+        });
+        marker.addListener('click', function(){
+          if(currentInfoWindow) currentInfoWindow.close();
+          currentInfoWindow = infoWindow;
+          infoWindow.open(map);
+          console.log(currentInfoWindow)
+
+        });
+      }, idx*10);
     });
   });
-
-
 
   if($refugeeForm.length){
 
