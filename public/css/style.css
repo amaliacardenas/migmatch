@@ -6,8 +6,22 @@
 ***********************************************************/
 
 
-/*******GUARDIAN NEWS ********************************************
+/*******GUARDIAN NEWS SCROLLER ********************************************
 ***********************************************************/
+
+
+#news-scroller {
+    width: 250px;
+    height: 600px;
+    overflow: scroll;
+    -webkit-animation-name: move;
+       -webkit-animation-duration: 4s;
+       -webkit-animation-iteration-count: infinite;
+       -webkit-animation-direction: right;
+       -webkit-animation-timing-function: linear;
+}
+
+
 
 
 /*******GOOGLE MAP********************************************

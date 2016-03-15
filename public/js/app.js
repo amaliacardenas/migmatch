@@ -82,12 +82,12 @@ function getRefugees() {
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-    $('#show').empty();
-  console.log("its working");
-      data.forEach(function(data) {
-          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + data.lat + data.lng+  "</li>")
-        }); 
-}
+        $('#show').empty();
+      console.log("its working");
+          data.forEach(function(data) {
+              $('#show').append("<li class='list-group-item'>"+ data.name + " - " + '<img src="'+data.avatar +'">' + "</li>")
+            }); 
+    }
 
 // function getCharities() {
 //   //ajax request
