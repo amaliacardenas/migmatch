@@ -107,7 +107,7 @@ function displayOneRefugee(data) {
   
   $('#refugeeShow').show()
 
-  $('.refugee').append("<li>" + data.name + "<button class='deleteid="+data._id +">Delete</button>"+ "<button name='refugeeEditclass='edit' id="+data._id +">Edit</button>"+"</li>");
+  $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
