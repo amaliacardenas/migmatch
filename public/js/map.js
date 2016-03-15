@@ -40,22 +40,24 @@ function displayRefugee() {
           // parseFloat convert a string into a number
           position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
           map: map,
-          animation: google.maps.Animation.DROP,
+          animation: google.maps.Animation.BOUNCE,
         });
         console.log(marker)
         var infoWindow = new google.maps.InfoWindow({
-          position: { lat: parseFloat(lat), lng: parseFloat(lng) }
+          position: { lat: parseFloat(lat), lng: parseFloat(lng) },
+          content: "<p>"+ refugee.name+"</p>"
        
         });
         marker.addListener('click', function(){
           if(currentInfoWindow) currentInfoWindow.close();
           currentInfoWindow = infoWindow;
           infoWindow.open(map);
+          console.log(currentInfoWindow)
+
         });
       }, idx*10);
     });
   });
-
 
   if($refugeeForm.length){
 
