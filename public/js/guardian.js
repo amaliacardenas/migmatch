@@ -15,7 +15,7 @@ function displayIndex() {
     $('.guardian-news').append(
     
       "<li><a href=" + object.webUrl + " target='_blank'>" + object.webTitle + "</a></li>" +
-      "<li><img src=" + object.fields.thumbnail + "></li>"
+      "<li><img id='newsImage' src=" + object.fields.thumbnail + "></li>"
     )
    })
  });

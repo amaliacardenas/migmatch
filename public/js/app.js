@@ -13,6 +13,8 @@ function init(){
 
   scroller();
 
+  displayMap();
+
 }
 
 function scroller() {
