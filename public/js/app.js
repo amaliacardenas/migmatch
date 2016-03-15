@@ -4,12 +4,13 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-
   $('#register, #login').on('submit', submitForm);
   $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.refugee-link').on('click', getRefugees);
+  $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
+  
 
 
 
@@ -55,6 +56,7 @@ function submitForm(){
   console.log("dat:" + data);
   form.reset();
   ajaxRequest(method, url, data, authenticationSuccessful);
+  getCharity();
   
 }
 
@@ -68,6 +70,7 @@ function submitRefugee() {
   // clear the form
   this.reset() 
   return ajaxRequestRefugee(method, url, data, getRefugees);
+  getCharity();
 }
 
 
@@ -82,28 +85,77 @@ function getRefugees() {
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-    $('#show').empty();
+  var $show = $('#show');
+  $show.empty();
   console.log("its working");
-      data.forEach(function(data) {
-          $('#show').append("<li class='list-group-item'>"+ data.name + " - " + data.avatar + data.lat + data.lng+  "</li>")
-        }); 
+  data.forEach(function(data) {
+    $button = $("<button class='button' id="+ data._id + "> show" + "</button>");
+    $button.on('click', getOneRefugee);
+    $li = $("<li class='list-group-item'>"+ data.name + " - " + data.avatar + "</li>");
+    $li.append($button);
+    $show.append($li);
+  });
 }
 
-// function getCharities() {
-//   //ajax request
-//   //displayCharities
+function getOneRefugee() {
+  console.log("I've been clicked!");
+  var id = $(this).attr('id').toString();
+  return ajaxRequest('GET', '/api/refugees/'+ id, null, displayOneRefugee);
+  console.log(id);
+}
 
-// }
+function displayOneRefugee(data) {
+  console.log(data);
+  $('section').hide();
+  
+  $('#refugeeShow').show()
 
-// function displayCharities() {
+    $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+"</li>");
+    var input = $( "#refugeeId" );
+    input.val( input.val() + data._id );
+    $('.delete').on('click', deleteOneRefugee)
+}
+
+function deleteOneRefugee() {
+  console.log("I've been clicked!");
+  var id = $(this).attr('id').toString();
+  return ajaxRequest('DELETE', '/api/refugees/'+ id, null, displayOneRefugee);
+  console.log(id);
+}
+
+
+
+
+function getCharity() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
+
+  var user = getUser();
+  console.log(user);
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/charities/'+ user, null, displayCharity);  
+
+ }
+
+function displayCharity(data) {
 //   //display charites refugees
 //   //display news
 //   //displays map
-// }
+    $('section').hide();
+
+  $('#charityHome').show()
+$('#showRefugees').empty();
+console.log(data.refugees);
+  data.refugees.forEach(function(refugee) {
+    $('#showRefugees').append("<li class='list-group-item'>"+ refugee.name + "</li>");
+    });
+}
 
 function authenticationSuccessful(data) {
   // set the token and call checkLoginState
   if(data.token) setToken(data.token);
+  if(data.user) setUser(data.user._id);
+  console.log(data.user._id);
   checkLoginState();
 }
 
@@ -118,6 +170,18 @@ function setToken(token) {
   // set the token into localStorage
   return localStorage.setItem('token', token);
 }
+
+function setUser(user) {
+  // set the user into localStorage
+  return localStorage.setItem('user', user);
+}
+
+
+function getUser() {
+  // get the token from localStorage
+  return localStorage.getItem('user');
+}
+
 
 function logout(){
   // remove the token
@@ -194,6 +258,7 @@ function ajaxRequest(method, url, data, callback) {
   });
 }
 
+
 function ajaxRequestRefugee(method, url, data, callback) {
   return $.ajax({
     method: method,
@@ -210,7 +275,4 @@ function ajaxRequestRefugee(method, url, data, callback) {
     console.log(err);
   });
 }
-
-
-
 
