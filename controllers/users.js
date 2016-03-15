@@ -4,7 +4,7 @@ var secret = require('../config/tokens').secret;
 
 
 function usersIndex(req, res) {
-  User.find(function(err, users) {
+  User.find().populate('refugees').exec(function(err, users) {
     if(err) return res.status(500).json({ message: err });
     console.log(users);
     return res.status(200).json(users);
@@ -24,7 +24,7 @@ function usersUpdate(req, res) {
 //user show
 
 function usersShow(req, res) {
-  User.findById(req.params.id, function(err, user) {
+  User.findById(req.params.id).populate('refugees').exec(function(err, user) {
     if(err) return res.status(500).json({ message: err });
     if(!user) return res.status(404).send();
     return res.status(200).json(user);
