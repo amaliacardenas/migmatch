@@ -1,7 +1,8 @@
 
 <h3>Edit a refugee profile</h3>
   <!-- profile(names, origin country, languages), story, add button(for charity)  -->
-  <form id="refugee" method="post" action="/api/refugees" enctype="multipart/form-data">
+  <form id="refugeeEditForm" method="put" enctype="multipart/form-data">
+
     <div class="form-group">
       <label for="name">name</label>
       <input name="name" type="text" class="form-control" id="name" placeholder="name">

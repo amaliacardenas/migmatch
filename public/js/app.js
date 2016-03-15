@@ -4,26 +4,13 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('#register, #login').on('submit', submitForm);
+  $('#register, #login, #refugeeEditForm').on('submit', submitForm);
   $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.refugee-link').on('click', getRefugees);
   $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
-  
-
-      // $(".guardian-news").simplyScroll({
-      //   orientation: 'vertical',
-      //   auto: true,
-      //   manualMode: 'loop',
-      //   frameRate: 20,
-      //   speed: 5,
-      //   startOnLoad: true
-      // });
-
-//create event handler for charity nav bar (charity homepage, add refugee, profile)
- //create event handler for host nav bar (host homepage, all refugees, profile)
-checkLoginState();
+  checkLoginState();
 
 }
 
@@ -34,27 +21,22 @@ function checkLoginState(){
   // otherwise, call loggedOutState
   //add if else loggedInStateHost
 
-var token = getToken();
-  if(token) {
-    console.log(token);
-    return loggedInState();
-  }
-  else {
-    loggedOutState();
-  }
+  var token = getToken();
+    if(token) {
+      console.log(token);
+      return loggedInState();
+    }
+    else {
+      loggedOutState();
+    }
 }
 
 
-function showMap (){
-  //ajax request for all refugees
-  //for each objects get refugee.lng 
-}
+
 function submitForm(){
   // get the data from the forms and make an ajaxRequest
   // call authenticationSuccessful
   event.preventDefault();
-
-
   var form = this;
   console.log(form);
   // Get method from form
@@ -74,19 +56,18 @@ function submitRefugee() {
 
   var method = $(this).attr("method");
   var url    = $(this).attr("action");
-  var data   = new FormData(this); 
+  var data   = new FormData(this);
 
   // clear the form
   this.reset() 
 
-  return ajaxRequestRefugee(method, url, data, getCharity);
+  return ajaxRequestRefugee(method, url, data, getRefugees);
 }
 
 
 function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
-  
   // console.log("getRefugees is working");
   return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
  }
@@ -98,16 +79,16 @@ function displayRefugees(data) {
   $show.empty();
   console.log("its working");
   data.forEach(function(data) {
-    $button = $("<button class='button' id="+ data._id + "> show" + "</button>");
+    $button = $("<button class='button btn btn-default' id="+ data._id + "> read more" + "</button>");
     $button.on('click', getOneRefugee);
-    $li = $("<li class='list-group-item'>"+ "<div class='col-sm-6 col-md-4'>"+
+    $li = $("<div class='col-sm-6 col-md-4'>"+
         "<div class='thumbnail'>" +
           "<img src="+ data.avatar + "class='refugee-avatar' >" +
           "<div class='caption'>" +
             "<h3>"+ data.name +"</h3>" +
             "<p>Text</p>" +
             "<h4>"+ data.location +"</h4>" +
-            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div></li>");
+            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div>");
     $li.append($button);
     $show.append($li);
   });
@@ -120,6 +101,30 @@ function getOneRefugee() {
   console.log(id);
 }
 
+function displayOneRefugee(data) {
+  console.log(data);
+  $('section').hide();
+  
+  $('#refugeeShow').show()
+
+  $('.refugee').append("<li>" + data.name + "<button class='deleteid="+data._id +">Delete</button>"+ "<button name='refugeeEditclass='edit' id="+data._id +">Edit</button>"+"</li>");
+  var input = $("#refugeeId");
+  input.val( input.val() + data._id );
+  $('.delete').on('click', deleteOneRefugee)
+  $('.edit').on('click', function(){
+    $('section').hide();
+    populate($('#refugeeEditForm'), data)
+    $('#refugeeEdit').show()
+    var id = $(this).attr('id').toString();
+    $('#refugeeEditForm').get(0).setAttribute('action', '/aprefugees/' + id); 
+  }); 
+}
+
+function populate(frm, data) {
+  $.each(data, function(key, value){
+    $('[name='+key+']', frm).val(value);
+  });
+}
 
 function deleteOneRefugee() {
   console.log("I've been clicked!");
@@ -128,24 +133,19 @@ function deleteOneRefugee() {
   console.log(id);
 }
 
-function displayOneRefugee(data) {
-  console.log(data);
-  $('section').hide();
-  
-  $('#refugeeShow').show()
-
-    console.log(data.name);
-    $('.refugee').append("<li>" + data.name + "</li>");
-    var input = $( "#refugeeId" );
-    input.val( input.val() + data._id );
-
-
+function showProfile() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
+  var userId = getUser();
+  console.log(userId);
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/charities/'+ userId, null, displayProfile);  
 }
+
 
 function getCharity() {
 // get the user data from the API and call displayUsers
   event.preventDefault();
-
   var userId = getUser();
   console.log(userId);
   // console.log("getRefugees is working");
@@ -156,7 +156,6 @@ function displayCharity(data) {
 //   //display charites refugees
 //   //display news
 //   //displays map
-
   console.log(data);
   $('section').hide();
 
@@ -168,34 +167,6 @@ function displayCharity(data) {
   });
 }
 
-
-function displayOneRefugee(data) {
-  console.log(data);
-  $('section').hide();
-  
-  $('#refugeeShow').show()
-
-    $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button class='edit' id="+data._id +">Edit</button>"+"</li>");
-    var input = $("#refugeeId");
-    input.val( input.val() + data._id );
-    $('.delete').on('click', deleteOneRefugee)
-    $('.edit').on('click', editOneRefugee)
-}
-
-function deleteOneRefugee() {
-  console.log("I've been clicked!");
-  var id = $(this).attr('id').toString();
-  return ajaxRequest('DELETE', '/api/refugees/'+ id, null, displayOneRefugee);
-  console.log(id);
-}
-
-function editOneRefugee() {
-  var id = $(this).attr('id').toString();
-  $('section').hide();
-  $('#refugeeEdit').show();
-}
-
-
 function authenticationSuccessful(data) {
   // set the token and call checkLoginState
   if(data.token) setToken(data.token);
@@ -203,8 +174,6 @@ function authenticationSuccessful(data) {
   console.log(data.user._id);
   checkLoginState();
 }
-
-
 
 function getToken() {
   // get the token from localStorage
@@ -221,12 +190,10 @@ function setUser(userId) {
   return localStorage.setItem('user', userId);
 }
 
-
 function getUser() {
   // get the token from localStorage
   return localStorage.getItem('user');
 }
-
 
 function logout(){
   // remove the token
@@ -265,18 +232,25 @@ function loggedOutState(){
     
 }
 
-// function displayErrors(){
-  
-// }
+function displayErrors(data){
+  console.log("errors are displaying");
+  console.log('.alert'); 
+  $('.alert').removeClass("hidden");
+  $('.alert').append(data.statusText);
+}
 
-// function hideErrors(){
-
-// }
+function hideErrors(){
+  console.log("errors are hidden");
+  // remove the errors from the alert and hide it
+  $('.alert').addClass("hidden");
+  // empty removes all of the html. 
+  $('.alert').empty();
+}
 
 function showPage(){
   //hide everything except the section you want to show 
   var $sections = $('section').hide();
-  // hideErrors();
+  hideErrors();
   var $id = $(this).attr('name');
   console.log($id);
   $('#'+ $id).show();
@@ -299,10 +273,9 @@ function ajaxRequest(method, url, data, callback) {
     }
   }).done(callback)
   .fail(function(err) {
-    console.log(err);
+    displayErrors(err);
   });
 }
-
 
 function ajaxRequestRefugee(method, url, data, callback) {
   return $.ajax({
@@ -317,7 +290,7 @@ function ajaxRequestRefugee(method, url, data, callback) {
     }
   }).done(callback)
   .fail(function(err) {
-    console.log(err);
+    displayErrors(err);
   });
 }
 
