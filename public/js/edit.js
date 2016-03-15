@@ -1,7 +1,7 @@
 $(init);
 
 function init(){
-  scroller()
+  scroller();
 
 }
 

@@ -8,6 +8,7 @@ function submitRefugee() {
   this.reset() 
   return ajaxRequestRefugee(method, url, data, getRefugees);
 }
+
 //get all refugees
 function getRefugees() {
   // get the user data from the API and call displayUsers
@@ -15,6 +16,7 @@ function getRefugees() {
   // console.log("getRefugees is working");
   return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
  }
+
 //display all refugees
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
@@ -37,6 +39,7 @@ function displayRefugees(data) {
     $show.append($li);
   });
 }
+
 //get refugee
 function getOneRefugee() {
   console.log("I've been clicked!");
@@ -44,6 +47,7 @@ function getOneRefugee() {
   return ajaxRequest('GET', '/api/refugees/'+ id, null, displayOneRefugee);
   console.log(id);
 }
+
 //display one
 function displayOneRefugee(data) {
   console.log(data);
@@ -62,12 +66,14 @@ function displayOneRefugee(data) {
     $('#refugeeEditForm').get(0).setAttribute('action', '/aprefugees/' + id); 
   }); 
 }
+
 //populate
 function populate(frm, data) {
   $.each(data, function(key, value){
     $('[name='+key+']', frm).val(value);
   });
 } 
+
 //delete
 function deleteOneRefugee() {
   console.log("I've been clicked!");
