@@ -110,10 +110,11 @@ function displayOneRefugee(data) {
   
   $('#refugeeShow').show()
 
-    $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+"</li>");
-    var input = $( "#refugeeId" );
+    $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button class='edit' id="+data._id +">Edit</button>"+"</li>");
+    var input = $("#refugeeId");
     input.val( input.val() + data._id );
     $('.delete').on('click', deleteOneRefugee)
+    $('.edit').on('click', editOneRefugee)
 }
 
 function deleteOneRefugee() {
@@ -121,6 +122,12 @@ function deleteOneRefugee() {
   var id = $(this).attr('id').toString();
   return ajaxRequest('DELETE', '/api/refugees/'+ id, null, displayOneRefugee);
   console.log(id);
+}
+
+function editOneRefugee() {
+  var id = $(this).attr('id').toString();
+  $('section').hide();
+  $('#refugeeEdit').show();
 }
 
 
