@@ -5,6 +5,8 @@ var userSchema = mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email:    { type: String, unique: true, required: true },
   passwordHash: { type: String, required: true },
+  description: String,
+  website: String, 
   refugees: [{ type: mongoose.Schema.ObjectId, ref: 'Refugee' }],
   charity: Boolean
 });

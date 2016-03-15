@@ -12,7 +12,7 @@ function displayIndex() {
    // console.log(objects)
 
    $.each(objects, function(i, object) {
-    $('.guardian-news').prepend(
+    $('.guardian-news').append(
     
       "<li><a href=" + object.webUrl + " target='_blank'>" + object.webTitle + "</a></li>" +
       "<li><img src=" + object.fields.thumbnail + "></li>"
@@ -30,7 +30,9 @@ function loadMoreButton() {
           "<li><a href=" + object.webUrl + " target='_blank'>" + object.webTitle + "</a></li>" +
           "<li><img src=" + object.fields.thumbnail + "></li>"
         )
-      })
+      });
+
+      scroller();
     });
   });
 }

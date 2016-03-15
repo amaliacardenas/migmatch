@@ -11,20 +11,30 @@ function init(){
   $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
   
+  //create event handler for charity nav bar (charity homepage, add refugee, profile)
+  //create event handler for host nav bar (host homepage, all refugees, profile)
+  checkLoginState();
 
-      // $(".guardian-news").simplyScroll({
-      //   orientation: 'vertical',
-      //   auto: true,
-      //   manualMode: 'loop',
-      //   frameRate: 20,
-      //   speed: 5,
-      //   startOnLoad: true
-      // });
+  scroller();
 
-//create event handler for charity nav bar (charity homepage, add refugee, profile)
- //create event handler for host nav bar (host homepage, all refugees, profile)
-checkLoginState();
+  // setTimeout(test, 2000);
+}
 
+// function test() {
+//   var arr = $('.guardian-news li')
+//   console.log(arr)
+//   $.each($(arr, function(i, v) {
+//     console.log(i)
+//   }))
+// }
+
+function scroller() {
+  var elem = $('#news-scroller');
+  // console.log($('#news-scroller').height());
+
+
+
+  elem.animate({ scrollTop: $('.guardian-news').height() || "1100px" }, 12000);
 }
 
 
@@ -98,16 +108,16 @@ function displayRefugees(data) {
   $show.empty();
   console.log("its working");
   data.forEach(function(data) {
-    $button = $("<button class='button' id="+ data._id + "> show" + "</button>");
+    $button = $("<button class='button btn btn-default' id="+ data._id + "> Read more" + "</button>");
     $button.on('click', getOneRefugee);
-    $li = $("<li class='list-group-item'>"+ "<div class='col-sm-6 col-md-4'>"+
+    $li = $("<div class='col-sm-6 col-md-4'>"+
         "<div class='thumbnail'>" +
           "<img src="+ data.avatar + "class='refugee-avatar' >" +
           "<div class='caption'>" +
             "<h3>"+ data.name +"</h3>" +
             "<p>Text</p>" +
             "<h4>"+ data.location +"</h4>" +
-            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div></li>");
+            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div>");
     $li.append($button);
     $show.append($li);
   });
