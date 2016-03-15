@@ -1,6 +1,6 @@
 jQuery(function($) {
   console.log("its working")
-  $('#payment-form, #payment-form-one').submit(function(event) {
+  $('#payment-form').submit(function(event) {
     event.preventDefault();
     var $form = $(this);
 

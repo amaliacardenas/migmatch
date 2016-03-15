@@ -1,4 +1,5 @@
 var stripe = require('stripe')('sk_test_0yjcpg1SRMCkmpmfSlvL22fx');
+var Donation = require('../models/donation');
 
 function stripesCreate (req, res) {
   var stripeToken = req.body.stripeToken;
@@ -8,16 +9,20 @@ function stripesCreate (req, res) {
     card: stripeToken,
     currency: 'usd',
     amount: amount
-    //refugee
   },
   function(err, charge) {
     if (err) {
-      res.send(500, err);
+      return res.send(500, err);
     } else {
-      // create the donation
-      // on callback
-      // if err res.status(500)
-        res.send(204);
+      var donation = req.body;
+      donation.amount = amount;
+      console.log(donation);
+      console.log(typeof donation.amount);
+     
+      Donation.create(donation, function(err, donation) {
+        if(err) return res.status(500).json({ message: err });
+        return res.status(200).json(donation);
+      });
     }
   });
 } 
