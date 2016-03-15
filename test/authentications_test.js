@@ -14,10 +14,10 @@ afterEach(function(done) {
   });
 });
 
-describe('POST /login', function() {
+describe('POST /api/login', function() {
 
   before(function(done) {
-    api.post('/register')
+    api.post('/api/register')
       .set('Accept', 'application/json')
       .send({ username: "danielle", email: "danielle@gmail.com", password: "password", passwordConfirmation: "password" })
       .end(function(err, res){
@@ -25,7 +25,7 @@ describe('POST /login', function() {
       });
   });
   it('should generate a token at login', function(done) {
-    api.post('/login')
+    api.post('/api/login')
       .set('Accept', 'application/json')
       .send({
         email: "danielle@gmail.com",
@@ -39,9 +39,9 @@ describe('POST /login', function() {
 });
 
 
-describe('POST /register', function() {
+describe('POST /api/register', function() {
   it('should generate a token on registration', function(done) {
-    api.post('/register')
+    api.post('/api/register')
       .set('Accept', 'application/json')
       .send({
         username: "ilan",

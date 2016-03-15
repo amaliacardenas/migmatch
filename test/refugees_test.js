@@ -12,7 +12,7 @@ var user;
 
 
 beforeEach(function(done) {
-  api.post('/register')
+  api.post('/api/register')
     .set('Accept', 'application/json')
     .send({ username: "apple", email: "r@gmail.com", password: "password", passwordConfirmation: "password" })
     .end(function(err, res){
@@ -35,23 +35,23 @@ afterEach(function(done) {
 });
 
 //all refugees - need to make unsecure route
-describe('GET /refugees', function() {
+describe('GET /api/refugees', function() {
   
   it('should return a 200 response when authenticated', function(done) {
-    api.get('/refugees')
+    api.get('/api/refugees')
       .set('Accept', 'application/json')
       
       .expect(200, done);
   });
   it('should return a 200 response', function(done) {
-    api.get('/refugees')
+    api.get('/api/refugees')
       .set('Accept', 'application/json')
       
       .expect(200, done);
   });
 
   it('should return an array', function(done) {
-    api.get('/refugees')
+    api.get('/api/refugees')
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .end(function(err, res) {
@@ -63,15 +63,15 @@ describe('GET /refugees', function() {
 
 //add refugee - secure route
 
-describe('POST /refugees', function() {
+describe('POST /api/refugees', function() {
   it('should return a 401 response', function(done) {
-    api.post('/refugees')
+    api.post('/api/refugees')
       .set('Accept', 'application/json')
       .expect(401, done);
   });
 
   it('should return a 200 response', function(done) {
-    api.post('/refugees')
+    api.post('/api/refugees')
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
@@ -80,7 +80,7 @@ describe('POST /refugees', function() {
       .expect(200, done);
   });
   it('should add a new refugee and return the refugee object', function(done) {
-    api.post('/refugees')
+    api.post('/api/refugees')
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
@@ -93,18 +93,19 @@ describe('POST /refugees', function() {
       });
   });
   it('should add the refugee id to the current user object', function(done) {
-    api.post('/refugees')
+    console.log("USERID", user._id);
+    api.post('/api/refugees')
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
         name: "said"
       })
       .end(function(err, res) {
-        api.get('/charities/' + user._id)
+        api.get('/api/charities/' + user._id)
           .set('Accept', 'application/json')
           .end(function(err, res) {
-            expect(res.body.refugees).to.be.an('array');
-            console.log(res.body);
+            expect(res.body.refugees.indexOf(user._id.toString())).to.be.above(-1);
+            done();
           })
       });
 
@@ -113,16 +114,16 @@ describe('POST /refugees', function() {
 });
 
 //show refugee
-describe('GET /refugees/:id', function() {
+describe('GET /api/refugees/:id', function() {
  
   it('should return a 200 response', function(done) {
-    api.get('/refugees/' + refugeeId)
+    api.get('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       
       .expect(200, done);
   });
   it('should return an object with a specific id', function(done) {
-    api.get('/refugees/' + refugeeId)
+    api.get('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       
       .end(function(err, res) {
@@ -133,14 +134,14 @@ describe('GET /refugees/:id', function() {
 }); 
 
 //update refugees
-describe('PUT /refugees/:id', function() {
+describe('PUT /api/refugees/:id', function() {
   it('should return a 404 not found', function(done) {
-    api.put('/refugees'+ refugeeId)
+    api.put('/api/refugees'+ refugeeId)
       .set('Accept', 'application/json')
       .expect(404, done);
   });
   it('should return 200 response', function(done) {
-    api.put('/refugees/' + refugeeId)
+    api.put('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
@@ -149,7 +150,7 @@ describe('PUT /refugees/:id', function() {
       .expect(200, done);
   });
   it('should return an object with an updated name', function(done) {
-    api.put('/refugees/' + refugeeId)
+    api.put('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
@@ -162,18 +163,18 @@ describe('PUT /refugees/:id', function() {
   }); 
 });
 
-describe('DELETE /refugees/:id', function() {
+describe('DELETE /api/refugees/:id', function() {
   it('should return a 404 response', function(done) {
-    api.delete('/refugees/' + refugeeId)
+    api.delete('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .expect(204, done);
   });
   it('should delete the appropriate record from the database', function(done) {
-    api.delete('/refugees/' + refugeeId)
+    api.delete('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .end(function(err, res) {
         if(err) done(err);
-        api.get('/refugees/' + refugeeId)
+        api.get('/api/refugees/' + refugeeId)
           .set('Accept', 'application/json')
           .expect(404, done);
       });
@@ -181,9 +182,9 @@ describe('DELETE /refugees/:id', function() {
 }); 
 
 
-describe('PATCH /refugees/:id', function() {
+describe('PATCH /api/refugees/:id', function() {
   it('should return 200 response', function(done) {
-    api.patch('/refugees/' + refugeeId)
+    api.patch('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .send({
         name: "newpezONE"
@@ -192,7 +193,7 @@ describe('PATCH /refugees/:id', function() {
   });
 
   it('should return an object with an updated name', function(done) {
-    api.patch('/refugees/' + refugeeId)
+    api.patch('/api/refugees/' + refugeeId)
       .set('Accept', 'application/json')
       .send({
         name: "newpez"

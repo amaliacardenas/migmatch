@@ -8,6 +8,7 @@ function init(){
   $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.refugee-link').on('click', getRefugees);
+  $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
   
 
@@ -116,21 +117,28 @@ function displayOneRefugee(data) {
 }
 
 
-// function getCharities() {
-//   //ajax request
-//   //displayCharities
+function getCharity() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
+  var user = getUser();
+  console.log(user);
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/charities/'+ user, null, displayCharity);  
 
-// }
+ }
 
-// function displayCharities() {
+function displayCharity(data) {
 //   //display charites refugees
 //   //display news
 //   //displays map
-// }
+console.log(data.refugees[0].name);
+}
 
 function authenticationSuccessful(data) {
   // set the token and call checkLoginState
   if(data.token) setToken(data.token);
+  if(data.user) setUser(data.user._id);
+  console.log(data.user._id);
   checkLoginState();
 }
 
@@ -145,6 +153,18 @@ function setToken(token) {
   // set the token into localStorage
   return localStorage.setItem('token', token);
 }
+
+function setUser(user) {
+  // set the user into localStorage
+  return localStorage.setItem('user', user);
+}
+
+
+function getUser() {
+  // get the token from localStorage
+  return localStorage.getItem('user');
+}
+
 
 function logout(){
   // remove the token
