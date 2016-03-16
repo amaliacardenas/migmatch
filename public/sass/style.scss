@@ -1,38 +1,18 @@
+@import 'homepage';
 /*******NAV BAR********************************************
 ***********************************************************/
 
-
-/*******HEADER********************************************
-***********************************************************/
-#homeText{
-  margin: 0 0 10px;
-  text-align: center;
-  font-size: 23px;
-  margin-top: 26px;
-  color: #5D0B0E;
-}
-
-/*******GUARDIAN NEWS SCROLLER ********************************************
-***********************************************************/
-
-
-#news-scroller {
-  width: 250px;
-  height: 600px;
-  overflow: scroll;
-}
-
-
-
-/*******GOOGLE MAP********************************************
-***********************************************************/
 body {
   background-color: #ebf1f0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 15px;
-
 }
+
+ul {
+  list-style-type: none;
+}
+
 #refugee-map {
   height: 500px;
   margin: 20px 0;
