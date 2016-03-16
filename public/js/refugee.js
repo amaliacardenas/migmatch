@@ -8,7 +8,7 @@ function submitRefugee() {
   this.reset(); 
   $('#refugee').hide();
   $('#charityHome').show();
-  return ajaxRequestRefugee(method, url, data, getRefugees);
+  return ajaxRequestRefugee(method, url, data, getCharity);
 }
 
 //get all refugees
