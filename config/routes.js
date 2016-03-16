@@ -79,7 +79,11 @@ router.route('/charities/:id')
   .get(usersController.show)
   .put(usersController.update);
 
-router.post('/charge', stripesController.create);
+router.route('/hosts/:id/accept') 
+  .put(usersController.accept); 
+
+router.post('/charge', stripesController.create);  
+
 
 module.exports = router;
 

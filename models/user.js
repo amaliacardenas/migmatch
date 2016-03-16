@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema({
   city: String,
   website: String, 
   refugees: [{ type: mongoose.Schema.ObjectId, ref: 'Refugee' }],
-  userType: String
+  role: String
 });
 
 userSchema.set('toJSON', {

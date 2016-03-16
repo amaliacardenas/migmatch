@@ -31,10 +31,18 @@ function usersShow(req, res) {
   });
 }
 
+function acceptRefugee(req, res) {
+  User.findByIdAndUpdate(req.params.id, {$set: {refugees: req.body.refugeeId}}, { new: true }, function(err, user) {
+    if(err) return res.status(500).json({ message: err });
+    return res.status(200).json(user);
+  });
+}
+
 module.exports = {
   index: usersIndex,
   update: usersUpdate,
-  show: usersShow
+  show: usersShow,
+  accept: acceptRefugee
 }
 
 
