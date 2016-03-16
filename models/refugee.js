@@ -10,7 +10,7 @@ var refugeeSchema = mongoose.Schema({
   language: String,
   amountRaised: { type: Number, default: 0 },
   host: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  charity: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   potential_hosts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   connection: Boolean
   //patch potential hosts 

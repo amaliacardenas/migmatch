@@ -42,7 +42,7 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
-        <li><a href="#" name="registerCharity" class="register-link logged-out">register</a></li>
+        <li><a href="#" name="registerPage" class="register-link logged-out">register</a></li>
         <li><a href="#" name="login" class="login-link logged-out">login</a></li>
         <!-- Logged in and logged out -->
       
@@ -56,26 +56,29 @@
          <a href="#" name="crossroads" class="home-link"><img id="logoHead" alt="Brand" src="/images/logo-new.png"></a>
       </div>
         <!-- charity -->
-        <li><a href="#" name="charityHome" class="homePage-link logged-in charity">home page</a></li>
+        <li><a href="#" name="charityHome" class="homePage-link logged-in-charity">home page</a></li>
 
-        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in charity">add a refugee</a></li>
-        <li><a href="#" name="charityShow" class="profile-link logged-in charity">profile</a></li> 
+        <li><a href="#" name="addRefugee" class="addRefugee-link logged-in-charity">add a refugee</a></li>
+        <li><a href="#" name="charityShow" class="profile-link logged-in-charity">profile</a></li> 
 
         <!-- host -->
-        <!-- <li><a href="#" name="" class="profile-link logged-in host">Profile</a></li> 
-        <li><a href="#" name="" class="homePage-link logged-in host">Home Page</a></li> 
-        <li><a href="#" name="refugeeAll" class="refugee-link logged-in host">Refugees</a></li>  -->
+        <li><a href="#" name="" class="profile-link logged-in-host">Profile</a></li> 
+        <li><a href="#" name="" class="homePage-link logged-in-host">Home Page</a></li> 
+        <li><a href="#" name="refugeeAll" class="refugee-link logged-in-host">Refugees</a></li> 
       </ul> 
     </nav>
   </header>
-
-<!--   STRIPE and ADD A REFUGEE -->
 
   <main class="container">  
     <!-- Register as a charity -->
     <section id="registerCharity">
     <div class="hidden alert alert-danger" role="alert"></div>
       <% include partials/registerCharity %>
+    </section>
+
+    <section id="registerPage">
+      <a href="#" name="registerCharity" class="register-charity">charity</a>
+      <a href="#" name="registerHost" class="register-host">host</a>
     </section>
     
     <!-- Register as a host -->
