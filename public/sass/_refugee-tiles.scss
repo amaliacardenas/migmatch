@@ -1,9 +1,17 @@
 .thumbnail { 
-  position: absolute; 
+  position: relative; 
   text-align: center; 
   font-size: 30px;
-  margin: 0px;
+  margin: 20px;
+  width: 330px;
+}
 
+.thumbnail > img {
+  height: 200px;
+}
+
+#refugee-story-text{
+margin-top: 5px;
 }
 
 .text {
@@ -15,15 +23,19 @@
    max-height: 32px;      /* fallback */
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
+   margin-bottom: 20px;
 }
 
 .overlay{
   background-color: black;
   margin-top: 0px;
-
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 0px;
 }
 
-.refugee-avatar{
-  height: 150px;
-  width: 300px;
+
+.thumbnail .caption {
+  padding: 0;
+  margin-top: -20px;
 }

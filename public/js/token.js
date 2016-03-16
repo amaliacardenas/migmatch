@@ -2,8 +2,9 @@ function authenticationSuccessful(data) {
   // set the token and call checkLoginState
   if(data.token) setToken(data.token);
   if(data.user) setUser(data.user._id);
-  if(data.role) setRole(data.user.role);
+  if(data.user) setRole(data.user.role);
   console.log(data.user._id);
+  console.log(data.user.role);
   checkLoginState();
 }
 
@@ -27,9 +28,9 @@ function getUser() {
   return localStorage.getItem('user');
 }
 
-function setRole(userRole) {
+function setRole(role) {
   // set the user into localStorage
-  return localStorage.setItem('role', userRole);
+  return localStorage.setItem('role', role);
 }
 
 function getRole() {

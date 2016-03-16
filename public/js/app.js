@@ -4,13 +4,15 @@ function init(){
   $('#crossroads').show();
   getRefugees();
   $('#login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
-  $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
+  $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton, .profileHost-link').on('click', showPage);
+  $('.homePageHost-link').on('click', getHostRefugees);
   $('.logout-link').on('click', logout);
   $('.profile-link').on('click', showProfile);
   $('.refugee-link').on('click', getRefugees);
   $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
-  $('#register').on('submit', submitRegister);
+  $('#registerCharityForm').on('submit', submitRegister);
+  $('#registerHostForm').on('submit', submitRegisterHost);
   checkLoginState();
   displayMap();
 
@@ -23,10 +25,14 @@ function checkLoginState(){
   // otherwise, call loggedOutState
   //add if else loggedInStateHost
   var token = getToken();
+  var role = getRole();
+  console.log("======================",role);
     if(token) {
       console.log(token);
-      return loggedInState();
+      console.log(role);
+      loggedInState(role);
     }
+
     else {
       loggedOutState();
     }
@@ -52,15 +58,19 @@ function submitForm(){
 
 
 
-function loggedInState(){
+
+function loggedInState(role){
+  console.log("===============LOGGEDINSTATE", role)
   //show links with logged-in class
   //hide links with logged-out class
   //show bottles page
   $('.logged-out').hide();
-    $('.logged-in').show();
-    showPage();
-    $('#charityHome').show();
-  console.log("logged in !")
+  $('.logged-in-charity, .logged-in-host').hide();
+  $('.logged-in-' + role).show();
+  showPage();
+  $('#charityShow,#hostShow').hide();
+  $('#' + role + 'Show').show();
+  console.log("logged in as", role)
 }
 
 function loggedOutState(){
@@ -68,7 +78,8 @@ function loggedOutState(){
   //show links with logged-out class
   //show login page
   $('.logged-out').show();
-  $('.logged-in').hide();
+  $('.logged-in-charity').hide();
+  $('.logged-in-host').hide();
   showPage();
   $('#login').show();
     $('.logged-in').hide();

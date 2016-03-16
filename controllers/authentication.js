@@ -10,6 +10,8 @@ function register(req, res) {
     req.body.avatar = s3Config.endpoint + s3Config.bucket + '/' + req.file.key;
   }
 
+  console.log("REGISTER BODY",req.body);
+
   User.create(req.body, function(err, user) {
     // tidy up mongoose's awful error messages
     if(err) {
