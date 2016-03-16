@@ -58,7 +58,7 @@ var upload = multer({
 
 // ROUTES
 router.post('/login', authenticationController.login);
-router.post('/register', authenticationController.register);
+router.post('/register', upload.single('avatar'), authenticationController.register);
 
 
 router.route('/refugees')
@@ -79,12 +79,7 @@ router.route('/charities/:id')
   .get(usersController.show)
   .put(usersController.update);
 
-router.post('/charge', stripesController.create);  
-
-
-
-
-
+router.post('/charge', stripesController.create);
 
 module.exports = router;
 
