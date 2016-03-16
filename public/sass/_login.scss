@@ -7,19 +7,32 @@ li {
 }
 
 .loginNow {
-    width: 300px;
-    
-height: 100px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    margin: auto;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .app {
   margin-bottom: -3px;
 
 }
+
+.shadow {
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -8px #999;
+}
+
+h3 {
+  text-align: center;
+}
+
+.change {
+  background-color: #F8F8F8;
+}
+

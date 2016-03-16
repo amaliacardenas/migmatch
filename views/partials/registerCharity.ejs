@@ -1,21 +1,23 @@
-<h2>Register Charity</h2>
-<form id="register" class="register" method="post" action="/api/register">
-  <div class="form-group">
-    <label for="register-username">username</label>
-    <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+<div class="loginNow log">
+  <form id="register" class="register" method="post" action="/api/register">
+  <div class="panel panel-info shadow">
+  <div class="panel-heading">
+      <h3 class="panel-title">register your charity</h3>
+    </div>
+    <div class="form-group app">
+      <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+    </div>
+    <div class="form-group app">
+      <input type="email" name="email" id="register-email" class="form-control" placeholder="email">
+    </div>
+    <div class="form-group app">
+      <input type="password" name="password" id="register-password" class="form-control" placeholder="password">
+    </div>
+    <div class="form-group app">
+      <input type="password" name="passwordConfirmation" id="register-password" class="form-control" placeholder="password confirmation">
+    </div>
+    <!-- add bank account informations -->
+    <button type="submit" class="btn btn-block change btn-default">submit</button>
+  </form>
   </div>
-  <div class="form-group">
-    <label for="register-email">Email address</label>
-    <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="register-password">Password</label>
-    <input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="register-passwordconfirmation">PasswordConfirm</label>
-    <input type="password" name="passwordConfirmation" id="register-password" class="form-control" placeholder="Password">
-  </div>
-  <!-- add bank account informations -->
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>
