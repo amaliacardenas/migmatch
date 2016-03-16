@@ -1,4 +1,4 @@
-//submit add refugee form 
+  //submit add refugee form 
 function submitRefugee() {
   event.preventDefault() 
   var method = $(this).attr("method");
@@ -37,7 +37,7 @@ function displayRefugees(data) {
             "<div class='overlay'><h3>"+ data.name +"</h3>" +
             "<h4>"+ data.location +"</h4></div>" +
             "<p class='text'>"+ data.story + "</p>" +
-            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div>");
+            "</div></div></div>");
     $li.append($button);
     $show.append($li);
   });
