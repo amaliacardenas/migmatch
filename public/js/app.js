@@ -9,7 +9,8 @@ function init(){
   $('.profile-link').on('click', showProfile);
   $('.refugee-link').on('click', getRefugees);
   $('.homePage-link').on('click', getCharity);
-  $('#refugee, #register').on('submit', submitRefugee);
+  $('#refugee').on('submit', submitRefugee);
+  $('#register').on('submit', submitRegister);
   checkLoginState();
   displayMap();
 
@@ -47,16 +48,6 @@ function submitForm(){
   ajaxRequest(method, url, data, authenticationSuccessful);
   getCharity();
   
-}
-
-
-
-function authenticationSuccessful(data) {
-  // set the token and call checkLoginState
-  if(data.token) setToken(data.token);
-  if(data.user) setUser(data.user._id);
-  console.log(data.user._id);
-  checkLoginState();
 }
 
 
