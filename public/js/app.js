@@ -4,7 +4,7 @@ function init(){
   $('#crossroads').show();
   getRefugees();
   $('#register, #login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
-  $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link').on('click', showPage);
+  $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.profile-link').on('click', showProfile);
   $('.refugee-link').on('click', getRefugees);
