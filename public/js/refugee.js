@@ -35,6 +35,7 @@ function displayRefugees(data) {
             "<div class='overlay'><h3>"+ data.name +"</h3>" +
             "<h4>"+ data.location +"</h4></div>" +
             "<p class='text' id='refugee-story-text'>"+ data.story + "</p>" +
+            "<p class='text' id='refugee-story-text'>" data.amountRaised + "</p>" +
             "<p><button class='more button btn btn-default' id="+ data._id + "> read more" + "</button></p></div></div></div>");
     $('.more').on('click', getOneRefugee);
     $show.append($li);
