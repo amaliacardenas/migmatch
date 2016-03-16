@@ -1,4 +1,4 @@
-  //submit add refugee form 
+//submit add refugee form 
 function submitRefugee() {
   event.preventDefault() 
   var method = $(this).attr("method");
@@ -6,6 +6,8 @@ function submitRefugee() {
   var data   = new FormData(this);
   // clear the form
   this.reset(); 
+  $('#refugee').hide();
+  $('#charityHome').show();
   return ajaxRequestRefugee(method, url, data, getRefugees);
 }
 
@@ -14,58 +16,69 @@ function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
   // console.log("getRefugees is working");
+  console.log("getRefugees");
   return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
- }
+}
 
 //display all refugees
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
   // $('section').hide();
-  
+
+  if (!data.avatar) data.avatar = '../public/images/default-avatar.png';
   // $('#crossroadsHome').show()
+  // console.log("displayRefugees");
+
+  // $('#crossroadsHome').show()
+  console.log("displayRefugees");
+
   var $show = $('#show');
   $show.empty();
-  console.log("its working");
+  // console.log("its working");
+
   data.forEach(function(data) {
-    $button = $("<button class='button btn btn-default' id="+ data._id + "> read more" + "</button>");
-    $button.on('click', getOneRefugee);
     $li = $("<div class='col-sm-6 col-md-4' id=" + data._id + ">" +
         "<div class='thumbnail'>" +
-          "<img src="+ data.avatar + "class='refugee-avatar' >" +
+          "<img src='"+ data.avatar + "' class='refugee-avatar' >" +
           "<div class='caption'>" +
             "<div class='overlay'><h3>"+ data.name +"</h3>" +
-            "<h4>"+ data.location +"</h4></div>" +
-            "<p class='text'>"+ data.story + "</p>" +
-            "</div></div></div>");
-    $li.append($button);
+            "<h4>"+ data.city +"</h4></div>" +
+            "<p class='text' id='refugee-story-text'>"+ data.story + "</p>" +
+            "<p class='text' id='refugee-story-text'>" +'Amount raised :  '+ + data.amountRaised + "</p>" +
+            "<p><button class='more button btn btn-default' id="+ data._id + "> read more" + "</button></p></div></div></div>");
+
     $show.append($li);
   });
+
+  $('.more').on('click', getOneRefugee);
 }
 
 //get refugee
 function getOneRefugee() {
-  console.log("I've been clicked!");
+  // console.log("I've been clicked!");
   var id = $(this).attr('id').toString();
   return ajaxRequest('GET', '/api/refugees/'+ id, null, displayOneRefugee);
-  console.log(id);
+  // console.log(id);
 }
 
 //display one
 function displayOneRefugee(data) {
   console.log(data);
   $('section').hide();
-  
-  $('#refugeeShow').show()
-  $('.refugee').append("<li>" + data.name + "<button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
+
+  // $('.refugee').empty();//seemst to delete another div
+  $('#refugeeShow').show();
+  // $('.refugee').empty();
+  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story + "  <button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
-  $('div #' + data._id).remove();
+
   $('.edit').on('click', function(){
     $('section').hide();
     populate($('#refugeeEditForm'), data)
-    $('#refugeeEdit').show()
+    $('#refugeeEdit').show();
     var id = $(this).attr('id').toString();
     $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
   }); 
