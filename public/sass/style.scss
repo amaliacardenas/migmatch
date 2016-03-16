@@ -1,32 +1,21 @@
 @import 'refugee-tiles';
-
-/*******NAV BAR********************************************
-***********************************************************/
-
-
-/*******HEADER********************************************
-***********************************************************/
+@import 'homepage';
+@import 'login';
 
 
-/*******GUARDIAN NEWS SCROLLER ********************************************
-***********************************************************/
 
-
-#news-scroller {
-  width: 250px;
-  height: 600px;
-  overflow: scroll;
-}
-
-/*******GOOGLE MAP********************************************
-***********************************************************/
 body {
   background-color: #ebf1f0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 15px;
-
 }
+
+ul {
+  list-style-type: none;
+}
+
+//GOOGLE MAP
 #refugee-map {
   height: 500px;
   margin: 20px 0;
@@ -34,9 +23,13 @@ body {
   box-shadow: 4px 4px 2px rgba(165, 165, 165, 1);
 }
 
+//GUARDIAN NEWS SCROLLER 
 
-/*******ABOUT PAGE********************************************
-***********************************************************/
+#news-scroller {
+  width: 250px;
+  height: 600px;
+  overflow: scroll;
+}
 
 .center-block{
   display: block;
