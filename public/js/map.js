@@ -20,7 +20,7 @@ function displayRefugee() {
 
   var map = new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
-    zoom: 10,
+    zoom: 1,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}],
     scrollwheel: false,
     navigationControl: false,
@@ -45,7 +45,7 @@ function displayRefugee() {
           // parseFloat convert a string into a number
           position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
           map: map,
-          animation: google.maps.Animation.BOUNCE,
+          animation: google.maps.Animation.DROP,
         });
         console.log(marker)
         var infoWindow = new google.maps.InfoWindow({

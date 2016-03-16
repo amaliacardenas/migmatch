@@ -1,7 +1,9 @@
+@import 'homepage';
+@import 'login';
 /*******NAV BAR********************************************
 ***********************************************************/
 
-@import 'login';
+
 /*******HEADER********************************************
 ***********************************************************/
 
@@ -23,8 +25,12 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 15px;
-
 }
+
+ul {
+  list-style-type: none;
+}
+
 #refugee-map {
   height: 500px;
   margin: 20px 0;

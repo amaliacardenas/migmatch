@@ -11,6 +11,10 @@ function init(){
   $('.homePage-link').on('click', getCharity);
   $('#refugee').on('submit', submitRefugee);
   checkLoginState();
+
+
+  displayMap();
+
 }
 
 
