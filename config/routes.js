@@ -79,6 +79,9 @@ router.route('/charities/:id')
   .get(usersController.show)
   .put(usersController.update);
 
+router.route('/hosts/:id/accept') 
+  .put(usersController.accept); 
+
 router.post('/charge', stripesController.create);  
 
 
