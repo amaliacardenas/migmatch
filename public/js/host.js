@@ -46,7 +46,8 @@ function displayOneHostRefugee(data) {
   console.log(data);
   $('section').hide();
   
-  $('#refugeeShow').show()
+  $('#refugeeShow').show();
+
   $('.refugee').append("<li>" + data.name + "<button class='interested' id="+data._id +">interested</button>"+"</li>");
   
 
@@ -56,6 +57,7 @@ function displayOneHostRefugee(data) {
     // Get the id of the clicked refugee
     var id = $(this).attr('id').toString();
     console.log(id);
+    $('.interested').chos
     
     // Get the id of the current logged user (host)
     var userId = getUser();
@@ -63,7 +65,7 @@ function displayOneHostRefugee(data) {
 
     // Make request to /api/refugees/:id with data of potential_host: user_id
     var info = {
-      potential_host: userId
+      potential_hosts: userId
     }
     return ajaxRequest('put', '/api/refugees/'+ id, info, function(data){
       console.log(data);
