@@ -11,7 +11,7 @@ var refugeeSchema = mongoose.Schema({
   amountRaised: { type: Number, default: 0 },
   host: { type: mongoose.Schema.ObjectId, ref: 'User' },
   charity: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  potential_hosts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+  potential_hosts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   connection: Boolean
   //patch potential hosts 
   //when charity chooses host, 
