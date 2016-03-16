@@ -4,6 +4,7 @@
   font-size: 30px;
   margin: 20px;
   width: 330px;
+  height: 445px;
 }
 
 .thumbnail > img {
@@ -27,7 +28,8 @@ margin-top: 5px;
 }
 
 .overlay{
-  background-color: black;
+  background-color: rgba(255, 0, 0, 0.4);
+  color: #fafafa;
   margin-top: 0px;
   margin-bottom: 40px;
   width: 100%;
