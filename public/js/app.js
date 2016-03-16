@@ -1,3 +1,5 @@
+console.log("APP LOADED");
+
 $(init);
 function init(){
   var $sections = $('section').hide();
