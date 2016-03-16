@@ -29,7 +29,7 @@ function displayRefugee() {
     // draggable: false,
   });
 
-  var currentInfoWindow;
+  // var currentInfoWindow;
 
 
   // get refugeeData using ajax
