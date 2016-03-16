@@ -35,7 +35,7 @@ function showProfile() {
 function displayProfile(data) {
   $('section').hide();
   $('#charityShow').show()
-  $('#showCharity').append("<li class='list-group-item'>"+ data.name + "<button name='charityEdit' class='editCharity' id="+data._id +">Edit</button>"+ "</li>");
+  $('#showCharity').append("<li class='list-group-item'>"+ data.username + "<img id='charityimage'src="+ data.avatar  +">"+ data.description + data.website + "<button name='charityEdit' class='editCharity' id="+data._id +">Edit</button>"+ "</li>");
   $('.editCharity').on('click', function(){
     $('section').hide();
     populate($('#charity-edit'), data)

@@ -3,16 +3,14 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('#register, #login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
+  $('#login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
   $('.register-link, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
   $('.logout-link').on('click', logout);
   $('.profile-link').on('click', showProfile);
   $('.refugee-link').on('click', getRefugees);
   $('.homePage-link').on('click', getCharity);
-  $('#refugee').on('submit', submitRefugee);
+  $('#refugee, #register').on('submit', submitRefugee);
   checkLoginState();
-
-
   displayMap();
 
 }
@@ -43,7 +41,7 @@ function submitForm(){
   var method = $(this).attr('method');
   var url = $(this).attr('action');
   // NOT JSON
-  var data = $(this).serialize();
+  var data   = $(this).serialize();
   console.log("dat:" + data);
   form.reset();
   ajaxRequest(method, url, data, authenticationSuccessful);
