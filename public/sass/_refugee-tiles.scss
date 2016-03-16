@@ -1,0 +1,37 @@
+/*******REFUGEE TILES ON MAIN PAGE ********************************************
+***********************************************************/
+
+
+.thumbnail { 
+  position: absolute; 
+  text-align: center; 
+  font-size: 30px;
+  margin: 0px;
+
+  }
+
+  .text {
+     overflow: hidden;
+     font-size: 11px;
+     text-overflow: ellipsis;
+     display: -webkit-box;
+     line-height: 16px;     /* fallback */
+     max-height: 32px;      /* fallback */
+     -webkit-line-clamp: 2; /* number of lines to show */
+     -webkit-box-orient: vertical;
+  }
+
+  .overlay{
+    background-color: black;
+    margin-top: 0px;
+
+  }
+
+.second-header { background-color: black; font-size: 1.5em; text-align: center; color: #fafafa; height: 300px; margin-top: -100px; }
+
+.tutorial-description { padding: 10px; }
+
+.refugee-avatar{
+  height: 150px;
+  width: 300px;
+}
