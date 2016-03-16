@@ -5,7 +5,7 @@ function submitRefugee() {
   var url    = $(this).attr("action");
   var data   = new FormData(this);
   // clear the form
-  this.reset() 
+  this.reset(); 
   return ajaxRequestRefugee(method, url, data, getRefugees);
 }
 
