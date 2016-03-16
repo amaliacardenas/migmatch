@@ -21,13 +21,16 @@ function getRefugees() {
 function displayRefugees(data) {
     // take the user data and display all the users as <li>s in the <ul>, eg:
     // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
+  // $('section').hide();
+  
+  // $('#crossroadsHome').show()
   var $show = $('#show');
   $show.empty();
   console.log("its working");
   data.forEach(function(data) {
     $button = $("<button class='button btn btn-default' id="+ data._id + "> read more" + "</button>");
     $button.on('click', getOneRefugee);
-    $li = $("<div class='col-sm-6 col-md-4'>"+
+    $li = $("<div class='col-sm-6 col-md-4' id=" + data._id + ">" +
         "<div class='thumbnail'>" +
           "<img src="+ data.avatar + "class='refugee-avatar' >" +
           "<div class='caption'>" +
@@ -58,6 +61,7 @@ function displayOneRefugee(data) {
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
+  $('div #' + data._id).remove();
   $('.edit').on('click', function(){
     $('section').hide();
     populate($('#refugeeEditForm'), data)
@@ -78,7 +82,7 @@ function populate(frm, data) {
 function deleteOneRefugee() {
   console.log("I've been clicked!");
   var id = $(this).attr('id').toString();
-  return ajaxRequest('DELETE', '/api/refugees/'+ id, null, displayOneRefugee);
+  return ajaxRequest('DELETE', '/api/refugees/'+ id, null, getCharity);
   console.log(id);
 }
 
