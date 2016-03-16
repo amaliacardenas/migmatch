@@ -58,7 +58,6 @@
       </div>
         <!-- charity -->
         <li><a href="#" name="charityHome" class="homePage-link logged-in-charity">home charity</a></li>
-
         <li><a href="#" name="addRefugee" class="addRefugee-link logged-in-charity">add a refugee</a></li>
         <li><a href="#" name="charityShow" class="profile-link logged-in-charity">profile</a></li> 
 
@@ -70,13 +69,16 @@
     </nav>
   </header>
 
-<!--   STRIPE and ADD A REFUGEE -->
-
   <main class="container">  
     <!-- Register as a charity -->
     <section id="registerCharity">
     <div class="hidden alert alert-danger" role="alert"></div>
       <% include partials/registerCharity %>
+    </section>
+
+    <section id="registerPage">
+      <a href="#" name="registerCharity" class="register-charity">charity</a>
+      <a href="#" name="registerHost" class="register-host">host</a>
     </section>
     
     <!-- Register as a host -->

@@ -26,8 +26,8 @@ function loadMoreButton() {
       var objects = data.response.results;
       $.each(objects, function(i, object) {
         $('.guardian-news').prepend(
-          "<li><a href=" + object.webUrl + " target='_blank'>" + object.webTitle + "</a></li>" +
-          "<li><img src=" + object.fields.thumbnail + "></li>"
+          "<li><a href=" + object.webUrl + " target='_blank'>" + object.webTitle + "</a>" +
+          "<img id='newsImage' src=" + object.fields.thumbnail + ">" + "<br><br>" + "</li>"
         )
       });
 
