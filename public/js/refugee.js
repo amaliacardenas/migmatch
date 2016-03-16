@@ -30,11 +30,11 @@ function displayRefugees(data) {
     $li = $("<div class='col-sm-6 col-md-4'>"+
         "<div class='thumbnail'>" +
           "<img src="+ data.avatar + "class='refugee-avatar' >" +
-          "<div class='caption'>" +
+          "<div class='caption overlay'>" +
             "<h3>"+ data.name +"</h3>" +
-            "<p>Text</p>" +
-            "<h4>"+ data.location +"</h4>" +
-            "<p><a href='#' class='btn btn-default' role='button'>Read More</a></p></div></div></div>");
+            // "<h4>"+ data.location +"</h4>" +
+            "<p class='text'>" + data.story +"</p>" +
+            "</div></div></div>");
     $li.append($button);
     $show.append($li);
   });
