@@ -29,7 +29,7 @@ function displayRefugee() {
     // draggable: false,
   });
 
-  // var currentInfoWindow;
+  var currentInfoWindow;
 
 
   // get refugeeData using ajax
@@ -49,8 +49,8 @@ function displayRefugee() {
         });
         console.log(marker)
         var infoWindow = new google.maps.InfoWindow({
-          position: { lat: parseFloat(lat), lng: parseFloat(lng) },
-          content: "<p>"+ refugee.name+"</p>"
+          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+          content: "<p>"+ refugee.name+ "<img src='"+ refugee.avatar + "' class='refugee-avatar' >"+"</p>"
        
         });
         marker.addListener('click', function(){
