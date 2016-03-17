@@ -3,7 +3,7 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('#login, #refugeeEditForm, #charity-edit, #host-edit').on('submit', submitForm);
+  $('#login, #refugeeEditForm, #charity-edit, #host-edit').on('submit', submitHostForm);
 
   $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
   $('.homePageHost-link').on('click', getHostRefugees);
@@ -55,7 +55,24 @@ function submitForm(){
   form.reset();
   ajaxRequest(method, url, data, authenticationSuccessful);
   getCharity();
-  
+}
+
+function submitHostForm(){
+  // get the data from the forms and make an ajaxRequest
+  // call authenticationSuccessful
+  event.preventDefault();
+  var form = this;
+  console.log(form);
+  // Get method from form
+  var method = $(this).attr('method');
+  var url = $(this).attr('action');
+  // NOT JSON
+  var data   = $(this).serialize();
+  console.log("dat:" + data);
+  form.reset();
+  ajaxRequest(method, url, data, authenticationSuccessful);
+  // redirect to the host profile
+  getHostProfile();
 }
 
 
