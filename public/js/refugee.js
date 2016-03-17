@@ -69,8 +69,8 @@ function displayOneRefugee(data) {
 
   // $('.refugee').empty();//seemst to delete another div
   $('#refugeeShow').show();
-  // $('.refugee').empty();
-  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story + "  <button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
+  $('.refugee').empty();
+  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story +"</li>");
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)

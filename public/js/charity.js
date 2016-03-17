@@ -20,9 +20,7 @@ function displayCharity(data) {
   data.refugees.forEach(function(refugee) {
     $('#showRefugees').append("<div class='col-sm-6 col-md-4' id=" + refugee._id + ">" + "<div class='thumbnail'>" + "<img src='"+ refugee.avatar + "' class='refugee-avatar' >" + "<div class='caption'>" +
       "<div class='overlay'><h3>"+ refugee.name +"</h3>" + "<h4>"+ refugee.city +"</h4></div>" + "<p class='text' id='refugee-story-text'>"+ refugee.story + "</p>" + "<p class='text' id='refugee-story-text'>" +'Amount raised :  '+ + refugee.amountRaised + "</p>" +
-        "<p><button class='manage button btn btn-default' id="+ refugee._id + "> manage " + "</button></p></div></div></div>");
-
-
+        "<p><button class='manage button btn btn-default' id="+ refugee._id + "> manage " + "</button></p></div></div></div>")
 
     });
 
