@@ -104,6 +104,7 @@ describe('POST /api/refugees', function() {
         api.get('/api/charities/' + user._id)
           .set('Accept', 'application/json')
           .end(function(err, res) {
+            console.log("new", user);
             expect(res.body.refugees.indexOf(user._id.toString())).to.be.above(-1);
             done();
           })

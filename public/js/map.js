@@ -20,16 +20,18 @@ function displayRefugee() {
 
   var map = new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
-    zoom: 1,
+    zoom: 3,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}],
     scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
+
     // draggable: false,
   });
 
-  // var currentInfoWindow;
+  var currentInfoWindow;
 
 
   // get refugeeData using ajax
@@ -38,7 +40,6 @@ function displayRefugee() {
     var refugees = data
 
     refugees.forEach(function(refugee, idx){
-      console.log(refugee)
       setTimeout(function(){
         var marker = new google.maps.Marker({
 
@@ -47,10 +48,9 @@ function displayRefugee() {
           map: map,
           animation: google.maps.Animation.DROP,
         });
-        console.log(marker)
         var infoWindow = new google.maps.InfoWindow({
-          position: { lat: parseFloat(lat), lng: parseFloat(lng) },
-          content: "<p>"+ refugee.name+"</p>"
+          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+          content: "<p><img id='infoWindowImage' src='"+ refugee.avatar + "' class='refugee-avatar' >"+"</p><p>"+ refugee.name+"</p>"
        
         });
         marker.addListener('click', function(){

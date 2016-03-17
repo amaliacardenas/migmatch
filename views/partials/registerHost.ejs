@@ -1,45 +1,34 @@
-<h2>Register Host</h2>
-<form class="register" method="post" action="/register">
-  <div class="form-group">
-    <label for="register-username">username</label>
-    <input type="text" username="username" id="register-username" class="form-control" placeholder="username">
-  </div>
-  <div class="form-group">
-    <label for="register-name">name</label>
-    <input type="text" name="name" id="register-name" class="form-control" placeholder="name">
-  </div>
-  <div class="form-group">
-    <label for="register-logo">logo</label>
-    <input type="text" name="logo" id="register-logo" class="form-control" placeholder="logo">
-  </div>
-  <div class="form-group">
-    <label for="register-email">Email address</label>
-    <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="register-password">Password</label>
-    <input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="address1">Address</label>
-    <input name="property[address1]" type="text" class="form-control" id="address1" placeholder="address">
-  </div>
-  <div class="form-group">
-    <label for="city">City</label>
-    <input name="property[city]" type="text" class="form-control" id="city" placeholder="city">
-  </div>
-  <div class="form-group">
-    <label for="postcode">Postcode</label>
-    <input name="property[postcode]" type="text" class="form-control" id="postcode" placeholder="postcode">
-  </div>
-  <div class="form-group">
-    <label for="lat">Latitude AUTOMATIC</label>
-    <input name="property[lat]" type="text" class="form-control" id="lat" placeholder="lat">
-  </div>
-  <div class="form-group">
-    <label for="lng">Longitude AUTOMATIC</label>
-    <input name="property[lng]" type="text" class="form-control" id="lng" placeholder="lng">
-  </div>
+<div class="loginNow log">
+  <form  id="registerHostForm" class="register" method="post" action="/api/register">
+    <div class="panel panel-info shadow">
+    <div class="panel-heading">
+      <h3 class="panel-title">Register</h3>
+    </div>
+      <div class="form-group app">
+        <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+      </div>
+      <div class="form-group app">
+        <label for="register-email"></label>
+        <input type="email" name="email" id="register-emailHost" class="form-control" placeholder="Email ">
+      </div>
+      <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar">
+      </div>
+      <div class="form-group app">
+        <label for="register-password"></label>
+        <input type="password" name="password" id="register-passwordHost" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group app">
+        <label for="register-password"></label>
+        <input type="password" name="passwordConfirmation" id="register-passwordHost" class="form-control" placeholder="Password Confirmation">
+      </div>
+      <div class="form-group app">
+        <input type="hidden" name="role" id="register-role" class="form-control" value="host">
+      </div>
   <!-- add bank account informations -->
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+      <button type="submit" class="btn btn-block change btn-default">Submit</button>
+  </form>
+</div>
+</div>
+
