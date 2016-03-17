@@ -72,14 +72,15 @@ function displayOneHostRefugee(data) {
       var info = {
         potential_hosts: userId
       }
-      return ajaxRequest('put', '/api/refugees/'+ id, info, function(data){
-        console.log(data);
-      });  
+      return ajaxRequest('put', '/api/refugees/'+ id, info, getHostRefugees);  
       
     });
   } else {
     // say accepted...
+    $accepted = $('<p>you have been accepted by the charity please await contact</p>');
+    
+    $li.append($accepted); 
   }
 }
 
-//if refugeeid has host of user id button changes to accepted
+

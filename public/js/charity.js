@@ -70,7 +70,7 @@ function displayPotentialHosts(data) {
  console.log(data.potential_hosts[0].username);
  data.potential_hosts.forEach(function(host){
   $('.accept').html("<div class='col-sm-6 col-md-4' id=" + host._id + ">" + "<div class='thumbnail'>" + "<img src='"+ host.avatar + "' class='refugee-avatar' >" + "<div class='caption'>" +
-      "<div class='overlay'><h3>"+ host.username +"</h3>" + "<h4>"+ host.city +"</h4></div>" + "<p class='text' id='refugee-story-text'>"+ host.description + "</p>" + "<p><form id='acceptForm' action='/api/hosts/" + host._id + "/accept' method='put'><input type='hidden' name='refugees' value=" + refugeeID + "><button class='accept button btn btn-default' type='submit'> accept " + "</button></form></p></div></div></div>")
+      "<div class='overlay'><h3>"+ host.username +"</h3>" + "<h5>contact: "+ host.email +"</h5></div>" + "<p class='text' id='refugee-story-text'>"+ host.description + "</p>" + "<p><form id='acceptForm' action='/api/hosts/" + host._id + "/accept' method='put'><input type='hidden' name='refugees' value=" + refugeeID + "><button class='accept button btn btn-default' type='submit'> accept " + "</button></form></p></div></div></div>")
   })
   // <form action="hosts/:id/accept" method="put">
   $('#acceptForm').on('submit', submitForCharity);
