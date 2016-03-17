@@ -7,6 +7,7 @@ function submitRefugee() {
   // clear the form
   this.reset(); 
   $('#refugee').hide();
+  //charity home
   $('#charityHome').show();
   return ajaxRequestRefugee(method, url, data, getCharity);
 }
@@ -15,28 +16,17 @@ function submitRefugee() {
 function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
-  // console.log("getRefugees is working");
   console.log("getRefugees");
   return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
 }
 
-//display all refugees
+//display all refugees on homepage
 function displayRefugees(data) {
-    // take the user data and display all the users as <li>s in the <ul>, eg:
-    // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-  // $('section').hide();
-
   if (!data.avatar) data.avatar = '../public/images/default-avatar.png';
-  // $('#crossroadsHome').show()
-  // console.log("displayRefugees");
-
-  // $('#crossroadsHome').show()
   console.log("displayRefugees");
-
   var $show = $('#show');
   $show.empty();
   // console.log("its working");
-
   data.forEach(function(data) {
     $li = $("<div class='col-sm-6 col-md-4' id=" + data._id + ">" +
         "<div class='thumbnail'>" +
@@ -69,8 +59,8 @@ function displayOneRefugee(data) {
 
   // $('.refugee').empty();//seemst to delete another div
   $('#refugeeShow').show();
-  // $('.refugee').empty();
-  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story + "  <button class='delete' id="+data._id +">Delete</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
+  $('.refugee').empty();
+  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story +"</li>");
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
