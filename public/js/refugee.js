@@ -7,6 +7,7 @@ function submitRefugee() {
   // clear the form
   this.reset(); 
   $('#refugee').hide();
+  //charity home
   $('#charityHome').show();
   return ajaxRequestRefugee(method, url, data, getCharity);
 }
@@ -15,28 +16,17 @@ function submitRefugee() {
 function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
-  // console.log("getRefugees is working");
   console.log("getRefugees");
   return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
 }
 
-//display all refugees
+//display all refugees on homepage
 function displayRefugees(data) {
-    // take the user data and display all the users as <li>s in the <ul>, eg:
-    // <li class="list-group-item">mickyginger (mike.hayden@ga.co)</li>
-  // $('section').hide();
-
   if (!data.avatar) data.avatar = '../public/images/default-avatar.png';
-  // $('#crossroadsHome').show()
-  // console.log("displayRefugees");
-
-  // $('#crossroadsHome').show()
   console.log("displayRefugees");
-
   var $show = $('#show');
   $show.empty();
   // console.log("its working");
-
   data.forEach(function(data) {
     $li = $("<div class='col-sm-6 col-md-4' id=" + data._id + ">" +
         "<div class='thumbnail'>" +
@@ -69,41 +59,24 @@ function displayOneRefugee(data) {
 
   // $('.refugee').empty();//seemst to delete another div
   $('#refugeeShow').show();
-  $('.refugee').empty();
-  $('.refugee').append(
-    "<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1><div class='container' id='refugee-story-text-showpage'><p>"+ data.story + "</p></div>" + "</li>" +
-    "<button class='donate'>Donate to "+ data.name +"</button"
-    );
+  $('.refugeeShow').empty();
+  $('.refugeeShow').append(
+    "<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1><div class='container' id='refugee-story-text-showpage'><p>"+ data.story + "</p></div>" + "</li>");
+
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
-  $('.delete').on('click', deleteOneRefugee)
 
-  $('.edit').on('click', function(){
-    $('section').hide();
-    populate($('#refugeeEditForm'), data)
-    $('#refugeeEdit').show();
-    var id = $(this).attr('id').toString();
-    $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
-  }); 
+
+ 
 
   // $('.donate').on('click', function() {
   //   $(this).html('cancel');
   //   $('.payment-form').slideDown();
   // });
-  $('.donate').click(function() {
-    var clicks = $(this).data('clicks');
-
-    if(clicks) {
-      $(this).html("Donate to "+ data.name);
-      $('.payment-form').slideUp();
-    } else {
-      $(this).html('cancel');
-      $('.payment-form').slideDown();
-    }
-
-    $(this).data("clicks", !clicks);
-  });
+  
 }
+
+
 
 //populate
 function populate(frm, data) {

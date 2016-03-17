@@ -43,34 +43,72 @@ function getOneHostRefugee() {
 
 //display one
 function displayOneHostRefugee(data) {
-  console.log(data);
+  var user = getUser();
   $('section').hide();
   
   $('#refugeeShowHost').show();
 
-  $('.refugeeShowHost').html("<li>" + data.name + "<button class='interested' id="+data._id +">interested</button>"+"</li>");
-  
+  $li = $('<li>' + data.name + '</li>');
+  $('.refugeeShowHost').html($li);
 
-  $('.interested').on('click', function(data){
-    event.preventDefault();
+  if(data.host !== user) {
+    $interested = $('<button class="interested" data-id="' + data._id + '">interested</button>');
+    
+    $li.append($interested);    
 
-    // Get the id of the clicked refugee
-    var id = $(this).attr('id').toString();
-    console.log(id);
-    
-    
-    // Get the id of the current logged user (host)
-    var userId = getUser();
-    console.log(userId);
+    $interested.on('click', function(data){
+      event.preventDefault();
 
-    // Make request to /api/refugees/:id with data of potential_host: user_id
-    var info = {
-      potential_hosts: userId
-    }
-    return ajaxRequest('put', '/api/refugees/'+ id, info, function(data){
-      console.log(data);
-    });  
+      // Get the id of the clicked refugee
+      var id = $(this).data('id').toString();
+      console.log(id);
+      
+      
+      // Get the id of the current logged user (host)
+      var userId = getUser();
+      console.log(userId);
+
+      // Make request to /api/refugees/:id with data of potential_host: user_id
+      var info = {
+        potential_hosts: userId
+      }
+      return ajaxRequest('put', '/api/refugees/'+ id, info, getHostRefugees);  
+      
+    });
+  } else {
+    // say accepted...
+    $accepted = $('<p>you have been accepted by the charity please await contact</p>');
     
-  }); 
+    $li.append($accepted); 
+  }
 }
+
+function getHostProfile() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
+  var userId = getUser();
+  console.log(userId);
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/charities/'+ userId, null, displayHostProfile);  
+}
+
+function displayHostProfile(data) {
+  $('section').hide();
+  $('#hostProfile').show()
+
+  //tiles for host to see
+  $('#hostProfile').html("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
+    "<div class='overlay'><h3>"+ data.username +"</h3></div><button name='hostEdit' class='editHost' id="+data._id +">Edit</button>");
+  // Edit the host profile
+    $('.editHost').on('click', function(){
+      $('section').hide();
+      populate($('#host-edit'), data)
+      $('#hostEdit').show()
+      var id = $(this).attr('id').toString();
+      $('#host-edit').get(0).setAttribute('action', '/api/charities/' + id); 
+    });
+  }
+
+
+
 
