@@ -83,4 +83,32 @@ function displayOneHostRefugee(data) {
   }
 }
 
+function getHostProfile() {
+// get the user data from the API and call displayUsers
+  event.preventDefault();
+  var userId = getUser();
+  console.log(userId);
+  // console.log("getRefugees is working");
+  return ajaxRequest('GET', '/api/charities/'+ userId, null, displayHostProfile);  
+}
+
+function displayHostProfile(data) {
+  $('section').hide();
+  $('#hostProfile').show()
+
+  //tiles for host to see
+  $('#hostProfile').html("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
+    "<div class='overlay'><h3>"+ data.username +"</h3></div><button name='hostEdit' class='editHost' id="+data._id +">Edit</button>");
+  // Edit the host profile
+    $('.editHost').on('click', function(){
+      $('section').hide();
+      populate($('#host-edit'), data)
+      $('#hostEdit').show()
+      var id = $(this).attr('id').toString();
+      $('#host-edit').get(0).setAttribute('action', '/api/charities/' + id); 
+    });
+  }
+
+
+
 

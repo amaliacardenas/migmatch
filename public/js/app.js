@@ -3,10 +3,13 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
+  
   $('#login, #charity-edit').on('submit', submitForm);
   $('#refugeeEditForm').on('submit', submitForCharity);
+  $('#host-edit').on('submit', submitHostForm);
   
   $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton, .profileHost-link').on('click', showPage);
+
   $('.homePageHost-link').on('click', getHostRefugees);
   $('.logout-link').on('click', logout);
   $('.profile-link').on('click', showProfile);
@@ -15,6 +18,7 @@ function init(){
   $('#refugee').on('submit', submitRefugee);
   $('#registerCharityForm').on('submit', submitRegister);
   $('#registerHostForm').on('submit', submitRegisterHost);
+  $('.profileHost-link').on('click', getHostProfile);
   checkLoginState();
   displayMap();
 
@@ -55,7 +59,24 @@ function submitForm(){
   form.reset();
   ajaxRequest(method, url, data, authenticationSuccessful);
   getCharity();
-  
+}
+
+function submitHostForm(){
+  // get the data from the forms and make an ajaxRequest
+  // call authenticationSuccessful
+  event.preventDefault();
+  var form = this;
+  console.log(form);
+  // Get method from form
+  var method = $(this).attr('method');
+  var url = $(this).attr('action');
+  // NOT JSON
+  var data   = $(this).serialize();
+  console.log("dat:" + data);
+  form.reset();
+  ajaxRequest(method, url, data, authenticationSuccessful);
+  // redirect to the host profile
+  getHostProfile();
 }
 
 
