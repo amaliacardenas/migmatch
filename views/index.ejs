@@ -74,11 +74,15 @@
     <section id="registerCharity">
     <div class="hidden alert alert-danger" role="alert"></div>
       <% include partials/registerCharity %>
-    </section>
-
+    </section><!-- 
+    <button type="button" class="btn btn-secondary"> -->
     <section id="registerPage">
-      <a href="#" name="registerCharity" class="register-charity">charity</a>
-      <a href="#" name="registerHost" class="register-host">host</a>
+      <div id="registerAsCharityButton">
+        <a href="#" name="registerCharity" class="register-charity"><button type="button" class="btn btn-primary">register as a charity</button></a>
+      </div>
+      <div id="registerAsHostButton">
+        <a href="#" name="registerHost" class="register-host"><button type="button" class="btn btn-primary">Register as a potential host</button></a>
+      </div>
     </section>
     
     <!-- Register as a host -->
