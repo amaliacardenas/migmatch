@@ -46,9 +46,9 @@ function displayOneHostRefugee(data) {
   console.log(data);
   $('section').hide();
   
-  $('#refugeeShow').show();
+  $('#refugeeShowHost').show();
 
-  $('.refugee').append("<li>" + data.name + "<button class='interested' id="+data._id +">interested</button>"+"</li>");
+  $('.refugeeShowHost').html("<li>" + data.name + "<button class='interested' id="+data._id +">interested</button>"+"</li>");
   
 
   $('.interested').on('click', function(data){

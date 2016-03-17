@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Refugee = require('../models/refugee');
 var jwt    = require('jsonwebtoken');
 var secret = require('../config/tokens').secret;
 
@@ -33,9 +34,15 @@ function usersShow(req, res) {
 }
 
 function acceptRefugee(req, res) {
-  User.findByIdAndUpdate(req.params.id, {$set: {refugees: req.body.refugeeId}}, { new: true }, function(err, user) {
+  User.findByIdAndUpdate(req.params.id, {$set: {refugees: req.body.refugees}}, { new: true }, function(err, user) {
     if(err) return res.status(500).json({ message: err });
-    return res.status(200).json(user);
+    console.log("USER REFUGEE SET", user);
+
+    Refugee.findByIdAndUpdate(req.body.refugees, { $set: { host: user._id }}, { new: true }, function(err, refugee) {
+      console.log("MATCH MADE", refugee);
+      if(err) return res.status(500).json({ message: err });
+      return res.status(200).json(user);
+    });
   });
 }
 

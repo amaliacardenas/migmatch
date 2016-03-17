@@ -32,12 +32,6 @@ refugeeSchema.pre('save', function(next){
   });
 });
 
-refugeeSchema.pre('save', function(next){
-  if(!this.host) next();
-  this.model('User').findByIdAndUpdate(this.host, { $push: { refugees:this._id } }, { new: true }, function(err, user) {
-    next(err);
-  });
-});
 
 
 
