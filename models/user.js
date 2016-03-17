@@ -9,7 +9,7 @@ var userSchema = mongoose.Schema({
   avatar: String,
   lat: String,
   lng: String,
-  city: String,
+  city: String, 
   website: String, 
   refugees: [{ type: mongoose.Schema.ObjectId, ref: 'Refugee' }],
   role: String

@@ -22,6 +22,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/submit.js"></script>
   <script type="text/javascript" src="/js/host.js"></script>
   <script type="text/javascript" src="/js/register.js"></script>
   <script type="text/javascript" src="/js/edit.js"></script>
@@ -77,12 +78,15 @@
     </section><!-- 
     <button type="button" class="btn btn-secondary"> -->
     <section id="registerPage">
-      <a href="#" name="registerCharity" class="register-charity"><button type="button" class="btn btn-primary" id="registerAsCharityButton">register as a charity</button></a>
-      <a href="#" name="registerHost" class="register-host"><button type="button" class="btn btn-primary" id="registerAsHostButton">Register as a potential host</button></a>
+      <div id="registerButtons">
+        <a href="#" name="registerCharity" class="register-charity"><button type="button" class="btn btn-primary" id="registerAsCharityButton">Register as a charity</button></a>
+        <a href="#" name="registerHost" class="register-host"><button type="button" class="btn btn-primary" id="registerAsHostButton">Register as a potential host</button></a>
+      </div>
     </section>
     
     <!-- Register as a host -->
     <section id="registerHost">
+    <div class="hidden alert alert-danger" role="alert"></div>
       <% include partials/registerHost %>
     </section>
     

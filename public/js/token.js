@@ -3,8 +3,6 @@ function authenticationSuccessful(data) {
   if(data.token) setToken(data.token);
   if(data.user) setUser(data.user._id);
   if(data.user) setRole(data.user.role);
-  console.log(data.user._id);
-  console.log(data.user.role);
   checkLoginState();
 }
 
