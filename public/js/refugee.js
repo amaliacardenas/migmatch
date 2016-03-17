@@ -22,8 +22,7 @@ function displayRefugees(data) {
             "<div class='overlay'><h3>"+ data.name +"</h3>" +
             "<h4>"+ data.city +"</h4></div>" +
             "<p class='text' id='refugee-story-text'>"+ data.story + "</p>" +
-            "<p class='text' id='refugee-story-text'>" +'Amount raised :  '+ + data.amountRaised + "</p>" +
-            "<p><button class='more button btn btn-default' id="+ data._id + "> read more" + "</button></p></div></div></div>");
+            "<p><button class='shadow more button btn btn-default' id="+ data._id + "> read more </button><button class='shadow btn-block button btn btn-default'> £" + data.amountRaised + "</button></p></div></div></div>");
 
     $show.append($li);
   });

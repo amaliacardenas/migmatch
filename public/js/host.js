@@ -98,9 +98,10 @@ function displayHostProfile(data) {
 
   //tiles for host to see
   $('#hostProfile').html("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
-    "<div class='overlay'><h3>"+ data.username +', '+ data.city  +"</h3></div><p>"+data.description+"</p><button type='button' class='btn btn-info-outline' name='hostEdit' class='editHost' data-id="+data._id +">Edit</button>");
+    "<div class='overlay'><h3>"+ data.username +', '+ data.city  +"</h3></div><p>"+data.description+"</p><button type='button' class='btn btn-info-outline editHost' name='hostEdit' data-id="+ data._id +">Edit</button>");
   // Edit the host profile
     $('.editHost').on('click', function(){
+
       console.log("its working")
       $('section').hide();
       populate($('#host-edit'), data)

@@ -1,28 +1,26 @@
-<h3>Edit a refugee profile</h3>
+
+<div class="loginNow log">
   <!-- profile(names, origin country, languages), story, add button(for charity)  -->
   <form id="refugeeEditForm" method="put" enctype="multipart/form-data">
-
-    <div class="form-group">
-      <label for="name">name</label>
+  <div class="panel panel-info shadow">
+      <div class="panel-heading">
+        <h3 class="panel-title">edit a refugee profile</h3>
+      </div>
+    <div class="form-group app">
       <input name="name" type="text" class="form-control" id="name" placeholder="name">
     </div>
-    <div class="form-group">
-      <label for="avatar">Avatar</label>
-      <input type="text" name="avatar">
-    </div>
-    <div class="form-group">
-      <label for="city">City</label>
+    <div class="form-group app">
       <input name="city" type="text" class="form-control" id="city" placeholder="city">
     </div>
-    <div class="form-group">
-      <label for="lat"></label>
+    <div class="form-group app">
+     
       <input name="lat" type="text" class="hidden" id="lat" placeholder="lat">
     </div>
-    <div class="form-group">
-      <label for="lng"></label>
+    <div class="form-group app">
+   
       <input name="lng" type="text" class="hidden" id="lng" placeholder="lng">
     </div>
-    <button type="submit" class="btn btn-primary" role="button">Submit</button>
-    <h4>Map</h4>
-    <div id="refugee-map"></div>
+    <button type="submit" class="btn btn-block btn-primary" role="button">submit</button>
+  
   </form>
+</div>  
