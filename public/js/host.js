@@ -57,7 +57,7 @@ function displayOneHostRefugee(data) {
     // Get the id of the clicked refugee
     var id = $(this).attr('id').toString();
     console.log(id);
-    $('.interested').chos
+    
     
     // Get the id of the current logged user (host)
     var userId = getUser();
@@ -74,7 +74,3 @@ function displayOneHostRefugee(data) {
   }); 
 }
 
-function interested() {
-  console.log("i'm interested");
-
-}

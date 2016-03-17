@@ -40,7 +40,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar fix navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <!-- Logged out -->
         <li><a href="#" name="registerPage" class="register-link logged-out">register</a></li>
@@ -160,6 +160,11 @@
     <section id="refugeeShow">
     <% include partials/refugeeShow %>
     </section>
+    <!-- refugeeShowManage -->
+    <section id="refugeeShowManage">
+    <% include partials/refugeeShowManage %>
+    </section>
+
     <section id="refugeeEdit">
     <% include partials/refugeeEdit %>
     </section>
@@ -189,6 +194,10 @@
     <!-- hostEdit -->
     <section id="hostEdit">
    <% include partials/hostEdit %> 
+    </section>
+    <!-- charityAccept -->
+    <section id="charityAccept">
+   <% include partials/acceptForm %> 
     </section>
   </main>
 </body>
