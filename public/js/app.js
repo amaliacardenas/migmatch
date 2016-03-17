@@ -5,7 +5,7 @@ function init(){
   getRefugees();
   $('#login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
 
-  $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton, .profileHost-link').on('click', showPage);
+  $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
   $('.homePageHost-link').on('click', getHostRefugees);
   $('.logout-link').on('click', logout);
   $('.profile-link').on('click', showProfile);
@@ -14,6 +14,7 @@ function init(){
   $('#refugee').on('submit', submitRefugee);
   $('#registerCharityForm').on('submit', submitRegister);
   $('#registerHostForm').on('submit', submitRegisterHost);
+  $('.profileHost-link').on('click', getHostProfile);
   checkLoginState();
   displayMap();
 
