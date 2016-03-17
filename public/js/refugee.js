@@ -1,4 +1,4 @@
-//submit add refugee form 
+  //submit add refugee form 
 function submitRefugee() {
   event.preventDefault() 
   var method = $(this).attr("method");
@@ -70,7 +70,10 @@ function displayOneRefugee(data) {
   // $('.refugee').empty();//seemst to delete another div
   $('#refugeeShow').show();
   $('.refugee').empty();
-  $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story +"</li>");
+  $('.refugee').append(
+    "<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1><div class='container' id='refugee-story-text-showpage'><p>"+ data.story + "</p></div>" + "</li>" +
+    "<button class='donate'>Donate to "+ data.name +"</button"
+    );
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
@@ -82,6 +85,24 @@ function displayOneRefugee(data) {
     var id = $(this).attr('id').toString();
     $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
   }); 
+
+  // $('.donate').on('click', function() {
+  //   $(this).html('cancel');
+  //   $('.payment-form').slideDown();
+  // });
+  $('.donate').click(function() {
+    var clicks = $(this).data('clicks');
+
+    if(clicks) {
+      $(this).html("Donate to "+ data.name);
+      $('.payment-form').slideUp();
+    } else {
+      $(this).html('cancel');
+      $('.payment-form').slideDown();
+    }
+
+    $(this).data("clicks", !clicks);
+  });
 }
 
 //populate
