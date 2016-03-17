@@ -3,8 +3,9 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('#login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
-
+  $('#login, #charity-edit').on('submit', submitForm);
+  $('#refugeeEditForm').on('submit', submitForCharity);
+  
   $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton, .profileHost-link').on('click', showPage);
   $('.homePageHost-link').on('click', getHostRefugees);
   $('.logout-link').on('click', logout);
@@ -61,7 +62,6 @@ function submitForm(){
 
 
 function loggedInState(role){
-  console.log("===============LOGGEDINSTATE", role)
   //show links with logged-in class
   //hide links with logged-out class
   //show bottles page

@@ -2,16 +2,11 @@ function getCharity() {
 // get the user data from the API and call displayUsers
   event.preventDefault();
   var userId = getUser();
-  console.log(userId);
-  // console.log("getRefugees is working");
   return ajaxRequest('GET', '/api/charities/'+ userId, null, displayCharity);  
 }
 
 function displayCharity(data) {
-//   //display charites refugees
-//   //display news
-//   //displays map
-  console.log(data);
+//display charites refugees
   $('section').hide();
   $('#charityHome').show()
   $('#showRefugees').empty();
@@ -21,20 +16,15 @@ function displayCharity(data) {
     $('#showRefugees').append("<div class='col-sm-6 col-md-4' id=" + refugee._id + ">" + "<div class='thumbnail'>" + "<img src='"+ refugee.avatar + "' class='refugee-avatar' >" + "<div class='caption'>" +
       "<div class='overlay'><h3>"+ refugee.name +"</h3>" + "<h4>"+ refugee.city +"</h4></div>" + "<p class='text' id='refugee-story-text'>"+ refugee.story + "</p>" + "<p class='text' id='refugee-story-text'>" +'Amount raised :  '+ + refugee.amountRaised + "</p>" +
         "<p><button class='manage button btn btn-default' id="+ refugee._id + "> manage " + "</button></p></div></div></div>");
-
-
-
     });
-
     $('.manage').on('click', getRefugeeManage);
-  
 }
 
+//charity manage refugee
 function getRefugeeManage() {
-  // console.log("I've been clicked!");
   var id = $(this).attr('id').toString();
   return ajaxRequest('GET', '/api/refugees/'+ id, null, manageRefugee);
-  // console.log(id);
+  
 }
 
 //appends edit, delete and potnetial hosts button
@@ -42,24 +32,34 @@ function manageRefugee(data) {
   console.log(data);
   $('section').hide();
   $('#refugeeShowManage').show();
-  $('.refugeeManage').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story + "  <button class='delete' id="+data._id +">Delete</button>"+ "<button name='potential' class='potential' id="+data._id +">potential hosts</button>"+ "<button name='refugeeEdit' class='edit' id="+data._id +">Edit</button>"+"</li>");
+  $('.refugeeManage').empty();
+//need to add quotations
+  $delete = $('<button class="delete" data-id="'+data._id +'">Delete</button>');
+  $potential = $('<button name="potential" class="potential" data-id='+data._id +">potential hosts</button>");
+  $edit = $('<button name="refugeeEdit" class="edit" data-id="' + data._id +'">Edit</button>');
+  $li = $('<li><img src="'+ data.avatar + '" class="refugee-avatar">' + data.name + ' ' + data.story + '</li>');
+  $li.append($edit);
+  $li.append($delete);
+  $li.append($potential);
+
+  $('.refugeeManage').append($li);
   //puts regugee id into form
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
-  $('.delete').on('click', deleteOneRefugee)
+  $delete.on('click', deleteOneRefugee)
   //edit function
-  $('.edit').on('click', function(){
+  $edit.on('click', function(){
     $('section').hide();
-    populate($('#refugeeEditForm'), data)
+    populate($('#refugeeEditForm'), data);
     $('#refugeeEdit').show();
-    var id = $(this).attr('id').toString();
+    var id = $(this).attr('data-id').toString();
     $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
   });
-  $('.potential').on('click', getPotentialHosts) 
+  $potential.on('click', getPotentialHosts) 
 }
 
 function getPotentialHosts(){
-  var id = $(this).attr('id').toString();
+  var id = $(this).attr('data-id').toString();
   return ajaxRequest('GET', '/api/refugees/'+ id, null, displayPotentialHosts);
 }
 
@@ -70,17 +70,13 @@ function displayPotentialHosts(data) {
  console.log(data.potential_hosts[0].username);
  data.potential_hosts.forEach(function(host){
   $('.accept').html("<div class='col-sm-6 col-md-4' id=" + host._id + ">" + "<div class='thumbnail'>" + "<img src='"+ host.avatar + "' class='refugee-avatar' >" + "<div class='caption'>" +
-      "<div class='overlay'><h3>"+ host.username +"</h3>" + "<h4>"+ host.city +"</h4></div>" + "<p class='text' id='refugee-story-text'>"+ host.description + "</p>" +
-        "<p><form id='acceptForm' action='/api/hosts/" + host._id + "/accept' method='put'><input type='hidden' name='refugees' value=" + refugeeID + "><button class='accept button btn btn-default' type='submit'> accept " + "</button></form></p></div></div></div>")
-  console.log(refugeeID);
- })
+      "<div class='overlay'><h3>"+ host.username +"</h3>" + "<h4>"+ host.city +"</h4></div>" + "<p class='text' id='refugee-story-text'>"+ host.description + "</p>" + "<p><form id='acceptForm' action='/api/hosts/" + host._id + "/accept' method='put'><input type='hidden' name='refugees' value=" + refugeeID + "><button class='accept button btn btn-default' type='submit'> accept " + "</button></form></p></div></div></div>")
+  })
   // <form action="hosts/:id/accept" method="put">
-  $('#acceptForm').on('submit', acceptHost);
-  // <input type="hidden" name="refugeeId" value=//as>
-  // </form>
+  $('#acceptForm').on('submit', submitForCharity);
 }
 
-function acceptHost() {
+function submitForCharity() {
   event.preventDefault();
   var form = this;
   console.log(form);
@@ -90,7 +86,7 @@ function acceptHost() {
   // NOT JSON
   var data   = $(this).serialize();
   console.log("dat:" + data);
-  ajaxRequest(method, url, data, getCharity);
+  return ajaxRequest(method, url, data, getCharity);
 }
 
 

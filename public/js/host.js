@@ -43,34 +43,43 @@ function getOneHostRefugee() {
 
 //display one
 function displayOneHostRefugee(data) {
-  console.log(data);
+  var user = getUser();
   $('section').hide();
   
   $('#refugeeShowHost').show();
 
-  $('.refugeeShowHost').html("<li>" + data.name + "<button class='interested' id="+data._id +">interested</button>"+"</li>");
-  
+  $li = $('<li>' + data.name + '</li>');
+  $('.refugeeShowHost').html($li);
 
-  $('.interested').on('click', function(data){
-    event.preventDefault();
+  if(data.host !== user) {
+    $interested = $('<button class="interested" data-id="' + data._id + '">interested</button>');
+    
+    $li.append($interested);    
 
-    // Get the id of the clicked refugee
-    var id = $(this).attr('id').toString();
-    console.log(id);
-    
-    
-    // Get the id of the current logged user (host)
-    var userId = getUser();
-    console.log(userId);
+    $interested.on('click', function(data){
+      event.preventDefault();
 
-    // Make request to /api/refugees/:id with data of potential_host: user_id
-    var info = {
-      potential_hosts: userId
-    }
-    return ajaxRequest('put', '/api/refugees/'+ id, info, function(data){
-      console.log(data);
-    });  
-    
-  }); 
+      // Get the id of the clicked refugee
+      var id = $(this).data('id').toString();
+      console.log(id);
+      
+      
+      // Get the id of the current logged user (host)
+      var userId = getUser();
+      console.log(userId);
+
+      // Make request to /api/refugees/:id with data of potential_host: user_id
+      var info = {
+        potential_hosts: userId
+      }
+      return ajaxRequest('put', '/api/refugees/'+ id, info, function(data){
+        console.log(data);
+      });  
+      
+    });
+  } else {
+    // say accepted...
+  }
 }
 
+//if refugeeid has host of user id button changes to accepted

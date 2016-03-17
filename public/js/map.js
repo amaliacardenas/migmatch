@@ -38,7 +38,6 @@ function displayRefugee() {
     var refugees = data
 
     refugees.forEach(function(refugee, idx){
-      console.log(refugee)
       setTimeout(function(){
         var marker = new google.maps.Marker({
 
@@ -47,7 +46,6 @@ function displayRefugee() {
           map: map,
           animation: google.maps.Animation.DROP,
         });
-        console.log(marker)
         var infoWindow = new google.maps.InfoWindow({
           position: { lat: parseFloat(lat), lng: parseFloat(lng) },
           content: "<p>"+ refugee.name+"</p>"
