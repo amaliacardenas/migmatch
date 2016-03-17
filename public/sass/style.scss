@@ -40,6 +40,14 @@ ul {
   margin-bottom: 50px;
 }
 
+.footer-all{
+  background: white;
+  width: 100%;
+  height: 200px;
+  overflow: scroll;
+  // margin-bottom: 50px;
+}
+
 .banner-heading {
   text-align: center;
 }
@@ -63,4 +71,91 @@ ul {
   #registerAsHostButton{
 
   }
+
+
+  // Refugee show 
+
+  .refugee-show {
+    text-align: center;
+    width: 100%;
+    height: 95vh;
+
+    .avatar, .actions {
+      height: 350px;
+    }
+
+    .avatar {
+
+      img {
+        margin-top: 35px;
+        height: 200px;
+        width: 200px;
+      }
+
+      h1 {
+        margin: 10px;
+        padding: 0;
+        font-size: 30px;
+        color: #333;
+      }
+    }
+
+    .actions {
+
+      .donation-form {
+        border: 1px solid #ccc;
+        width: 300px;
+        padding-bottom: 20px;
+        margin: 0 auto;
+      }
+    }
+
+    .info {
+      height: 350px;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

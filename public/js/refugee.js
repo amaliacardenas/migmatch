@@ -60,11 +60,16 @@ function displayOneRefugee(data) {
   // $('.refugee').empty();//seemst to delete another div
   $('#refugeeShow').show();
   $('.refugeeShow').empty();
-  $('.refugeeShow').append(
-    "<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1><div class='container' id='refugee-story-text-showpage'><p>"+ data.story + "</p></div>" + "</li>");
+  $('.avatar').empty().append("<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1>");
+  $('.actions').append("<p>Amount raised: "+ data.amountRaised + "</p>");
+  $('.info').empty().append("<p>"+ data.story + "</p>")
 
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
+
+
+  // $('.refugeeInfo').empty().append(
+  //   "<img src='"+ data.avatar + "' class='refugee-avatar-showpage img-thumbnail' ><h1>" + data.name + "</h1><div class='container' id='refugee-story-text-showpage'><p>"+ data.story + "</p></div>" + "<div class='container' id='refugee-story-text-showpage'><p>"+ 'Amount raised: '+ data.amountRaised + "</p></div>");
 
 
  
