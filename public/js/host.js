@@ -2,7 +2,7 @@ function getHostRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
   // console.log("getRefugees is working");
-  return ajaxRequestRefugee('GET', '/api/refugees', null, displayHostRefugees);  
+  return ajaxRequest('GET', '/api/refugees', null, displayHostRefugees);  
  }
 
 //display all refugees
@@ -98,13 +98,14 @@ function displayHostProfile(data) {
 
   //tiles for host to see
   $('#hostProfile').html("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
-    "<div class='overlay'><h3>"+ data.username +', '+ data.city  +"</h3></div><p>"+data.description+"</p><button type='button' class='btn btn-info-outline' name='hostEdit' class='editHost' id="+data._id +">Edit</button>");
+    "<div class='overlay'><h3>"+ data.username +', '+ data.city  +"</h3></div><p>"+data.description+"</p><button type='button' class='btn btn-info-outline' name='hostEdit' class='editHost' data-id="+data._id +">Edit</button>");
   // Edit the host profile
     $('.editHost').on('click', function(){
+      console.log("its working")
       $('section').hide();
       populate($('#host-edit'), data)
       $('#hostEdit').show()
-      var id = $(this).attr('id').toString();
+      var id = $(this).data('id').toString();
       $('#host-edit').get(0).setAttribute('action', '/api/charities/' + id); 
     });
   }
