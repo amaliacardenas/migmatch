@@ -1,23 +1,10 @@
-  //submit add refugee form 
-function submitRefugee() {
-  event.preventDefault() 
-  var method = $(this).attr("method");
-  var url    = $(this).attr("action");
-  var data   = new FormData(this);
-  // clear the form
-  this.reset(); 
-  $('#refugee').hide();
-  //charity home
-  $('#charityHome').show();
-  return ajaxRequestRefugee(method, url, data, getCharity);
-}
 
 //get all refugees
 function getRefugees() {
   // get the user data from the API and call displayUsers
   event.preventDefault();
   console.log("getRefugees");
-  return ajaxRequestRefugee('GET', '/api/refugees', null, displayRefugees);  
+  return ajaxRequest('GET', '/api/refugees', null, displayRefugees, true);  
 }
 
 //display all refugees on homepage
@@ -65,14 +52,6 @@ function displayOneRefugee(data) {
 
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
-
-
- 
-
-  // $('.donate').on('click', function() {
-  //   $(this).html('cancel');
-  //   $('.payment-form').slideDown();
-  // });
   
 }
 
@@ -88,24 +67,8 @@ function populate(frm, data) {
 //delete
 function deleteOneRefugee() {
   console.log("I've been clicked!");
-  var id = $(this).attr('id').toString();
+  var id = $(this).data('id').toString();
   return ajaxRequest('DELETE', '/api/refugees/'+ id, null, getCharity);
   console.log(id);
 }
 
-function ajaxRequestRefugee(method, url, data, callback) {
-  return $.ajax({
-    method: method,
-    url: url,
-    data: data,
-    contentType: false, // allow ajax to send file data
-    processData: false, // allow ajax to send file data
-    beforeSend: function(jqXHR, settings){
-      var token = getToken();
-      if(token) return jqXHR.setRequestHeader('Authorization', 'Bearer '+ token);
-    }
-  }).done(callback)
-  .fail(function(err) {
-    displayErrors(err);
-  });
-}

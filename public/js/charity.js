@@ -2,6 +2,7 @@ function getCharity() {
 // get the user data from the API and call displayUsers
   event.preventDefault();
   var userId = getUser();
+  console.log("getCharity Called");
   return ajaxRequest('GET', '/api/charities/'+ userId, null, displayCharity);  
 }
 
@@ -75,18 +76,7 @@ function displayPotentialHosts(data) {
   $('#acceptForm').on('submit', submitForCharity);
 }
 
-function submitForCharity() {
-  event.preventDefault();
-  var form = this;
-  console.log(form);
-  // Get method from form
-  var method = $(this).attr('method');
-  var url = $(this).attr('action');
-  // NOT JSON
-  var data   = $(this).serialize();
-  console.log("dat:" + data);
-  return ajaxRequest(method, url, data, getCharity);
-}
+
 
 
 //profile page
