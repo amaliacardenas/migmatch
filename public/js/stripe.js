@@ -33,7 +33,9 @@ jQuery(function($) {
         data: data,
         method: "POST"
       }).done(function(res) {
-        console.log(res);
+        var $sections = $('section').hide();
+        $('#crossroads').show();
+        getRefugees();
       }).fail(function(err) {
         console.error(err);
       });

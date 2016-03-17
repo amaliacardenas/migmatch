@@ -61,6 +61,7 @@ function displayOneRefugee(data) {
   $('#refugeeShow').show();
   $('.refugee').empty();
   $('.refugee').append("<li>" +"<img src='"+ data.avatar + "' class='refugee-avatar' >" + data.name + " " + data.story +"</li>");
+  
   var input = $("#refugeeId");
   input.val( input.val() + data._id );
   $('.delete').on('click', deleteOneRefugee)
@@ -73,6 +74,8 @@ function displayOneRefugee(data) {
     $('#refugeeEditForm').get(0).setAttribute('action', '/api/refugees/' + id); 
   }); 
 }
+
+
 
 //populate
 function populate(frm, data) {
