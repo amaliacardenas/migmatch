@@ -1,2 +1,34 @@
-<h1>Host Edit</h1>
-<!-- same with update-->
+<div class="loginNow log">
+  <form id="host-edit" class="register" method="put">
+    <div class="panel panel-info shadow">
+    <div class="panel-heading">
+      <h3 class="panel-title">Edit your profile</h3>
+    </div>
+      <div class="form-group app">
+        <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+      </div>
+      <div class="form-group app">
+        <label for="register-email"></label>
+        <input type="email" name="email" id="register-emailHost" class="form-control" placeholder="Email ">
+      </div>
+      <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar">
+      </div>
+      <div class="form-group app">
+        <label for="register-password"></label>
+        <input type="password" name="password" id="register-passwordHost" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group app">
+        <label for="register-password"></label>
+        <input type="password" name="passwordConfirmation" id="register-passwordHost" class="form-control" placeholder="Password Confirmation">
+      </div>
+      <div class="form-group app">
+        <input type="hidden" name="role" id="register-role" class="form-control" value="host">
+      </div>
+  <!-- add bank account informations -->
+      <button type="submit" class="btn btn-block change btn-default">Submit</button>
+  </form>
+</div>
+</div>
+

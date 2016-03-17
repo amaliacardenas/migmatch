@@ -3,7 +3,7 @@ function init(){
   var $sections = $('section').hide();
   $('#crossroads').show();
   getRefugees();
-  $('#login, #refugeeEditForm, #charity-edit').on('submit', submitForm);
+  $('#login, #refugeeEditForm, #charity-edit, #host-edit').on('submit', submitForm);
 
   $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton').on('click', showPage);
   $('.homePageHost-link').on('click', getHostRefugees);
