@@ -84,13 +84,11 @@ function getHostProfile() {
 }
 
 function displayHostProfile(data) {
-  console.log(data);
   $('section').hide();
   $('#hostProfile').show()
 
   //tiles for host to see
-
-  $('#hostProfile').append("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
+  $('#hostProfile').html("<div class='col-sm-6 col-md-4' id=" + data._id + ">" + "<d class='thumbnail'>" + "<img src='"+ data.avatar + "' class='host-avatar' >" + "<d  class='caption'>" +
     "<div class='overlay'><h3>"+ data.username +"</h3></div><button name='hostEdit' class='editHost' id="+data._id +">Edit</button>");
   // Edit the host profile
     $('.editHost').on('click', function(){
@@ -104,18 +102,7 @@ function displayHostProfile(data) {
 
 
 
-// function displayProfile(data) {
-//   $('section').hide();
-//   $('#charityShow').show()
-//   $('#showCharity').html("<li class='list-group-item'>"+ data.username + "<img id='charityimage'src="+ data.avatar  +">"+ data.description + data.website + "<button name='charityEdit' class='editCharity' id="+data._id +">Edit</button>"+ "</li>");
-//   $('.editCharity').on('click', function(){
-//     $('section').hide();
-//     populate($('#charity-edit'), data)
-//     $('#charityEdit').show()
-//     var id = $(this).attr('id').toString();
-//     $('#charity-edit').get(0).setAttribute('action', '/api/charities/' + id); 
-//   });
-// }
+
 
 
 
