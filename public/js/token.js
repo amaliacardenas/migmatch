@@ -41,6 +41,7 @@ function logout(){
   // call loggedOutState
   removeToken();
   loggedOutState();
+  $('body').css("background-color","#ebf1f0");
 }
 
 function removeToken() {

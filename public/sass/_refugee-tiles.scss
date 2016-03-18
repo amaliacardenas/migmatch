@@ -3,19 +3,35 @@
   text-align: center; 
   font-size: 30px;
   margin: 20px;
-  width: 330px;
-  height: 445px;
+  width: 250px;
+  height: 380px;
+  border-radius: 0px;
+  button {
+    background-color: #ABCCCF;
+    border-radius: 0px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+  }
+  a{
+    font-size: 12px;
+    color: black;
+    text-align: left;
+  }
   p{
     font-size: 20px;
   }
 }
 
 .thumbnail > img {
-  height: 200px;
+  height: 160px;
+  margin-top: -40px;
+  
 }
 
 #refugee-story-text{
-margin-top: 5px;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 // #refugee-story-text-showpage{
@@ -39,20 +55,51 @@ margin-top: 5px;
 }
 
 .overlay{
-  background-color: rgb(146, 195, 199);
+  background-color: #ABCCCF;
   color: #fafafa;
   margin-top: 0px;
   margin-bottom: 40px;
   width: 100%;
   padding: 0px;
-  height: 50px;
+  height: 40px;
 }
 
 .thumbnail .caption {
-  padding: 0;
-  margin-top: -20px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 100px;
+  border-top: 1px solid #AB9B9B;
+  border-bottom: 1px solid #AB9B9B;
+  font-size: 12px;
+  word-wrap: break-word;
+  text-align: left;
+  .thumbnail .p {
+    font-size: 12px;
+  }
 }
 
 .refugee{
   margin-bottom: 50px;
+}
+
+.thumbnail.showRefugee{
+  width:100%;
+  height:200%;
+}
+
+.extra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+.new {
+  word-wrap: break-word;
+  padding: 10px;
+  text-align: left;
 }

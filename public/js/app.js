@@ -10,6 +10,7 @@ function init(){
   $('#refugee').on('submit', submitRefugee);
   $('#registerCharityForm').on('submit', submitRegister);
   $('#registerHostForm').on('submit', submitRegisterHost);
+  $('#hostHome').on('click', '.moreHost', getOneHostRefugee);
   
   //showpage events
   $('.register-link, .register-charity, .register-host, .login-link, .donate-link, .addRefugee-link, .about-link, .home-link, #addRefugeeButton, .profileHost-link').on('click', showPage);
@@ -35,10 +36,7 @@ function checkLoginState(){
   //add if else loggedInStateHost
   var token = getToken();
   var role = getRole();
-  console.log("======================",role);
     if(token) {
-      console.log(token);
-      console.log(role);
       loggedInState(role);
     }
 
@@ -46,10 +44,6 @@ function checkLoginState(){
       loggedOutState();
     }
 }
-
-
-
-
 
 
 function loggedInState(role){
@@ -101,8 +95,9 @@ function showPage(){
   //hide everything except the section you want to show 
   var $sections = $('section').hide();
   hideErrors();
-  var $id = $(this).attr('name');
-  console.log($id);
-  $('#'+ $id).show();
+  var id = $(this).attr('name');
+  $('#'+ id).show();
+
+  if(id === 'about') displayRefugee();
 }
 

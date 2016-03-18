@@ -1,0 +1,39 @@
+.tileHost {
+  width: 400px;
+  height: 150px;
+  background: white;
+  text-align: left;
+  padding: 20px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.host{
+  position: absolute;
+    margin-top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  // box-shadow: 10px 10px 5px #888888;
+}
+
+.btn-info-outline{
+  // background-color:#92C3C7;
+  background-color: #F8F8F8;
+  color: rgba(0, 0, 0, 0.1);
+  // border: 1px solid white;
+  height: 40px;
+  width: 150px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  position: fixed;
+  top: 50px;
+  right: 0px; 
+  color:#7F7B7B;
+}

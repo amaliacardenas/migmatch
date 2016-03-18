@@ -10,13 +10,26 @@ function getFormData(form) {
   form.reset();
   return data;
 }
+
 function submitForm(){
   event.preventDefault();
+  
   data = getFormData(this);
-  ajaxRequest(data.method, data.url, data.data, authenticationSuccessful);
-  //redirect to charity home page
-  getCharity();
+  ajaxRequest(data.method, data.url, data.data, function(res) {authenticationSuccessful(res);
+    var role = getRole();
+    if(role==='charity'){
+      $('body').css("background-color","#f1eff2");
+      getCharity();
+
+    }
+    else{
+      $('body').css("background-color","#d0dcf4");
+      getHost();
+    }
+  });
 }
+
+
 
 
 //used by host edit 

@@ -4,6 +4,7 @@
 @import 'charityShow';
 @import 'about';
 @import 'hostProfile';
+@import 'host';
 
 
 body {
@@ -11,6 +12,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 15px;
+
 }
 
 ul {
@@ -148,10 +150,15 @@ i {
 
 #addRefugeeButton {
   font-size: 60px;
+  &:hover {
+    font-size: 65px;
+  }
 
 }
 
-
+button {
+  border-radius: 0px;
+}
 
 
 

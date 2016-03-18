@@ -33,6 +33,7 @@ jQuery(function($) {
         data: data,
         method: "POST"
       }).done(function(res) {
+        console.log("working");
         var $sections = $('section').hide();
         $('#crossroads').show();
         getRefugees();

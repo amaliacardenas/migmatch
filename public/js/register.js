@@ -27,20 +27,4 @@ function ajaxRequest(method, url, data, callback, isUploader) {
 }
 
 
-// function ajaxRequestRefugee(method, url, data, callback) {
-//   return $.ajax({
-//     method: method,
-//     url: url,
-//     data: data,
-//     contentType: false, // allow ajax to send file data
-//     processData: false, // allow ajax to send file data
-//     beforeSend: function(jqXHR, settings){
-//       var token = getToken();
-//       if(token) return jqXHR.setRequestHeader('Authorization', 'Bearer '+ token);
-//     }
-//   }).done(callback)
-//   .fail(function(err) {
-//     displayErrors(err);
-//   });
-// }
  

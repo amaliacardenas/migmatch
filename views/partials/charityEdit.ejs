@@ -1,23 +1,24 @@
-<h1>Chartity edit</h1>
 
-<h2>Edit Register Charity</h2>
-<form id="charity-edit" class="register" method="put">
-  <div class="form-group">
-    <label for="register-username">username</label>
-    <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+<div class="loginNow log">
+<div class="panel panel-info shadow">
+    <div class="panel-heading">
+      <h3 class="panel-title">edit charity</h3>
+    </div>
+  <form id="charity-edit" class="register" method="put">
+    <div class="form-group app">
+      <input type="text" name="username" id="register-username" class="form-control" placeholder="username">
+    </div>
+    <div class="form-group app">
+      <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group app">
+      <textarea type="text" name="description" id="register-description" class="form-control" placeholder="Description"></textarea> 
+    </div>
+    <div class="form-group app">
+      <input type="text" name="website" id="register-website" class="form-control" placeholder="Website">
+    </div>
+    <!-- add bank account informations -->
+    <button type="submit" class="btn change btn-block btn-default">submit</button>
+  </form>
+
   </div>
-  <div class="form-group">
-    <label for="register-email">Email address</label>
-    <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="register-description">Description of your Charity</label>
-    <input type="text" name="description" id="register-description" class="form-control" placeholder="Description">
-  </div>
-  <div class="form-group">
-    <label for="register-website">Website</label>
-    <input type="text" name="website" id="register-website" class="form-control" placeholder="Website">
-  </div>
-  <!-- add bank account informations -->
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>

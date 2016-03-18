@@ -1,8 +1,5 @@
-$(init);
-console.log("jquery")
-function init(){
-  displayRefugee();
-}
+ var map;
+var markers = [];
 
 function displayRefugee() {
   //display charites refugees
@@ -11,14 +8,17 @@ function displayRefugee() {
 
   var $refugeeForm = $('#refugee');
   var $map = $('#refugee-map');
-  var $markers = [];
 
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
 
-  var $refugeeForm = $('#refugee');
-  var $map = $('#refugee-map');
-  var $markers = [];
+  setMapOnAll(null);
+  markers = [];
 
-  var map = new google.maps.Map($map[0], {
+  map = map || new google.maps.Map($map[0], {
     center: {lat:51.5117, lng: -0.1275},
     zoom: 3,
     styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}],
@@ -37,37 +37,32 @@ function displayRefugee() {
   // get refugeeData using ajax
   $.get('/api/refugees').then(function(data){
 
-    var refugees = data
+    var refugees = data;
 
     refugees.forEach(function(refugee, idx){
-      setTimeout(function(){
-        var marker = new google.maps.Marker({
 
-          // parseFloat convert a string into a number
-          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
-          map: map,
-          animation: google.maps.Animation.DROP,
-        });
-        var infoWindow = new google.maps.InfoWindow({
-          position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
-          content: "<p><img id='infoWindowImage' src='"+ refugee.avatar + "' class='refugee-avatar' >"+"</p><p>"+ refugee.name+"</p>"
-       
-        });
-        marker.addListener('click', function(){
-          if(currentInfoWindow) currentInfoWindow.close();
-          currentInfoWindow = infoWindow;
-          infoWindow.open(map);
-          console.log(currentInfoWindow)
+      var marker = new google.maps.Marker({
 
-        });
-      }, idx*10);
+        // parseFloat convert a string into a number
+        position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+        map: map,
+        animation: google.maps.Animation.DROP,
+      });
+      var infoWindow = new google.maps.InfoWindow({
+        position: { lat: parseFloat(refugee.lat), lng: parseFloat(refugee.lng) },
+        content: "<p><img id='infoWindowImage' src='"+ refugee.avatar + "' class='refugee-avatar' >"+"</p><p>"+ refugee.name+"</p>"
+     
+      });
+      marker.addListener('click', function(){
+        if(currentInfoWindow) currentInfoWindow.close();
+        currentInfoWindow = infoWindow;
+        infoWindow.open(map);
+        console.log(currentInfoWindow)
+
+      });
+      markers.push(marker);
     });
   });
-
-  if($refugeeForm.length){
-
-    var gcoder = new google.maps.Geocoder();
-    var $fields = $refugeeForm.find('input');
 
 
   if($refugeeForm.length){
@@ -87,14 +82,8 @@ function displayRefugee() {
           console.log(location.lat(),location.lat(), $fields);
           $fields.filter('[name="lat"]').val(location.lat());
           $fields.filter('[name="lng"]').val(location.lng());
-        };
+        }
       });
     });
-  };
-};
-
-
-  
-
-
+  }
 };
