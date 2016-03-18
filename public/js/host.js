@@ -46,7 +46,7 @@ function displayOneHostRefugee(data) {
   $('.refugeeShowHost').html($li);
 
   if(data.host !== user) {
-    $interested = $('<button class="interested change btn-block button btn btn-default" data-id="' + data._id + '">connect</button>');
+    $interested = $('<button class="top-left interested change btn-block button btn btn-default" data-id="' + data._id + '">connect</button>');
     
     $li.prepend($interested);    
 
@@ -70,7 +70,7 @@ function displayOneHostRefugee(data) {
     });
   } else {
     // say accepted...
-    $accepted = $('<button class="interested change button btn btn-default" data-id="' + data._id + '">you have been accepted by the charity please await contact</button>');
+    $accepted = $('<button class="top-left interested change button btn btn-default" data-id="' + data._id + '">you have been accepted by the charity please await contact</button>');
     
     $li.prepend($accepted); 
   }
