@@ -71,7 +71,6 @@ router.route('/refugees/:id')
   .patch(refugeesController.updateOne)
   .delete(refugeesController.delete);
 
-
 router.route('/charities')
   .get(usersController.index);
 
