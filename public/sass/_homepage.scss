@@ -74,6 +74,9 @@ and (max-device-width : 1024px)  {
     height: 200px;
     margin-top: 200px;
   }
+  html {
+    overflow: hidden;
+  }
 
 }
 
