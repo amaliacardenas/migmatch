@@ -67,7 +67,17 @@
   opacity: 0.55;
 }
 
-@media (max-width: 77.999em) {
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+  .mobile {
+    height: 200px;
+    margin-top: 200px;
+  }
+
+}
+
+@media (max-width: 47.999em) {
     .mobile {
       height: 200px;
       margin-top: 350px;
