@@ -4,6 +4,7 @@
   color: #fff;
   width: 100%;
   height: 500px;
+  overflow-x: hidden;
   // background-color: #ccc;
   background-image: url('/images/rothko.png');
   background-repeat: no-repeat;
@@ -66,7 +67,7 @@
   opacity: 0.55;
 }
 
-@media (max-width: 67.999em) {
+@media (max-width: 77.999em) {
     .mobile {
       height: 200px;
       margin-top: 350px;
