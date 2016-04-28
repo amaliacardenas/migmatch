@@ -72,7 +72,8 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px)  { 
   .mobile {
     height: 200px;
-    margin-top: 200px;
+    // margin-top: 100px;
+    margin-right: 100px;
   }
   html {
     overflow: hidden;
